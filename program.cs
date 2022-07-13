@@ -17,8 +17,9 @@ namespace cubeLauncher
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        string instPath;
         string mainDir;
+        string mcDir;
+        string instPath;
 
         public program()
         {
@@ -26,7 +27,7 @@ namespace cubeLauncher
         }
 
         // move form function
-        private void moveForm(MouseEventArgs e)
+        private void mvFrm(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -38,22 +39,22 @@ namespace cubeLauncher
         // move form senders
         private void panel_MouseDown(object sender, MouseEventArgs e)
         {
-            moveForm(e);
+            mvFrm(e);
         }
 
         private void panelBanner_MouseDown(object sender, MouseEventArgs e)
         {
-            moveForm(e);
+            mvFrm(e);
         }
 
         private void panelBannerVersion_MouseDown(object sender, MouseEventArgs e)
         {
-            moveForm(e);
+            mvFrm(e);
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            moveForm(e);
+            mvFrm(e);
         }
 
         // buttons
@@ -71,7 +72,7 @@ namespace cubeLauncher
         {
             string[] file = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string path in file)
-                instPath = path;
+            instPath = path;
 
             string installName = new DirectoryInfo(instPath).Name;
             string destDir = mainDir + "\\" + installName;
@@ -93,7 +94,8 @@ namespace cubeLauncher
                     {
                         Directory.CreateDirectory(outputDir);
                     }
-                });
+                }
+                );
             }
             catch
             {
@@ -102,6 +104,8 @@ namespace cubeLauncher
                 return;
             }
 
+            updInstLst();
+
             dropBoxLabel.Text = "";
         }
 
@@ -109,8 +113,34 @@ namespace cubeLauncher
         {
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
+            mcDir = roamingDir + "\\.minecraft";
 
-            Directory.CreateDirectory(mainDir);
+            if (!File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
+            {
+                try
+                {
+                    File.Copy(mcDir + "\\" + "launcher_profiles.json", mainDir + "\\" + "launcher_profiles_bak.json");
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
+            else
+            {
+                // skip
+            }
+
+            try
+            {
+                Directory.CreateDirectory(mainDir);
+            }
+            catch
+            {
+                // ignore
+            }
+
+            updInstLst();
 
             // enable folder dropping
             this.dropBoxPanel.AllowDrop = true;
@@ -142,6 +172,41 @@ namespace cubeLauncher
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
             {
                 e.Effect = DragDropEffects.All;
+            }
+        }
+
+        private void updInstLst ()
+        {
+            installList.Items.Clear();
+
+            string[] files = Directory.GetDirectories(mainDir);
+            foreach (string file in files)
+            installList.Items.Add(Path.GetFileNameWithoutExtension(file));
+        }
+
+        private void updateInstallList_Click(object sender, EventArgs e)
+        {
+            updInstLst();
+        }
+
+        private void launchButton_Click(object sender, EventArgs e)
+        {
+            if (installList.Text != "")
+            {
+                string name = installList.Text;
+                string path = mainDir + "\\" + installList.Text;
+                string icon = cubeLauncher.Properties.Resources.iconSerialized;
+                string args = "";
+
+                string launchProfile = "";
+
+
+                //File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", );
+            }
+            else
+            {
+                dropBoxLabel.Text = "Error: Please select an installation";
+                dropBoxLabel.Update();
             }
         }
     }

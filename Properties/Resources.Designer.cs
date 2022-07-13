@@ -91,6 +91,15 @@ namespace cubeLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAAG0OVFdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADcNSURBVHhe7V0HgJXVlT5vKjOUARVFkKqIFVuMSmwRNWw0sWXtNZvENcVYYskmu2pMNDGbTbdkN2vXaFTEiAUUe0ksiIvSQUQpAjPADAxT357vlPvf/703haFZ+Gbuf88599xzzz33/vcv73//o42KqqGV+1728KnZ3sMqR5koDxnL8zD0iO2yp156lHFEN180lmpmrc7TzxNcPu60LIMymQy1tLbS3/77Rfrn7x5BWS6D8k0Xj81Wz6grEmVGIAB2OVtbu4ZaWlqpublFjJx4wWH01z9Mksrgv/2bEzNb7dID9gTBQKY4kz37+jFUWloiBpB/OP8joY8//1CCVw/cOEl0v/ObkyhTKk4lBqBw22WP030/e5oaG5 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string iconSerialized {
+            get {
+                return ResourceManager.GetString("iconSerialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap v1_0_0 {

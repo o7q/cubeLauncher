@@ -38,6 +38,9 @@
             this.dropBoxLabel = new System.Windows.Forms.Label();
             this.dropBoxPanel = new System.Windows.Forms.Panel();
             this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
+            this.installList = new System.Windows.Forms.ComboBox();
+            this.updateInstallList = new System.Windows.Forms.Button();
+            this.launchButton = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelByO7q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBannerVersion)).BeginInit();
@@ -48,7 +51,7 @@
             // 
             // panel
             // 
-            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
             this.panel.Controls.Add(this.panelByO7q);
             this.panel.Controls.Add(this.panelBannerVersion);
             this.panel.Controls.Add(this.minimizeButton);
@@ -127,7 +130,7 @@
             this.dropBoxLabel.BackColor = System.Drawing.Color.Transparent;
             this.dropBoxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(45)))));
+            this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
             this.dropBoxLabel.Location = new System.Drawing.Point(-3, 123);
             this.dropBoxLabel.Name = "dropBoxLabel";
             this.dropBoxLabel.Size = new System.Drawing.Size(100, 16);
@@ -136,7 +139,7 @@
             // 
             // dropBoxPanel
             // 
-            this.dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(25)))), ((int)(((byte)(15)))));
+            this.dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.dropBoxPanel.Controls.Add(this.dropBoxInfoPicture);
             this.dropBoxPanel.Location = new System.Drawing.Point(-2, 42);
             this.dropBoxPanel.Name = "dropBoxPanel";
@@ -158,12 +161,42 @@
             this.dropBoxInfoPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragDrop);
             this.dropBoxInfoPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragEnter);
             // 
+            // installList
+            // 
+            this.installList.FormattingEnabled = true;
+            this.installList.Location = new System.Drawing.Point(14, 149);
+            this.installList.Name = "installList";
+            this.installList.Size = new System.Drawing.Size(121, 21);
+            this.installList.TabIndex = 5;
+            // 
+            // updateInstallList
+            // 
+            this.updateInstallList.Location = new System.Drawing.Point(138, 149);
+            this.updateInstallList.Name = "updateInstallList";
+            this.updateInstallList.Size = new System.Drawing.Size(75, 23);
+            this.updateInstallList.TabIndex = 6;
+            this.updateInstallList.UseVisualStyleBackColor = true;
+            this.updateInstallList.Click += new System.EventHandler(this.updateInstallList_Click);
+            // 
+            // launchButton
+            // 
+            this.launchButton.Location = new System.Drawing.Point(71, 178);
+            this.launchButton.Name = "launchButton";
+            this.launchButton.Size = new System.Drawing.Size(128, 55);
+            this.launchButton.TabIndex = 7;
+            this.launchButton.Text = "Launch";
+            this.launchButton.UseVisualStyleBackColor = true;
+            this.launchButton.Click += new System.EventHandler(this.launchButton_Click);
+            // 
             // program
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(275, 237);
+            this.Controls.Add(this.launchButton);
+            this.Controls.Add(this.updateInstallList);
+            this.Controls.Add(this.installList);
             this.Controls.Add(this.dropBoxPanel);
             this.Controls.Add(this.dropBoxLabel);
             this.Controls.Add(this.panel);
@@ -194,6 +227,9 @@
         private System.Windows.Forms.Label dropBoxLabel;
         private System.Windows.Forms.PictureBox dropBoxInfoPicture;
         private System.Windows.Forms.Panel dropBoxPanel;
+        private System.Windows.Forms.ComboBox installList;
+        private System.Windows.Forms.Button updateInstallList;
+        private System.Windows.Forms.Button launchButton;
     }
 }
 

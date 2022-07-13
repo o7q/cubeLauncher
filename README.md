@@ -1,4 +1,4 @@
 # cubeLauncher
-A simple and lightweight installation manager for Minecraft.
+A simple and lightweight modpack loader for Minecraft.
 
-Made using code from an old project.
+Running C# .NET Framework 4.8. If you want to compile the code yourself I highly recommend using Visual Studio.

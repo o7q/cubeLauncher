@@ -3,9 +3,9 @@ C:\Users\james\Desktop\cubeLauncher\PackagedBuild\cubeLauncher\cubeLauncher.exe
 C:\Users\james\Desktop\cubeLauncher\PackagedBuild\cubeLauncher\cubeLauncher.pdb
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.AssemblyReference.cache
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.SuggestedBindingRedirects.cache
+C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.program.resources
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.Properties.Resources.resources
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.GenerateResource.cache
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.CoreCompileInputs.cache
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.exe
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.pdb
-C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.program.resources

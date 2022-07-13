@@ -2,6 +2,8 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace cubeLauncher
 {
@@ -15,38 +17,12 @@ namespace cubeLauncher
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        // configure public strings
-        string installName;
-        string installDir;
+        string instPath;
+        string mainDir;
 
         public program()
         {
             InitializeComponent();
-        }
-
-        // form load
-        private void program_Load(object sender, EventArgs e)
-        {
-            string[] installationFiles = Directory.GetDirectories("cubelauncher\\installations");
-            foreach (string file in installationFiles)
-            selectInstall.Items.Add(Path.GetFileNameWithoutExtension(file));
-            selectInstall.SelectedIndex = 0;
-            statusLabel.Text = "";
-
-            string envDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string dir = envDir + "\\.minecraft\\cubelauncher";
-
-            if (!Directory.Exists(dir))
-            {
-                try
-                {
-                    Directory.CreateDirectory(dir);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Couldn't create directory: \n" + dir + "\n\n" + ex);
-                }
-            }
         }
 
         // move form function
@@ -70,6 +46,16 @@ namespace cubeLauncher
             moveForm(e);
         }
 
+        private void panelBannerVersion_MouseDown(object sender, MouseEventArgs e)
+        {
+            moveForm(e);
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            moveForm(e);
+        }
+
         // buttons
         private void minimizeButton_Click(object sender, EventArgs e)
         {
@@ -81,102 +67,82 @@ namespace cubeLauncher
             Application.Exit();
         }
 
-        private void selectInstall_SelectedIndexChanged(object sender, EventArgs e)
+        private void install(DragEventArgs e)
         {
-            installName = (string)selectInstall.SelectedItem;
-            installDir = Path.Combine("cubelauncher\\installations", installName);
-        }
+            string[] file = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string path in file)
+                instPath = path;
 
-        private void installButton_Click(object sender, EventArgs e)
-        {
-            if(installName != "")
-            {
-                string envDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string dir = envDir + "\\.minecraft\\cubelauncher";
-
-                if (!Directory.Exists(dir))
-                {
-                    try
-                    {
-                        Directory.CreateDirectory(dir);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: Could not create directory: \n" + dir + "\n\n" + ex);
-                    }
-                }
-
-                installDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, installDir);
-                string srcDir = installDir;
-                string trgDir = envDir + "\\.minecraft\\cubelauncher\\" + installName;
-                Copy(srcDir, trgDir);
-
-                /*try
-                {
-                    var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, trgDir + "\\forge.exe");
-                    Process process = new Process();
-                    process.StartInfo.FileName = path;
-                    process.Start();
-                    process.WaitForExit();
-                }
-                catch
-                {
-                    MessageBox.Show("forge.exe not found. (this is required for the modpack to function!)");
-                }
-
-                MessageBox.Show("Press OK when forge installation is complete");
-                System.Diagnostics.Process.Start(@"vega_installer\minecraft\minecraft.exe");*/
-            }
-            else
-            {
-                MessageBox.Show("No installation is selected");
-            }
-        }
-
-        // copy functions
-        public void Copy(string srcDir, string targDir)
-        {
-            var dirSrc = new DirectoryInfo(srcDir);
-            var dirTarg = new DirectoryInfo(targDir);
-
-            CopyAll(dirSrc, dirTarg);
-            statusLabel.Text = "";
-            installName = "";
-        }
-
-        private void CopyAll(DirectoryInfo src, DirectoryInfo targ)
-        {
-            Directory.CreateDirectory(targ.FullName);
+            string installName = new DirectoryInfo(instPath).Name;
+            string destDir = mainDir + "\\" + installName;
 
             try
             {
-                foreach (FileInfo file in src.GetFiles())
+                dropBoxLabel.Text = "Installing - Please Wait...";
+                dropBoxLabel.Update();
+
+                Parallel.ForEach(Directory.GetFileSystemEntries(instPath, "*", SearchOption.AllDirectories), (fileDir) =>
                 {
-                    statusLabel.Text = file.Name;
-                    statusLabel.Update();
-                    file.CopyTo(Path.Combine(targ.FullName, file.Name), true);
-                    Application.DoEvents();
-                }
+                    string outputDir = Regex.Replace(fileDir, "^" + Regex.Escape(instPath), destDir);
+                    if (File.Exists(fileDir))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(outputDir));
+                        File.Copy(fileDir, outputDir, true);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(outputDir);
+                    }
+                });
             }
             catch
             {
-                // ignore
+                dropBoxLabel.Text = "Error: Please provide a folder";
+                dropBoxLabel.Update();
+                return;
             }
 
-            foreach (DirectoryInfo srcSubDir in src.GetDirectories())
+            dropBoxLabel.Text = "";
+        }
+
+        private void program_Load(object sender, EventArgs e)
+        {
+            string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
+
+            Directory.CreateDirectory(mainDir);
+
+            // enable folder dropping
+            this.dropBoxPanel.AllowDrop = true;
+            this.dropBoxInfoPicture.AllowDrop = true;
+
+            dropBoxLabel.Text = "";
+        }
+
+        private void dropBoxInfoPicture_DragDrop(object sender, DragEventArgs e)
+        {
+            install(e);
+        }
+
+        private void dropBoxInfoPicture_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
             {
-                DirectoryInfo nxtSrcSubDir = targ.CreateSubdirectory(srcSubDir.Name);
-                CopyAll(srcSubDir, nxtSrcSubDir);
+                e.Effect = DragDropEffects.All;
             }
         }
 
-        private void refreshButton_Click(object sender, EventArgs e)
+        private void dropBoxPanel_DragDrop(object sender, DragEventArgs e)
         {
-            selectInstall.Items.Clear();
-            selectInstall.ResetText();
-            string[] installationFiles = Directory.GetDirectories("cubelauncher\\installations");
-            foreach (string file in installationFiles)
-            selectInstall.Items.Add(Path.GetFileNameWithoutExtension(file));
+            install(e);
+        }
+
+        private void dropBoxPanel_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
         }
     }
 }

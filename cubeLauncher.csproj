@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="options.Designer.cs">
+      <DependentUpon>options.cs</DependentUpon>
+    </Compile>
     <Compile Include="program.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="options.resx">
+      <DependentUpon>options.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="program.resx">
       <DependentUpon>program.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\close_x.png" />
+    <None Include="Resources\close__.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\x.png" />
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\iconSerialized.txt" />

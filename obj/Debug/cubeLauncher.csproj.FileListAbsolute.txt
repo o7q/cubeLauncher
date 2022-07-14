@@ -9,3 +9,4 @@ C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.G
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.csproj.CoreCompileInputs.cache
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.exe
 C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.pdb
+C:\Users\james\Desktop\cubeLauncher\cubeLauncher\obj\Debug\cubeLauncher.options.resources

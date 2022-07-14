@@ -39,9 +39,10 @@
             this.dropBoxPanel = new System.Windows.Forms.Panel();
             this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
             this.installList = new System.Windows.Forms.ComboBox();
-            this.updateInstallList = new System.Windows.Forms.Button();
+            this.updateInstallListButton = new System.Windows.Forms.Button();
             this.launchButton = new System.Windows.Forms.Button();
-            this.deleteInstall = new System.Windows.Forms.Button();
+            this.deleteInstallButton = new System.Windows.Forms.Button();
+            this.optionsButton = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelByO7q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBannerVersion)).BeginInit();
@@ -92,11 +93,11 @@
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.minimizeButton.Image = global::cubeLauncher.Properties.Resources.close__;
             this.minimizeButton.Location = new System.Drawing.Point(211, 7);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(32, 32);
             this.minimizeButton.TabIndex = 2;
-            this.minimizeButton.Text = "_";
             this.minimizeButton.UseVisualStyleBackColor = true;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
@@ -106,11 +107,11 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
             this.closeButton.Location = new System.Drawing.Point(245, 7);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(32, 32);
             this.closeButton.TabIndex = 1;
-            this.closeButton.Text = "❌";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
@@ -167,26 +168,31 @@
             // 
             // installList
             // 
+            this.installList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.installList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.installList.ForeColor = System.Drawing.Color.LimeGreen;
             this.installList.FormattingEnabled = true;
             this.installList.ItemHeight = 13;
             this.installList.Location = new System.Drawing.Point(2, 126);
             this.installList.Name = "installList";
-            this.installList.Size = new System.Drawing.Size(121, 21);
+            this.installList.Size = new System.Drawing.Size(138, 21);
             this.installList.TabIndex = 5;
+            this.installList.DropDown += new System.EventHandler(this.installList_DropDown);
             this.installList.SelectedIndexChanged += new System.EventHandler(this.installList_SelectedIndexChanged);
             // 
-            // updateInstallList
+            // updateInstallListButton
             // 
-            this.updateInstallList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
-            this.updateInstallList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateInstallList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
-            this.updateInstallList.Location = new System.Drawing.Point(125, 125);
-            this.updateInstallList.Name = "updateInstallList";
-            this.updateInstallList.Size = new System.Drawing.Size(25, 25);
-            this.updateInstallList.TabIndex = 6;
-            this.updateInstallList.UseVisualStyleBackColor = false;
-            this.updateInstallList.Click += new System.EventHandler(this.updateInstallList_Click);
+            this.updateInstallListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
+            this.updateInstallListButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.updateInstallListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateInstallListButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
+            this.updateInstallListButton.Image = ((System.Drawing.Image)(resources.GetObject("updateInstallListButton.Image")));
+            this.updateInstallListButton.Location = new System.Drawing.Point(141, 125);
+            this.updateInstallListButton.Name = "updateInstallListButton";
+            this.updateInstallListButton.Size = new System.Drawing.Size(25, 25);
+            this.updateInstallListButton.TabIndex = 6;
+            this.updateInstallListButton.UseVisualStyleBackColor = false;
+            this.updateInstallListButton.Click += new System.EventHandler(this.updateInstallListButton_Click);
             // 
             // launchButton
             // 
@@ -201,15 +207,28 @@
             this.launchButton.UseVisualStyleBackColor = false;
             this.launchButton.Click += new System.EventHandler(this.launchButton_Click);
             // 
-            // deleteInstall
+            // deleteInstallButton
             // 
-            this.deleteInstall.Location = new System.Drawing.Point(170, 125);
-            this.deleteInstall.Name = "deleteInstall";
-            this.deleteInstall.Size = new System.Drawing.Size(75, 23);
-            this.deleteInstall.TabIndex = 8;
-            this.deleteInstall.Text = "button1";
-            this.deleteInstall.UseVisualStyleBackColor = true;
-            this.deleteInstall.Click += new System.EventHandler(this.deleteInstall_Click);
+            this.deleteInstallButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.deleteInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteInstallButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.deleteInstallButton.Image = global::cubeLauncher.Properties.Resources.x;
+            this.deleteInstallButton.Location = new System.Drawing.Point(166, 125);
+            this.deleteInstallButton.Name = "deleteInstallButton";
+            this.deleteInstallButton.Size = new System.Drawing.Size(25, 25);
+            this.deleteInstallButton.TabIndex = 8;
+            this.deleteInstallButton.UseVisualStyleBackColor = false;
+            this.deleteInstallButton.Click += new System.EventHandler(this.deleteInstallButton_Click);
+            // 
+            // optionsButton
+            // 
+            this.optionsButton.Location = new System.Drawing.Point(199, 127);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(75, 23);
+            this.optionsButton.TabIndex = 9;
+            this.optionsButton.Text = "button1";
+            this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // program
             // 
@@ -217,9 +236,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(275, 190);
-            this.Controls.Add(this.deleteInstall);
+            this.Controls.Add(this.optionsButton);
+            this.Controls.Add(this.deleteInstallButton);
             this.Controls.Add(this.launchButton);
-            this.Controls.Add(this.updateInstallList);
+            this.Controls.Add(this.updateInstallListButton);
             this.Controls.Add(this.installList);
             this.Controls.Add(this.dropBoxPanel);
             this.Controls.Add(this.panel);
@@ -252,9 +272,10 @@
         private System.Windows.Forms.PictureBox dropBoxInfoPicture;
         private System.Windows.Forms.Panel dropBoxPanel;
         private System.Windows.Forms.ComboBox installList;
-        private System.Windows.Forms.Button updateInstallList;
+        private System.Windows.Forms.Button updateInstallListButton;
         private System.Windows.Forms.Button launchButton;
-        private System.Windows.Forms.Button deleteInstall;
+        private System.Windows.Forms.Button deleteInstallButton;
+        private System.Windows.Forms.Button optionsButton;
     }
 }
 

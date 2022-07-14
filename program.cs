@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
@@ -20,6 +21,14 @@ namespace cubeLauncher
         string mainDir;
         string mcDir;
         string instPath;
+
+        string name;
+        string path;
+        string icon;
+        string version;
+        string args;
+        int width;
+        int height;
 
         public program()
         {
@@ -99,7 +108,7 @@ namespace cubeLauncher
             }
             catch
             {
-                dropBoxLabel.Text = "Error: Please provide a folder";
+                dropBoxLabel.Text = "Please provide a folder";
                 dropBoxLabel.Update();
                 return;
             }
@@ -107,6 +116,7 @@ namespace cubeLauncher
             updInstLst();
 
             dropBoxLabel.Text = "";
+            dropBoxLabel.Update();
         }
 
         private void program_Load(object sender, EventArgs e)
@@ -114,6 +124,15 @@ namespace cubeLauncher
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
             mcDir = roamingDir + "\\.minecraft";
+
+            try
+            {
+                Directory.CreateDirectory(mainDir);
+            }
+            catch
+            {
+                // skip
+            }
 
             if (!File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
             {
@@ -123,21 +142,12 @@ namespace cubeLauncher
                 }
                 catch
                 {
-                    // ignore
+                    // skip
                 }
             }
             else
             {
                 // skip
-            }
-
-            try
-            {
-                Directory.CreateDirectory(mainDir);
-            }
-            catch
-            {
-                // ignore
             }
 
             updInstLst();
@@ -147,6 +157,7 @@ namespace cubeLauncher
             this.dropBoxInfoPicture.AllowDrop = true;
 
             dropBoxLabel.Text = "";
+            dropBoxLabel.Update();
         }
 
         private void dropBoxInfoPicture_DragDrop(object sender, DragEventArgs e)
@@ -160,6 +171,8 @@ namespace cubeLauncher
             {
                 e.Effect = DragDropEffects.All;
             }
+
+            drpBxHiClr();
         }
 
         private void dropBoxPanel_DragDrop(object sender, DragEventArgs e)
@@ -173,11 +186,15 @@ namespace cubeLauncher
             {
                 e.Effect = DragDropEffects.All;
             }
+
+            drpBxHiClr();
         }
 
         private void updInstLst ()
         {
             installList.Items.Clear();
+            installList.Text = "";
+            installList.Update();
 
             string[] files = Directory.GetDirectories(mainDir);
             foreach (string file in files)
@@ -193,19 +210,127 @@ namespace cubeLauncher
         {
             if (installList.Text != "")
             {
-                string name = installList.Text;
-                string path = mainDir + "\\" + installList.Text;
-                string icon = cubeLauncher.Properties.Resources.iconSerialized;
-                string args = "";
+                name = installList.Text;
+                path = mainDir + "\\" + installList.Text;
+                string path2 = Path.GetFullPath(path);
+                path2 = path2.Replace("\\", "\\\\");
+                icon = cubeLauncher.Properties.Resources.iconSerialized;
+                version = "VERSION_TEMP";
+                args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+                width = 1280;
+                height = 720;
 
-                string launchProfile = "";
+                string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path2 + "\",\"icon\":\"" + icon + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
+                File.WriteAllText("test.txt", launchProfile);
+                File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
 
-                //File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", );
+                if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"))
+                {
+                    try
+                    {
+                        Process.Start(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"\n\nFull Error:\n" + ex);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"");
+                }
             }
             else
             {
-                dropBoxLabel.Text = "Error: Please select an installation";
+                dropBoxLabel.Text = "No installation is selected";
+                dropBoxLabel.Update();
+            }
+        }
+
+        private void program_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
+            {
+                try
+                {
+                    string profileContent = File.ReadAllText(mainDir + "\\launcher_profiles_bak.json");
+                    File.WriteAllText(mcDir + "\\launcher_profiles.json", profileContent);
+                }
+                catch
+                {
+                    // skip
+                }
+
+                try
+                {
+                    File.Delete(mainDir + "\\launcher_profiles_bak.json");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        private void dropBoxPanel_DragLeave(object sender, EventArgs e)
+        {
+            drpBxRstClr();
+        }
+
+        private void dropBoxInfoPicture_DragLeave(object sender, EventArgs e)
+        {
+            drpBxRstClr();
+        }
+
+        private void drpBxHiClr()
+        {
+            dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+        }
+
+        private void drpBxRstClr()
+        {
+            dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+        }
+
+        private void installList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dropBoxLabel.Text = "";
+            dropBoxLabel.Update();
+        }
+
+        private void deleteInstall_Click(object sender, EventArgs e)
+        {
+            if (installList.Text != "")
+            {
+                dropBoxLabel.Text = "";
+                dropBoxLabel.Update();
+
+                DialogResult prompt = MessageBox.Show("Are you sure you want to remove " + installList.Text + "?\nAll data will be removed for that installation.", "", MessageBoxButtons.YesNo);
+                if (prompt == DialogResult.Yes)
+                {                   
+                    if (Directory.Exists(mainDir + "\\" + installList.Text))
+                    {
+                        try
+                        {
+                            Directory.Delete(mainDir + "\\" + installList.Text, true);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Unknown Error: Unable to delete \"" + installList.Text + "\"\n\nFull Error:\n" + ex);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Directory does not exist");
+                    }
+
+                    updInstLst();
+                }
+            }
+            else
+            {
+                dropBoxLabel.Text = "No installation is selected";
                 dropBoxLabel.Update();
             }
         }

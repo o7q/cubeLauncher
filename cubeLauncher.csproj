@@ -85,8 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\iconSerialized.txt" />
+    <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
+    <None Include="Resources\iconSerialized.txt" />
     <None Include="Resources\byo7q.png" />
     <None Include="Resources\v1.0.0.png" />
     <None Include="Resources\banner.png" />

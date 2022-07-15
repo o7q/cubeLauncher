@@ -75,6 +75,21 @@ namespace cubeLauncher
             this.Close();
         }
 
+        // create config button
+        private void createConfigButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cubeConfig = "# CUBELAUNCHER OVERRIDE CONFIG\nname: \nversion: \nwidth: \nheight: \narguments: \nmodloader: ";
+                Directory.CreateDirectory(".cube");
+                File.WriteAllText(".cube\\config.cube", cubeConfig);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unknown Error: Unable to create \".cube Config\"!\n\nFull Error:\n" + ex);
+            }
+        }
+
         // config textboxes
 
         // name textbox

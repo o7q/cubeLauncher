@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading.Tasks;
@@ -18,23 +19,31 @@ namespace cubeLauncher
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        // configure install path variables
+        // configure path variables
         string mainDir;
         string mcDir;
         string installName;
         string installPath;
         string destDir;
 
-        // configure static json variables
+        // configure static json parser variables
         string path;
         string icon;
 
-        // configure json variables
+        // configure dynamic json parser variables
         string name;
         string version;
         int width;
         int height;
         string args;
+
+        // configure dynamic .cube file parser variables
+        string line1_name_format;
+        string line2_version_format;
+        string line3_width_format;
+        string line4_height_format;
+        string line5_arguments_format;
+        string line6_modloader_format;
 
         // form events
 
@@ -196,12 +205,12 @@ namespace cubeLauncher
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Unknown Error: Unable to delete \"" + installList.Text + "\"\n\nFull Error:\n" + ex);
+                            MessageBox.Show("Unknown Error: Unable to delete \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Error: Directory does not exist");
+                        MessageBox.Show("Error: Directory does not exist.");
                     }
                 }
             }
@@ -226,65 +235,125 @@ namespace cubeLauncher
             {
                 clrDrpBxLbl();
 
-                if (File.Exists(mainDir + "\\config_name"))
-                {
-                    name = File.ReadAllText(mainDir + "\\config_name");
-                }
-                else
-                {
-                    name = installList.Text;
-                }
-
-                if (File.Exists(mainDir + "\\config_ver"))
-                {
-                    version = File.ReadAllText(mainDir + "\\config_ver");
-                }
-                else
-                {
-                    version = "latest-release";
-                }
-
-                if (File.Exists(mainDir + "\\config_x"))
+                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
                 {
                     try
                     {
-                        string width_string = File.ReadAllText(mainDir + "\\config_x");
-                        width = int.Parse(width_string);
+                        string line1_name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1);
+                        line1_name_format = line1_name.Replace("name: ", "");
+                        name = line1_name_format;
                     }
                     catch
+                    {
+
+                    }
+
+                    try
+                    {
+                        string line2_version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2);
+                        line2_version_format = line2_version.Replace("version: ", "");
+                        version = line2_version_format;
+                    }
+                    catch
+                    {
+
+                    }
+
+                    try
+                    {
+                        string line3_width = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3);
+                        line3_width_format = line3_width.Replace("width: ", "");
+                        width = int.Parse(line3_width_format);
+                    }
+                    catch
+                    {
+
+                    }
+
+                    try
+                    {
+                        string line4_height = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4);
+                        line4_height_format = line4_height.Replace("height: ", "");
+                        height = int.Parse(line4_height_format);
+                    }
+                    catch
+                    {
+                        
+                    }
+
+                    try
+                    {
+                        string line5_arguments = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5);
+                        line5_arguments_format = line5_arguments.Replace("arguments: ", "");
+                        args = line5_arguments_format;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+                    if (File.Exists(mainDir + "\\config_name"))
+                    {
+                        name = File.ReadAllText(mainDir + "\\config_name");
+                    }
+                    else
+                    {
+                        name = installList.Text;
+                    }
+
+                    if(File.Exists(mainDir + "\\config_ver"))
+                    {
+                        version = File.ReadAllText(mainDir + "\\config_ver");
+                    }
+                    else
+                    {
+                        version = "latest-release";
+                    }
+
+                    if (File.Exists(mainDir + "\\config_x"))
+                    {
+                        try
+                        {
+                            string width_string = File.ReadAllText(mainDir + "\\config_x");
+                            width = int.Parse(width_string);
+                        }
+                        catch
+                        {
+                            width = 1280;
+                        }
+                    }
+                    else
                     {
                         width = 1280;
                     }
-                }
-                else
-                {
-                    width = 1280;
-                }
 
-                if (File.Exists(mainDir + "\\config_y"))
-                {
-                    try
+                    if (File.Exists(mainDir + "\\config_y"))
                     {
-                        string height_string = File.ReadAllText(mainDir + "\\config_y");
-                        height = int.Parse(height_string);
+                        try
+                        {
+                            string height_string = File.ReadAllText(mainDir + "\\config_y");
+                            height = int.Parse(height_string);
+                        }
+                        catch
+                        {
+                            height = 720;
+                        }
                     }
-                    catch
+                    else
                     {
                         height = 720;
                     }
-                }
-                else
-                {
-                    height = 720;
-                }
 
-                if (File.Exists(mainDir + "\\config_args"))
-                {
-                    args = File.ReadAllText(mainDir + "\\config_args");
-                }
-                else
-                {
-                    args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+                    if (File.Exists(mainDir + "\\config_args"))
+                    {
+                        args = File.ReadAllText(mainDir + "\\config_args");
+                    }
+                    else
+                    {
+                        args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+                    }
                 }
 
                 path = mainDir + "\\" + installList.Text;
@@ -304,7 +373,7 @@ namespace cubeLauncher
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"\n\nFull Error:\n" + ex);
+                        MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"!\n\nFull Error:\n" + ex);
                     }
                 }
                 else
@@ -385,6 +454,7 @@ namespace cubeLauncher
             }
 
             updInstLst();
+            srtModLdr();
 
             installList.Text = installName;
             dropBoxLabel.Text = "Installed " + installName + " successfully";
@@ -432,6 +502,28 @@ namespace cubeLauncher
         {
             dropBoxLabel.Text = "";
             dropBoxLabel.Update();
+        }
+
+        // modloader installer function
+        private void srtModLdr()
+        {
+            if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
+            {
+                DialogResult prompt = MessageBox.Show("Found a modloader for " + installName + ".\nDo you want to install it?", "", MessageBoxButtons.YesNo);
+                if (prompt == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string line6_modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
+                        line6_modloader_format = line6_modloader.Replace("modloader: ", "");
+                        Process.Start(mainDir + "\\" + installName + "\\.cube\\" + line6_modloader_format);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unknown Error: Unable to start \"" + line6_modloader_format + "\"!\n\nFull Error:\n" + ex);
+                    }
+                }
+            }
         }
 
         // drag drop events

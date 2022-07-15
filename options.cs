@@ -1,110 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace cubeLauncher
 {
     public partial class options : Form
     {
+        // mousedown stuff
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        // configure path variables
+        string mainDir;
+
+        // form events
+
+        // form initialize component
         public options()
         {
             InitializeComponent();
         }
 
-        string mainDir;
-
-        private void customWidthBox_TextChanged(object sender, EventArgs e)
+        // form load
+        private void options_Load(object sender, EventArgs e)
         {
-            File.WriteAllText(mainDir + "\\config_x", customWidthBox.Text);
-
-            if (customWidthBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_x");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
+            string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
         }
 
-        private void customHeightBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_y", customHeightBox.Text);
-
-            if (customHeightBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_y");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        private void customArgsBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_args", customArgsBox.Text);
-
-            if(customArgsBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_args");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        private void customNameBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_name", customNameBox.Text);
-
-            if (customNameBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_name");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        private void customVersionBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_ver", customVersionBox.Text);
-
-            if (customVersionBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_ver");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
+        // form activate
         private void options_Activated(object sender, EventArgs e)
         {
             if (File.Exists(mainDir + "\\config_name"))
@@ -138,10 +67,124 @@ namespace cubeLauncher
             }
         }
 
-        private void options_Load(object sender, EventArgs e)
+        // buttons
+
+        // close button
+        private void closeButton_Click(object sender, EventArgs e)
         {
-            string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
+            this.Close();
+        }
+
+        // config textboxes
+
+        // name textbox
+        private void customNameBox_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText(mainDir + "\\config_name", customNameBox.Text);
+
+            if (customNameBox.Text == "")
+            {
+                try
+                {
+                    File.Delete(mainDir + "\\config_name");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        // version textbox
+        private void customVersionBox_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText(mainDir + "\\config_ver", customVersionBox.Text);
+
+            if (customVersionBox.Text == "")
+            {
+                try
+                {
+                    File.Delete(mainDir + "\\config_ver");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        // width textbox
+        private void customWidthBox_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText(mainDir + "\\config_x", customWidthBox.Text);
+
+            if (customWidthBox.Text == "")
+            {
+                try
+                {
+                    File.Delete(mainDir + "\\config_x");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        // height textbox
+        private void customHeightBox_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText(mainDir + "\\config_y", customHeightBox.Text);
+
+            if (customHeightBox.Text == "")
+            {
+                try
+                {
+                    File.Delete(mainDir + "\\config_y");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        // arguments textbox
+        private void customArgsBox_TextChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText(mainDir + "\\config_args", customArgsBox.Text);
+
+            if(customArgsBox.Text == "")
+            {
+                try
+                {
+                    File.Delete(mainDir + "\\config_args");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        //functions
+
+        // move form function
+        private void mvFrm(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        // move form senders
+
+        // panel sender
+        private void panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mvFrm(e);
         }
     }
 }

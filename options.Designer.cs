@@ -28,123 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(options));
             this.customArgsBox = new System.Windows.Forms.RichTextBox();
             this.customWidthBox = new System.Windows.Forms.TextBox();
             this.customHeightBox = new System.Windows.Forms.TextBox();
             this.customNameBox = new System.Windows.Forms.TextBox();
             this.customVersionBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panel = new System.Windows.Forms.Panel();
+            this.iconPicture = new System.Windows.Forms.PictureBox();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.namePicture = new System.Windows.Forms.PictureBox();
+            this.versionPicture = new System.Windows.Forms.PictureBox();
+            this.resolutionPicture = new System.Windows.Forms.PictureBox();
+            this.argumentsPicture = new System.Windows.Forms.PictureBox();
+            this.xPicture = new System.Windows.Forms.PictureBox();
+            this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.versionPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resolutionPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // customArgsBox
             // 
-            this.customArgsBox.Location = new System.Drawing.Point(247, 165);
+            this.customArgsBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.customArgsBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customArgsBox.ForeColor = System.Drawing.Color.YellowGreen;
+            this.customArgsBox.Location = new System.Drawing.Point(11, 158);
             this.customArgsBox.Name = "customArgsBox";
-            this.customArgsBox.Size = new System.Drawing.Size(100, 96);
-            this.customArgsBox.TabIndex = 0;
+            this.customArgsBox.Size = new System.Drawing.Size(120, 72);
+            this.customArgsBox.TabIndex = 5;
             this.customArgsBox.Text = "";
             this.customArgsBox.TextChanged += new System.EventHandler(this.customArgsBox_TextChanged);
             // 
             // customWidthBox
             // 
-            this.customWidthBox.Location = new System.Drawing.Point(99, 101);
+            this.customWidthBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.customWidthBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customWidthBox.ForeColor = System.Drawing.Color.YellowGreen;
+            this.customWidthBox.Location = new System.Drawing.Point(11, 126);
             this.customWidthBox.Name = "customWidthBox";
-            this.customWidthBox.Size = new System.Drawing.Size(100, 20);
-            this.customWidthBox.TabIndex = 1;
+            this.customWidthBox.Size = new System.Drawing.Size(52, 13);
+            this.customWidthBox.TabIndex = 3;
             this.customWidthBox.TextChanged += new System.EventHandler(this.customWidthBox_TextChanged);
             // 
             // customHeightBox
             // 
-            this.customHeightBox.Location = new System.Drawing.Point(227, 101);
+            this.customHeightBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.customHeightBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customHeightBox.ForeColor = System.Drawing.Color.YellowGreen;
+            this.customHeightBox.Location = new System.Drawing.Point(79, 126);
             this.customHeightBox.Name = "customHeightBox";
-            this.customHeightBox.Size = new System.Drawing.Size(100, 20);
-            this.customHeightBox.TabIndex = 2;
+            this.customHeightBox.Size = new System.Drawing.Size(52, 13);
+            this.customHeightBox.TabIndex = 4;
             this.customHeightBox.TextChanged += new System.EventHandler(this.customHeightBox_TextChanged);
             // 
             // customNameBox
             // 
-            this.customNameBox.Location = new System.Drawing.Point(114, 39);
+            this.customNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.customNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customNameBox.ForeColor = System.Drawing.Color.YellowGreen;
+            this.customNameBox.Location = new System.Drawing.Point(11, 55);
             this.customNameBox.Name = "customNameBox";
-            this.customNameBox.Size = new System.Drawing.Size(100, 20);
-            this.customNameBox.TabIndex = 3;
+            this.customNameBox.Size = new System.Drawing.Size(120, 13);
+            this.customNameBox.TabIndex = 1;
             this.customNameBox.TextChanged += new System.EventHandler(this.customNameBox_TextChanged);
             // 
             // customVersionBox
             // 
-            this.customVersionBox.Location = new System.Drawing.Point(420, 36);
+            this.customVersionBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.customVersionBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customVersionBox.ForeColor = System.Drawing.Color.YellowGreen;
+            this.customVersionBox.Location = new System.Drawing.Point(11, 90);
             this.customVersionBox.Name = "customVersionBox";
-            this.customVersionBox.Size = new System.Drawing.Size(100, 20);
-            this.customVersionBox.TabIndex = 4;
+            this.customVersionBox.Size = new System.Drawing.Size(120, 13);
+            this.customVersionBox.TabIndex = 2;
             this.customVersionBox.TextChanged += new System.EventHandler(this.customVersionBox_TextChanged);
             // 
-            // label1
+            // panel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "name";
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
+            this.panel.Controls.Add(this.iconPicture);
+            this.panel.Controls.Add(this.closeButton);
+            this.panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
+            this.panel.Location = new System.Drawing.Point(-1, -2);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(146, 33);
+            this.panel.TabIndex = 0;
+            this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             // 
-            // label2
+            // iconPicture
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(448, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "version";
+            this.iconPicture.BackColor = System.Drawing.Color.Transparent;
+            this.iconPicture.Image = global::cubeLauncher.Properties.Resources.logo;
+            this.iconPicture.Location = new System.Drawing.Point(2, 5);
+            this.iconPicture.Name = "iconPicture";
+            this.iconPicture.Size = new System.Drawing.Size(29, 27);
+            this.iconPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.iconPicture.TabIndex = 0;
+            this.iconPicture.TabStop = false;
             // 
-            // label3
+            // closeButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "x";
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.closeButton.Image = global::cubeLauncher.Properties.Resources.close_x;
+            this.closeButton.Location = new System.Drawing.Point(117, 8);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(20, 20);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // label4
+            // namePicture
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 85);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "y";
+            this.namePicture.Image = global::cubeLauncher.Properties.Resources.name;
+            this.namePicture.Location = new System.Drawing.Point(11, 42);
+            this.namePicture.Name = "namePicture";
+            this.namePicture.Size = new System.Drawing.Size(35, 10);
+            this.namePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.namePicture.TabIndex = 0;
+            this.namePicture.TabStop = false;
             // 
-            // label5
+            // versionPicture
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(255, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "args";
+            this.versionPicture.Image = global::cubeLauncher.Properties.Resources.version;
+            this.versionPicture.Location = new System.Drawing.Point(11, 75);
+            this.versionPicture.Name = "versionPicture";
+            this.versionPicture.Size = new System.Drawing.Size(49, 13);
+            this.versionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.versionPicture.TabIndex = 12;
+            this.versionPicture.TabStop = false;
+            // 
+            // resolutionPicture
+            // 
+            this.resolutionPicture.Image = global::cubeLauncher.Properties.Resources.resolution;
+            this.resolutionPicture.Location = new System.Drawing.Point(11, 110);
+            this.resolutionPicture.Name = "resolutionPicture";
+            this.resolutionPicture.Size = new System.Drawing.Size(66, 14);
+            this.resolutionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.resolutionPicture.TabIndex = 13;
+            this.resolutionPicture.TabStop = false;
+            // 
+            // argumentsPicture
+            // 
+            this.argumentsPicture.Image = global::cubeLauncher.Properties.Resources.arguments;
+            this.argumentsPicture.Location = new System.Drawing.Point(11, 145);
+            this.argumentsPicture.Name = "argumentsPicture";
+            this.argumentsPicture.Size = new System.Drawing.Size(66, 14);
+            this.argumentsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.argumentsPicture.TabIndex = 14;
+            this.argumentsPicture.TabStop = false;
+            // 
+            // xPicture
+            // 
+            this.xPicture.BackColor = System.Drawing.Color.Transparent;
+            this.xPicture.Image = global::cubeLauncher.Properties.Resources.close_x;
+            this.xPicture.Location = new System.Drawing.Point(63, 125);
+            this.xPicture.Name = "xPicture";
+            this.xPicture.Size = new System.Drawing.Size(15, 15);
+            this.xPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.xPicture.TabIndex = 0;
+            this.xPicture.TabStop = false;
             // 
             // options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.ClientSize = new System.Drawing.Size(142, 239);
+            this.Controls.Add(this.xPicture);
+            this.Controls.Add(this.argumentsPicture);
+            this.Controls.Add(this.resolutionPicture);
+            this.Controls.Add(this.versionPicture);
+            this.Controls.Add(this.namePicture);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.customVersionBox);
             this.Controls.Add(this.customNameBox);
             this.Controls.Add(this.customHeightBox);
             this.Controls.Add(this.customWidthBox);
             this.Controls.Add(this.customArgsBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "options";
-            this.Text = "options";
+            this.Text = "cubeLauncher Options";
             this.Activated += new System.EventHandler(this.options_Activated);
             this.Load += new System.EventHandler(this.options_Load);
+            this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.versionPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resolutionPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,10 +235,13 @@
         private System.Windows.Forms.TextBox customHeightBox;
         private System.Windows.Forms.TextBox customNameBox;
         private System.Windows.Forms.TextBox customVersionBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.PictureBox namePicture;
+        private System.Windows.Forms.PictureBox versionPicture;
+        private System.Windows.Forms.PictureBox resolutionPicture;
+        private System.Windows.Forms.PictureBox argumentsPicture;
+        private System.Windows.Forms.PictureBox xPicture;
+        private System.Windows.Forms.PictureBox iconPicture;
     }
 }

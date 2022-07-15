@@ -94,10 +94,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\arguments.png" />
+    <None Include="Resources\resolution.png" />
+    <None Include="Resources\version.png" />
+    <None Include="Resources\name.png" />
+    <None Include="Resources\options.png" />
+    <None Include="Resources\x.png" />
     <None Include="Resources\close_x.png" />
     <None Include="Resources\close__.png" />
     <None Include="Resources\refresh.png" />
-    <None Include="Resources\x.png" />
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\iconSerialized.txt" />

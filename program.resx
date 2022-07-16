@@ -677,14 +677,6 @@
         SUVORK5CYII=
 </value>
   </data>
-  <data name="updateInstallListButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAJFJREFUSEvtjcENgDAMA7MFIzAR4zAI04JATh5uaJOqSDx6kh+RHVsmE2Pbj7NH
-        eI/hFUSE9xj2tKx9ivDJiJUCHmGfafkPHLJ75IiiYRZs0VFc7byH93AL9pgRxcJa+lKOs8iz78JPJsAl
-        nGe/DpUXcCnn+XZpheB3jehTVtVSxiuIKDVi6FNWKbyCiCY/R+QCZUmYoPDi62IAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="deleteInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

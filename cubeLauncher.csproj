@@ -94,8 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.0.2.png" />
-    <None Include="Resources\options1.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\overridecube.png" />
+    <None Include="Resources\v1.1.0.png" />
+    <None Include="Resources\options_header.png" />
     <None Include="Resources\byo7q.png" />
     <None Include="Resources\createcubeconfig.png" />
     <None Include="Resources\configurator.png" />
@@ -108,7 +110,6 @@
     <None Include="Resources\x.png" />
     <None Include="Resources\close_x.png" />
     <None Include="Resources\close__.png" />
-    <None Include="Resources\refresh.png" />
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\iconSerialized.txt" />

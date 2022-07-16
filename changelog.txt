@@ -1,3 +1,7 @@
+~ v1.1.0
+- Changed "refresh" button to "open directory" button (this button will open the directory for the selected installation)
+- Added checkbox option to override .cube config files if the user wants to specify their own arguments
+
 ~ v1.0.2
 - "Override Options" text changed to "Options" text
 - README Update (with instructions)

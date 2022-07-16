@@ -42,9 +42,11 @@
             this.resolutionPicture = new System.Windows.Forms.PictureBox();
             this.argumentsPicture = new System.Windows.Forms.PictureBox();
             this.xPicture = new System.Windows.Forms.PictureBox();
-            this.overrideOptionsPicture = new System.Windows.Forms.PictureBox();
+            this.optionsPicture = new System.Windows.Forms.PictureBox();
             this.configuratorPicture = new System.Windows.Forms.PictureBox();
             this.createConfigButton = new System.Windows.Forms.Button();
+            this.overrideCubeCheckbox = new System.Windows.Forms.CheckBox();
+            this.overrideCubePicture = new System.Windows.Forms.PictureBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
@@ -52,8 +54,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.resolutionPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.overrideOptionsPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.optionsPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overrideCubePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // customArgsBox
@@ -199,20 +202,20 @@
             this.xPicture.TabIndex = 0;
             this.xPicture.TabStop = false;
             // 
-            // overrideOptionsPicture
+            // optionsPicture
             // 
-            this.overrideOptionsPicture.Image = global::cubeLauncher.Properties.Resources.options1;
-            this.overrideOptionsPicture.Location = new System.Drawing.Point(10, 41);
-            this.overrideOptionsPicture.Name = "overrideOptionsPicture";
-            this.overrideOptionsPicture.Size = new System.Drawing.Size(64, 15);
-            this.overrideOptionsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.overrideOptionsPicture.TabIndex = 15;
-            this.overrideOptionsPicture.TabStop = false;
+            this.optionsPicture.Image = global::cubeLauncher.Properties.Resources.options_header;
+            this.optionsPicture.Location = new System.Drawing.Point(10, 41);
+            this.optionsPicture.Name = "optionsPicture";
+            this.optionsPicture.Size = new System.Drawing.Size(64, 15);
+            this.optionsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.optionsPicture.TabIndex = 15;
+            this.optionsPicture.TabStop = false;
             // 
             // configuratorPicture
             // 
             this.configuratorPicture.Image = ((System.Drawing.Image)(resources.GetObject("configuratorPicture.Image")));
-            this.configuratorPicture.Location = new System.Drawing.Point(9, 258);
+            this.configuratorPicture.Location = new System.Drawing.Point(9, 273);
             this.configuratorPicture.Name = "configuratorPicture";
             this.configuratorPicture.Size = new System.Drawing.Size(110, 14);
             this.configuratorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -225,22 +228,46 @@
             this.createConfigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createConfigButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.createConfigButton.Image = global::cubeLauncher.Properties.Resources.createcubeconfig;
-            this.createConfigButton.Location = new System.Drawing.Point(12, 280);
+            this.createConfigButton.Location = new System.Drawing.Point(12, 295);
             this.createConfigButton.Name = "createConfigButton";
             this.createConfigButton.Size = new System.Drawing.Size(111, 20);
             this.createConfigButton.TabIndex = 6;
             this.createConfigButton.UseVisualStyleBackColor = false;
             this.createConfigButton.Click += new System.EventHandler(this.createConfigButton_Click);
             // 
+            // overrideCubeCheckbox
+            // 
+            this.overrideCubeCheckbox.AutoSize = true;
+            this.overrideCubeCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overrideCubeCheckbox.Location = new System.Drawing.Point(11, 256);
+            this.overrideCubeCheckbox.Name = "overrideCubeCheckbox";
+            this.overrideCubeCheckbox.Size = new System.Drawing.Size(12, 11);
+            this.overrideCubeCheckbox.TabIndex = 16;
+            this.overrideCubeCheckbox.UseVisualStyleBackColor = true;
+            this.overrideCubeCheckbox.CheckedChanged += new System.EventHandler(this.overrideCubeCheckbox_CheckedChanged);
+            // 
+            // overrideCubePicture
+            // 
+            this.overrideCubePicture.Image = global::cubeLauncher.Properties.Resources.overridecube;
+            this.overrideCubePicture.Location = new System.Drawing.Point(23, 257);
+            this.overrideCubePicture.Name = "overrideCubePicture";
+            this.overrideCubePicture.Size = new System.Drawing.Size(107, 12);
+            this.overrideCubePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.overrideCubePicture.TabIndex = 17;
+            this.overrideCubePicture.TabStop = false;
+            this.overrideCubePicture.Click += new System.EventHandler(this.overrideCubePicture_Click);
+            // 
             // options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(142, 312);
+            this.ClientSize = new System.Drawing.Size(142, 346);
+            this.Controls.Add(this.overrideCubePicture);
+            this.Controls.Add(this.overrideCubeCheckbox);
             this.Controls.Add(this.createConfigButton);
             this.Controls.Add(this.configuratorPicture);
-            this.Controls.Add(this.overrideOptionsPicture);
+            this.Controls.Add(this.optionsPicture);
             this.Controls.Add(this.xPicture);
             this.Controls.Add(this.argumentsPicture);
             this.Controls.Add(this.resolutionPicture);
@@ -265,8 +292,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.resolutionPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.overrideOptionsPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.optionsPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overrideCubePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,8 +315,10 @@
         private System.Windows.Forms.PictureBox argumentsPicture;
         private System.Windows.Forms.PictureBox xPicture;
         private System.Windows.Forms.PictureBox iconPicture;
-        private System.Windows.Forms.PictureBox overrideOptionsPicture;
+        private System.Windows.Forms.PictureBox optionsPicture;
         private System.Windows.Forms.PictureBox configuratorPicture;
         private System.Windows.Forms.Button createConfigButton;
+        private System.Windows.Forms.CheckBox overrideCubeCheckbox;
+        private System.Windows.Forms.PictureBox overrideCubePicture;
     }
 }

@@ -37,6 +37,11 @@ namespace cubeLauncher
         // form activate
         private void options_Activated(object sender, EventArgs e)
         {
+            if (File.Exists(mainDir + "\\" + "config_ovrcube"))
+            {
+                overrideCubeCheckbox.Checked = true;
+            }
+
             // load configs into memory
             if (File.Exists(mainDir + "\\config_name"))
             {
@@ -75,6 +80,32 @@ namespace cubeLauncher
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // ignore .cube file checkbox
+        private void overrideCubeCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (overrideCubeCheckbox.Checked == true)
+            {
+                File.WriteAllText(mainDir + "\\" + "config_ovrcube", "");
+            }
+            else
+            {
+                File.Delete(mainDir + "\\" + "config_ovrcube");
+            }
+        }
+
+        // change checkbox state on click
+        private void overrideCubePicture_Click(object sender, EventArgs e)
+        {
+            if (!overrideCubeCheckbox.Checked == true)
+            {
+                overrideCubeCheckbox.Checked = true;
+            }
+            else
+            {
+                overrideCubeCheckbox.Checked = false;
+            }
         }
 
         // create config button

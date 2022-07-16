@@ -171,12 +171,17 @@ namespace cubeLauncher
             }
         }
 
-        // refresh button
-        private void updateInstallListButton_Click(object sender, EventArgs e)
+        // open install path directory button
+        private void openPathButton_Click(object sender, EventArgs e)
         {
-            // refresh labels and comboboxes
-            updInstLst();
-            clrDrpBxLbl();
+            try
+            {
+                Process.Start("explorer.exe", mainDir + "\\" + installList.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unknown Error: Unable to open \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+            }
         }
 
         // delete button
@@ -248,124 +253,71 @@ namespace cubeLauncher
                 // load from config.cube if it exists
                 if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
                 {
-                    try
+                    if (!File.Exists(mainDir + "\\" + "config_ovrcube"))
                     {
-                        string line1_name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1);
-                        line1_name_format = line1_name.Replace("name: ", "");
-                        name = line1_name_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
+                        try
+                        {
+                            string line1_name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1);
+                            line1_name_format = line1_name.Replace("name: ", "");
+                            name = line1_name_format;
+                        }
+                        catch
+                        {
+                            // skip
+                        }
 
-                    try
-                    {
-                        string line2_version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2);
-                        line2_version_format = line2_version.Replace("version: ", "");
-                        version = line2_version_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
+                        try
+                        {
+                            string line2_version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2);
+                            line2_version_format = line2_version.Replace("version: ", "");
+                            version = line2_version_format;
+                        }
+                        catch
+                        {
+                            // skip
+                        }
 
-                    try
-                    {
-                        string line3_width = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3);
-                        line3_width_format = line3_width.Replace("width: ", "");
-                        width = int.Parse(line3_width_format);
-                    }
-                    catch
-                    {
-                        // skip
-                    }
+                        try
+                        {
+                            string line3_width = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3);
+                            line3_width_format = line3_width.Replace("width: ", "");
+                            width = int.Parse(line3_width_format);
+                        }
+                        catch
+                        {
+                            // skip
+                        }
 
-                    try
-                    {
-                        string line4_height = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4);
-                        line4_height_format = line4_height.Replace("height: ", "");
-                        height = int.Parse(line4_height_format);
-                    }
-                    catch
-                    {
-                        // skip
-                    }
+                        try
+                        {
+                            string line4_height = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4);
+                            line4_height_format = line4_height.Replace("height: ", "");
+                            height = int.Parse(line4_height_format);
+                        }
+                        catch
+                        {
+                            // skip
+                        }
 
-                    try
-                    {
-                        string line5_arguments = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5);
-                        line5_arguments_format = line5_arguments.Replace("arguments: ", "");
-                        args = line5_arguments_format;
+                        try
+                        {
+                            string line5_arguments = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5);
+                            line5_arguments_format = line5_arguments.Replace("arguments: ", "");
+                            args = line5_arguments_format;
+                        }
+                        catch
+                        {
+                            // skip
+                        }
                     }
-                    catch
+                    else
                     {
-                        // skip
+                        readFrmOp();
                     }
                 }
                 else
                 {
-                    // if config.cube doesn't exist then read text from config overrides
-                    if (File.Exists(mainDir + "\\config_name"))
-                    {
-                        name = File.ReadAllText(mainDir + "\\config_name");
-                    }
-                    else
-                    {
-                        name = installList.Text;
-                    }
-
-                    if(File.Exists(mainDir + "\\config_ver"))
-                    {
-                        version = File.ReadAllText(mainDir + "\\config_ver");
-                    }
-                    else
-                    {
-                        version = "latest-release";
-                    }
-
-                    if (File.Exists(mainDir + "\\config_x"))
-                    {
-                        try
-                        {
-                            string width_string = File.ReadAllText(mainDir + "\\config_x");
-                            width = int.Parse(width_string);
-                        }
-                        catch
-                        {
-                            width = 1280;
-                        }
-                    }
-                    else
-                    {
-                        width = 1280;
-                    }
-
-                    if (File.Exists(mainDir + "\\config_y"))
-                    {
-                        try
-                        {
-                            string height_string = File.ReadAllText(mainDir + "\\config_y");
-                            height = int.Parse(height_string);
-                        }
-                        catch
-                        {
-                            height = 720;
-                        }
-                    }
-                    else
-                    {
-                        height = 720;
-                    }
-
-                    if (File.Exists(mainDir + "\\config_args"))
-                    {
-                        args = File.ReadAllText(mainDir + "\\config_args");
-                    }
-                    else
-                    {
-                        args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
-                    }
+                    readFrmOp();
                 }
 
                 // configure static variables
@@ -617,6 +569,71 @@ namespace cubeLauncher
         private void panelByO7q_MouseDown(object sender, MouseEventArgs e)
         {
             mvFrm(e);
+        }
+
+        private void readFrmOp()
+        {
+            // if config.cube doesn't exist then read text from config overrides
+            if (File.Exists(mainDir + "\\config_name"))
+            {
+                name = File.ReadAllText(mainDir + "\\config_name");
+            }
+            else
+            {
+                name = installList.Text;
+            }
+
+            if (File.Exists(mainDir + "\\config_ver"))
+            {
+                version = File.ReadAllText(mainDir + "\\config_ver");
+            }
+            else
+            {
+                version = "latest-release";
+            }
+
+            if (File.Exists(mainDir + "\\config_x"))
+            {
+                try
+                {
+                    string width_string = File.ReadAllText(mainDir + "\\config_x");
+                    width = int.Parse(width_string);
+                }
+                catch
+                {
+                    width = 1280;
+                }
+            }
+            else
+            {
+                width = 1280;
+            }
+
+            if (File.Exists(mainDir + "\\config_y"))
+            {
+                try
+                {
+                    string height_string = File.ReadAllText(mainDir + "\\config_y");
+                    height = int.Parse(height_string);
+                }
+                catch
+                {
+                    height = 720;
+                }
+            }
+            else
+            {
+                height = 720;
+            }
+
+            if (File.Exists(mainDir + "\\config_args"))
+            {
+                args = File.ReadAllText(mainDir + "\\config_args");
+            }
+            else
+            {
+                args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+            }
         }
     }
 }

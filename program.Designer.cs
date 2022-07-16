@@ -39,7 +39,7 @@
             this.dropBoxPanel = new System.Windows.Forms.Panel();
             this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
             this.installList = new System.Windows.Forms.ComboBox();
-            this.updateInstallListButton = new System.Windows.Forms.Button();
+            this.openPathButton = new System.Windows.Forms.Button();
             this.launchButton = new System.Windows.Forms.Button();
             this.deleteInstallButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
@@ -79,7 +79,7 @@
             // 
             // panelBannerVersion
             // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_0_2;
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_1_0;
             this.panelBannerVersion.Location = new System.Drawing.Point(41, 30);
             this.panelBannerVersion.Name = "panelBannerVersion";
             this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);
@@ -181,19 +181,19 @@
             this.installList.DropDown += new System.EventHandler(this.installList_DropDown);
             this.installList.SelectedIndexChanged += new System.EventHandler(this.installList_SelectedIndexChanged);
             // 
-            // updateInstallListButton
+            // openPathButton
             // 
-            this.updateInstallListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
-            this.updateInstallListButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.updateInstallListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateInstallListButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
-            this.updateInstallListButton.Image = ((System.Drawing.Image)(resources.GetObject("updateInstallListButton.Image")));
-            this.updateInstallListButton.Location = new System.Drawing.Point(141, 125);
-            this.updateInstallListButton.Name = "updateInstallListButton";
-            this.updateInstallListButton.Size = new System.Drawing.Size(25, 25);
-            this.updateInstallListButton.TabIndex = 3;
-            this.updateInstallListButton.UseVisualStyleBackColor = false;
-            this.updateInstallListButton.Click += new System.EventHandler(this.updateInstallListButton_Click);
+            this.openPathButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
+            this.openPathButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.openPathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openPathButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
+            this.openPathButton.Image = global::cubeLauncher.Properties.Resources.open;
+            this.openPathButton.Location = new System.Drawing.Point(141, 125);
+            this.openPathButton.Name = "openPathButton";
+            this.openPathButton.Size = new System.Drawing.Size(25, 25);
+            this.openPathButton.TabIndex = 3;
+            this.openPathButton.UseVisualStyleBackColor = false;
+            this.openPathButton.Click += new System.EventHandler(this.openPathButton_Click);
             // 
             // launchButton
             // 
@@ -243,7 +243,7 @@
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.deleteInstallButton);
             this.Controls.Add(this.launchButton);
-            this.Controls.Add(this.updateInstallListButton);
+            this.Controls.Add(this.openPathButton);
             this.Controls.Add(this.installList);
             this.Controls.Add(this.dropBoxPanel);
             this.Controls.Add(this.panel);
@@ -276,7 +276,7 @@
         private System.Windows.Forms.PictureBox dropBoxInfoPicture;
         private System.Windows.Forms.Panel dropBoxPanel;
         private System.Windows.Forms.ComboBox installList;
-        private System.Windows.Forms.Button updateInstallListButton;
+        private System.Windows.Forms.Button openPathButton;
         private System.Windows.Forms.Button launchButton;
         private System.Windows.Forms.Button deleteInstallButton;
         private System.Windows.Forms.Button optionsButton;

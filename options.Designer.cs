@@ -216,7 +216,7 @@
             this.configuratorPicture.Name = "configuratorPicture";
             this.configuratorPicture.Size = new System.Drawing.Size(110, 14);
             this.configuratorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.configuratorPicture.TabIndex = 16;
+            this.configuratorPicture.TabIndex = 0;
             this.configuratorPicture.TabStop = false;
             // 
             // createConfigButton
@@ -228,7 +228,7 @@
             this.createConfigButton.Location = new System.Drawing.Point(12, 280);
             this.createConfigButton.Name = "createConfigButton";
             this.createConfigButton.Size = new System.Drawing.Size(111, 20);
-            this.createConfigButton.TabIndex = 17;
+            this.createConfigButton.TabIndex = 6;
             this.createConfigButton.UseVisualStyleBackColor = false;
             this.createConfigButton.Click += new System.EventHandler(this.createConfigButton_Click);
             // 

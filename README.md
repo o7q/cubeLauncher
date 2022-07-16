@@ -1,6 +1,10 @@
 # cubeLauncher
 A simple and lightweight installation manager for Minecraft.
 
+
+<img src="images/gitbanner.png"/>
+
+
 Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I made this tool for me and my friends but now you can use it too!
 
 This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile with the Minecraft launcher preventing it from interfering with any previous installations.

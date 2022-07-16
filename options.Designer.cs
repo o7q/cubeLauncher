@@ -201,10 +201,10 @@
             // 
             // overrideOptionsPicture
             // 
-            this.overrideOptionsPicture.Image = ((System.Drawing.Image)(resources.GetObject("overrideOptionsPicture.Image")));
-            this.overrideOptionsPicture.Location = new System.Drawing.Point(12, 38);
+            this.overrideOptionsPicture.Image = global::cubeLauncher.Properties.Resources.options1;
+            this.overrideOptionsPicture.Location = new System.Drawing.Point(10, 41);
             this.overrideOptionsPicture.Name = "overrideOptionsPicture";
-            this.overrideOptionsPicture.Size = new System.Drawing.Size(120, 17);
+            this.overrideOptionsPicture.Size = new System.Drawing.Size(64, 15);
             this.overrideOptionsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.overrideOptionsPicture.TabIndex = 15;
             this.overrideOptionsPicture.TabStop = false;

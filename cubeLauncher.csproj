@@ -94,11 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.0.1.png" />
+    <None Include="Resources\v1.0.2.png" />
+    <None Include="Resources\options1.png" />
     <None Include="Resources\byo7q.png" />
     <None Include="Resources\createcubeconfig.png" />
     <None Include="Resources\configurator.png" />
-    <None Include="Resources\override_options.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\arguments.png" />
     <None Include="Resources\resolution.png" />
@@ -112,7 +112,6 @@
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\iconSerialized.txt" />
-    <None Include="Resources\v1.0.0.png" />
     <None Include="Resources\banner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

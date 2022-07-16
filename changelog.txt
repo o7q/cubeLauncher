@@ -1,4 +1,6 @@
-~ vdev
+~ v1.0.2
+- "Override Options" text changed to "Options" text
+- README Update (with instructions)
 - Change tab indexing for components
 
 ~ v1.0.1

@@ -29,6 +29,7 @@ namespace cubeLauncher
         // form load
         private void options_Load(object sender, EventArgs e)
         {
+            // configure appdata path
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
         }
@@ -36,6 +37,7 @@ namespace cubeLauncher
         // form activate
         private void options_Activated(object sender, EventArgs e)
         {
+            // load configs into memory
             if (File.Exists(mainDir + "\\config_name"))
             {
                 string config_name = File.ReadAllText(mainDir + "\\config_name");

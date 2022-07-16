@@ -56,10 +56,12 @@ namespace cubeLauncher
         // form load
         private void program_Load(object sender, EventArgs e)
         {
+            // configure appdata path
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
             mcDir = roamingDir + "\\.minecraft";
 
+            // try to create main directory
             try
             {
                 Directory.CreateDirectory(mainDir);
@@ -69,6 +71,7 @@ namespace cubeLauncher
                 // skip
             }
 
+            // try to make a backup of launcher profiles
             if (!File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
             {
                 try
@@ -85,15 +88,18 @@ namespace cubeLauncher
                 // skip
             }
 
+            // update install list
             updInstLst();
 
             // enable folder dropping
             this.dropBoxPanel.AllowDrop = true;
             this.dropBoxInfoPicture.AllowDrop = true;
 
+            // clear drop box label test
             dropBoxLabel.Text = "";
             dropBoxLabel.Update();
 
+            // try to create config for remembering last session
             try
             {
                 string instidx_string = File.ReadAllText(mainDir + "\\config_instidx");
@@ -108,6 +114,7 @@ namespace cubeLauncher
         // form close
         private void program_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // try to restore launcher profiles
             if (File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
             {
                 try
@@ -162,13 +169,12 @@ namespace cubeLauncher
             {
                 // skip
             }
-
-            clrDrpBxLbl();
         }
 
         // refresh button
         private void updateInstallListButton_Click(object sender, EventArgs e)
         {
+            // refresh labels and comboboxes
             updInstLst();
             clrDrpBxLbl();
         }
@@ -180,16 +186,19 @@ namespace cubeLauncher
             {
                 clrDrpBxLbl();
 
+                // prompt user when removing installation
                 DialogResult prompt = MessageBox.Show("Are you sure you want to remove " + installList.Text + "?\nAll data will be removed for that installation.", "", MessageBoxButtons.YesNo);
                 if (prompt == DialogResult.Yes)
                 {
                     if (Directory.Exists(mainDir + "\\" + installList.Text))
                     {
+                        // try to delete installation and update labels
                         try
                         {
+                            string delName = installList.Text;
                             Directory.Delete(mainDir + "\\" + installList.Text, true);
 
-                            dropBoxLabel.Text = "Removed " + installList.Text + " successfully";
+                            dropBoxLabel.Text = "Removed " + delName + " successfully";
                             dropBoxLabel.Update();
 
                             updInstLst();
@@ -224,6 +233,7 @@ namespace cubeLauncher
         // options button
         private void optionsButton_Click(object sender, EventArgs e)
         {
+            // open options form
             options options_form = new options();
             options_form.ShowDialog();
         }
@@ -235,6 +245,7 @@ namespace cubeLauncher
             {
                 clrDrpBxLbl();
 
+                // load from config.cube if it exists
                 if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
                 {
                     try
@@ -245,7 +256,7 @@ namespace cubeLauncher
                     }
                     catch
                     {
-
+                        // skip
                     }
 
                     try
@@ -256,7 +267,7 @@ namespace cubeLauncher
                     }
                     catch
                     {
-
+                        // skip
                     }
 
                     try
@@ -267,7 +278,7 @@ namespace cubeLauncher
                     }
                     catch
                     {
-
+                        // skip
                     }
 
                     try
@@ -278,7 +289,7 @@ namespace cubeLauncher
                     }
                     catch
                     {
-                        
+                        // skip
                     }
 
                     try
@@ -289,11 +300,12 @@ namespace cubeLauncher
                     }
                     catch
                     {
-
+                        // skip
                     }
                 }
                 else
                 {
+                    // if config.cube doesn't exist then read text from config overrides
                     if (File.Exists(mainDir + "\\config_name"))
                     {
                         name = File.ReadAllText(mainDir + "\\config_name");
@@ -356,6 +368,7 @@ namespace cubeLauncher
                     }
                 }
 
+                // configure static variables
                 path = mainDir + "\\" + installList.Text;
                 string path2 = Path.GetFullPath(path);
                 path2 = path2.Replace("\\", "\\\\");
@@ -363,8 +376,10 @@ namespace cubeLauncher
 
                 string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path2 + "\",\"icon\":\"" + icon + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
+                // write launcher profile data
                 File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
 
+                // attempt to launch the minecraft launcher
                 if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"))
                 {
                     try
@@ -404,6 +419,7 @@ namespace cubeLauncher
             installName = new DirectoryInfo(installPath).Name;
             destDir = mainDir + "\\" + installName;
 
+            // prompt user before overwriting installation
             if (Directory.Exists(mainDir + "\\" + installName))
             {
                 drpBxRstClr();
@@ -426,6 +442,7 @@ namespace cubeLauncher
         // install files function
         private void instFiles()
         {
+            // try to execute install script
             try
             {
                 dropBoxLabel.Text = "Installing " + installName;
@@ -454,6 +471,7 @@ namespace cubeLauncher
             }
 
             updInstLst();
+
             srtModLdr();
 
             installList.Text = installName;
@@ -507,6 +525,7 @@ namespace cubeLauncher
         // modloader installer function
         private void srtModLdr()
         {
+            // check if config.cube exists, if it does, prompt the user if they want to install the available modloader
             if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
             {
                 DialogResult prompt = MessageBox.Show("Found a modloader for " + installName + ".\nDo you want to install it?", "", MessageBoxButtons.YesNo);

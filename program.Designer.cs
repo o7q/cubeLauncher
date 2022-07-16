@@ -132,11 +132,11 @@
             this.dropBoxLabel.AutoSize = true;
             this.dropBoxLabel.BackColor = System.Drawing.Color.Transparent;
             this.dropBoxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.dropBoxLabel.Location = new System.Drawing.Point(-1, 65);
             this.dropBoxLabel.Name = "dropBoxLabel";
-            this.dropBoxLabel.Size = new System.Drawing.Size(100, 16);
+            this.dropBoxLabel.Size = new System.Drawing.Size(92, 15);
             this.dropBoxLabel.TabIndex = 0;
             this.dropBoxLabel.Text = "outputMessage";
             // 

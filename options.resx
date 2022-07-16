@@ -121,7 +121,7 @@
   <data name="overrideOptionsPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKQAAAASCAYAAADVJnUpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAA+FJREFUaEPtmLFuFEEMhq9EAkEQEnSko6NBooWOBgkhkRQpUDqEhBSQKGnhASgo
+        vQAADr0BR/uQrQAAA+FJREFUaEPtmLFuFEEMhq9EAkEQEnSko6NBooWOBgkhkRQpUDqEhBSQKGnhASgo
         IRUVD5CSRzvWI3+Dzzu+mdm9Sy5RfukXsf3bM/b6LksW4O3Z6bJEDV8Z0Nfx39976lqLXn0rqOup4dmg
         3nDvfXUlGP9G+9k4uKinhq8M6Ot6IXd0Ie3F5ZK3379eWu58A52QPoS33r1aChfHL25oqAj6l1m06Gsw
         89zKvMn3vPPxMNXr7f/cwYUZABeFPn5VQH8XuJBbmTf5niwk4LydXUgz8L10SaWPY0cDi+L4PTWcgZ98
@@ -144,7 +144,7 @@
   <data name="configuratorPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIIAAAASCAYAAACXZQa+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAx9JREFUaEPtl7GKU1EQhlMKggZEYqWP4DtY2NiIuIiIbGEjgroovoOdhQ8gFnZi
+        vQAADr0BR/uQrQAAAx9JREFUaEPtl7GKU1EQhlMKggZEYqWP4DtY2NiIuIiIbGEjgroovoOdhQ8gFnZi
         a2npY8XMdb7r5M+ZzLm7IatrfviLmfnPzJzJJPdmBp5+/7Rs0cPnhqwf7OMfXy6560Ig3Gvurv2CBpQe
         Pjdk/WAfFmFHiIVtqPMXD5aRIb7XgVP32c+vi9jXlef3B5rPiD07vvtPLwT3VV59fbSfhaAgHzSDhRrf
         F0LdYRDa1yBaYbQPi3A2UJBv22qg82Gozjuf3y+MOvDYbOSQNKCliXTZiJYmkr6wb39497tfR9S2yEKr

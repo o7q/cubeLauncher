@@ -203,5 +203,10 @@ namespace cubeLauncher
         {
             mvFrm(e);
         }
+
+        private void iconPicture_MouseDown(object sender, MouseEventArgs e)
+        {
+            mvFrm(e);
+        }
     }
 }

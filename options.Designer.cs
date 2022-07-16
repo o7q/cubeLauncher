@@ -134,6 +134,7 @@
             this.iconPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconPicture.TabIndex = 0;
             this.iconPicture.TabStop = false;
+            this.iconPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iconPicture_MouseDown);
             // 
             // closeButton
             // 
@@ -224,7 +225,7 @@
             this.createConfigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createConfigButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.createConfigButton.Image = global::cubeLauncher.Properties.Resources.createcubeconfig;
-            this.createConfigButton.Location = new System.Drawing.Point(12, 275);
+            this.createConfigButton.Location = new System.Drawing.Point(12, 280);
             this.createConfigButton.Name = "createConfigButton";
             this.createConfigButton.Size = new System.Drawing.Size(111, 20);
             this.createConfigButton.TabIndex = 17;
@@ -236,7 +237,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(142, 307);
+            this.ClientSize = new System.Drawing.Size(142, 312);
             this.Controls.Add(this.createConfigButton);
             this.Controls.Add(this.configuratorPicture);
             this.Controls.Add(this.overrideOptionsPicture);

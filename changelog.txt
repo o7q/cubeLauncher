@@ -1,0 +1,3 @@
+~ v1.0.1
+- Fixed mousedown issue in options menu
+- Fixed placement of config.cube file button

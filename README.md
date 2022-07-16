@@ -5,7 +5,7 @@ Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraf
 
 This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile with the Minecraft launcher preventing it from interfering with any previous installations.
 
-### OVERVIEW
+### Overview
 The options menu includes several features that allow you to change the settings for the installation, such as the name, arguments, resolution, etc.
 
 For modpack makers I included a feature called the ".cube override config file". Clicking the "Create .cube Config" button will create a blank config directory alongside "cubeLauncher.exe". The file includes multiple arguments that the modpack creator can specify.

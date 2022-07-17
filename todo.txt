@@ -1,0 +1,1 @@
+- Add the option to change path to the Minecraft Launcher

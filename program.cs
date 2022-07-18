@@ -332,21 +332,39 @@ namespace cubeLauncher
                 File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
 
                 // attempt to launch the minecraft launcher
-                if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"))
+                if (File.Exists(mainDir + "\\config_lchrpth"))
                 {
+                    // try to launch from the custom directory
+                    string launcherPath = File.ReadAllText(mainDir + "\\config_lchrpth");
+
                     try
                     {
-                        Process.Start(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe");
+                        Process.Start(launcherPath);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"!\n\nFull Error:\n" + ex);
+                        MessageBox.Show("Unknown Error: Unable to start the specified launcher!\n\nFull Error:\n" + ex);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"");
-                }
+                    // try to launch from the standard directory
+                    if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"))
+                    {
+                        try
+                        {
+                            Process.Start(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"!\n\nFull Error:\n" + ex);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"\n\n* In the options menu you can specify a new launcher path if your launcher is not in the standard directory.");
+                    }
+                }          
             }
             else
             {
@@ -497,6 +515,72 @@ namespace cubeLauncher
             }
         }
 
+        // read from options function
+        private void readFrmOp()
+        {
+            // if config.cube doesn't exist then read text from config overrides
+            if (File.Exists(mainDir + "\\config_name"))
+            {
+                name = File.ReadAllText(mainDir + "\\config_name");
+            }
+            else
+            {
+                name = installList.Text;
+            }
+
+            if (File.Exists(mainDir + "\\config_ver"))
+            {
+                version = File.ReadAllText(mainDir + "\\config_ver");
+            }
+            else
+            {
+                version = "latest-release";
+            }
+
+            if (File.Exists(mainDir + "\\config_x"))
+            {
+                try
+                {
+                    string width_string = File.ReadAllText(mainDir + "\\config_x");
+                    width = int.Parse(width_string);
+                }
+                catch
+                {
+                    width = 1280;
+                }
+            }
+            else
+            {
+                width = 1280;
+            }
+
+            if (File.Exists(mainDir + "\\config_y"))
+            {
+                try
+                {
+                    string height_string = File.ReadAllText(mainDir + "\\config_y");
+                    height = int.Parse(height_string);
+                }
+                catch
+                {
+                    height = 720;
+                }
+            }
+            else
+            {
+                height = 720;
+            }
+
+            if (File.Exists(mainDir + "\\config_args"))
+            {
+                args = File.ReadAllText(mainDir + "\\config_args");
+            }
+            else
+            {
+                args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+            }
+        }
+
         // drag drop events
 
         // dropbox drop
@@ -569,71 +653,6 @@ namespace cubeLauncher
         private void panelByO7q_MouseDown(object sender, MouseEventArgs e)
         {
             mvFrm(e);
-        }
-
-        private void readFrmOp()
-        {
-            // if config.cube doesn't exist then read text from config overrides
-            if (File.Exists(mainDir + "\\config_name"))
-            {
-                name = File.ReadAllText(mainDir + "\\config_name");
-            }
-            else
-            {
-                name = installList.Text;
-            }
-
-            if (File.Exists(mainDir + "\\config_ver"))
-            {
-                version = File.ReadAllText(mainDir + "\\config_ver");
-            }
-            else
-            {
-                version = "latest-release";
-            }
-
-            if (File.Exists(mainDir + "\\config_x"))
-            {
-                try
-                {
-                    string width_string = File.ReadAllText(mainDir + "\\config_x");
-                    width = int.Parse(width_string);
-                }
-                catch
-                {
-                    width = 1280;
-                }
-            }
-            else
-            {
-                width = 1280;
-            }
-
-            if (File.Exists(mainDir + "\\config_y"))
-            {
-                try
-                {
-                    string height_string = File.ReadAllText(mainDir + "\\config_y");
-                    height = int.Parse(height_string);
-                }
-                catch
-                {
-                    height = 720;
-                }
-            }
-            else
-            {
-                height = 720;
-            }
-
-            if (File.Exists(mainDir + "\\config_args"))
-            {
-                args = File.ReadAllText(mainDir + "\\config_args");
-            }
-            else
-            {
-                args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
-            }
         }
     }
 }

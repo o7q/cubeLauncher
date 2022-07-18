@@ -79,7 +79,7 @@
             // 
             // panelBannerVersion
             // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_1_0;
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_2_0;
             this.panelBannerVersion.Location = new System.Drawing.Point(41, 30);
             this.panelBannerVersion.Name = "panelBannerVersion";
             this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);

@@ -43,10 +43,15 @@
             this.argumentsPicture = new System.Windows.Forms.PictureBox();
             this.xPicture = new System.Windows.Forms.PictureBox();
             this.optionsPicture = new System.Windows.Forms.PictureBox();
-            this.configuratorPicture = new System.Windows.Forms.PictureBox();
             this.createConfigButton = new System.Windows.Forms.Button();
             this.overrideCubeCheckbox = new System.Windows.Forms.CheckBox();
             this.overrideCubePicture = new System.Windows.Forms.PictureBox();
+            this.launcherPathPicture = new System.Windows.Forms.PictureBox();
+            this.pathingPicture = new System.Windows.Forms.PictureBox();
+            this.configuratorPicture = new System.Windows.Forms.PictureBox();
+            this.selectPathButton = new System.Windows.Forms.Button();
+            this.launcherPathLabel = new System.Windows.Forms.Label();
+            this.clearPathButton = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
@@ -55,8 +60,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optionsPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overrideCubePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.launcherPathPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pathingPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // customArgsBox
@@ -67,7 +74,7 @@
             this.customArgsBox.Location = new System.Drawing.Point(11, 178);
             this.customArgsBox.Name = "customArgsBox";
             this.customArgsBox.Size = new System.Drawing.Size(120, 72);
-            this.customArgsBox.TabIndex = 5;
+            this.customArgsBox.TabIndex = 4;
             this.customArgsBox.Text = "";
             this.customArgsBox.TextChanged += new System.EventHandler(this.customArgsBox_TextChanged);
             // 
@@ -79,7 +86,7 @@
             this.customWidthBox.Location = new System.Drawing.Point(11, 146);
             this.customWidthBox.Name = "customWidthBox";
             this.customWidthBox.Size = new System.Drawing.Size(52, 13);
-            this.customWidthBox.TabIndex = 3;
+            this.customWidthBox.TabIndex = 2;
             this.customWidthBox.TextChanged += new System.EventHandler(this.customWidthBox_TextChanged);
             // 
             // customHeightBox
@@ -90,7 +97,7 @@
             this.customHeightBox.Location = new System.Drawing.Point(79, 146);
             this.customHeightBox.Name = "customHeightBox";
             this.customHeightBox.Size = new System.Drawing.Size(52, 13);
-            this.customHeightBox.TabIndex = 4;
+            this.customHeightBox.TabIndex = 3;
             this.customHeightBox.TextChanged += new System.EventHandler(this.customHeightBox_TextChanged);
             // 
             // customNameBox
@@ -101,7 +108,7 @@
             this.customNameBox.Location = new System.Drawing.Point(11, 75);
             this.customNameBox.Name = "customNameBox";
             this.customNameBox.Size = new System.Drawing.Size(120, 13);
-            this.customNameBox.TabIndex = 1;
+            this.customNameBox.TabIndex = 0;
             this.customNameBox.TextChanged += new System.EventHandler(this.customNameBox_TextChanged);
             // 
             // customVersionBox
@@ -112,7 +119,7 @@
             this.customVersionBox.Location = new System.Drawing.Point(11, 110);
             this.customVersionBox.Name = "customVersionBox";
             this.customVersionBox.Size = new System.Drawing.Size(120, 13);
-            this.customVersionBox.TabIndex = 2;
+            this.customVersionBox.TabIndex = 1;
             this.customVersionBox.TextChanged += new System.EventHandler(this.customVersionBox_TextChanged);
             // 
             // panel
@@ -154,7 +161,7 @@
             // namePicture
             // 
             this.namePicture.Image = global::cubeLauncher.Properties.Resources.name;
-            this.namePicture.Location = new System.Drawing.Point(11, 62);
+            this.namePicture.Location = new System.Drawing.Point(10, 62);
             this.namePicture.Name = "namePicture";
             this.namePicture.Size = new System.Drawing.Size(35, 10);
             this.namePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -168,7 +175,7 @@
             this.versionPicture.Name = "versionPicture";
             this.versionPicture.Size = new System.Drawing.Size(49, 13);
             this.versionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.versionPicture.TabIndex = 12;
+            this.versionPicture.TabIndex = 0;
             this.versionPicture.TabStop = false;
             // 
             // resolutionPicture
@@ -178,7 +185,7 @@
             this.resolutionPicture.Name = "resolutionPicture";
             this.resolutionPicture.Size = new System.Drawing.Size(66, 14);
             this.resolutionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.resolutionPicture.TabIndex = 13;
+            this.resolutionPicture.TabIndex = 0;
             this.resolutionPicture.TabStop = false;
             // 
             // argumentsPicture
@@ -188,7 +195,7 @@
             this.argumentsPicture.Name = "argumentsPicture";
             this.argumentsPicture.Size = new System.Drawing.Size(66, 14);
             this.argumentsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.argumentsPicture.TabIndex = 14;
+            this.argumentsPicture.TabIndex = 0;
             this.argumentsPicture.TabStop = false;
             // 
             // xPicture
@@ -209,18 +216,8 @@
             this.optionsPicture.Name = "optionsPicture";
             this.optionsPicture.Size = new System.Drawing.Size(64, 15);
             this.optionsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.optionsPicture.TabIndex = 15;
+            this.optionsPicture.TabIndex = 0;
             this.optionsPicture.TabStop = false;
-            // 
-            // configuratorPicture
-            // 
-            this.configuratorPicture.Image = ((System.Drawing.Image)(resources.GetObject("configuratorPicture.Image")));
-            this.configuratorPicture.Location = new System.Drawing.Point(9, 273);
-            this.configuratorPicture.Name = "configuratorPicture";
-            this.configuratorPicture.Size = new System.Drawing.Size(110, 14);
-            this.configuratorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.configuratorPicture.TabIndex = 0;
-            this.configuratorPicture.TabStop = false;
             // 
             // createConfigButton
             // 
@@ -228,7 +225,7 @@
             this.createConfigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createConfigButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.createConfigButton.Image = global::cubeLauncher.Properties.Resources.createcubeconfig;
-            this.createConfigButton.Location = new System.Drawing.Point(12, 295);
+            this.createConfigButton.Location = new System.Drawing.Point(12, 288);
             this.createConfigButton.Name = "createConfigButton";
             this.createConfigButton.Size = new System.Drawing.Size(111, 20);
             this.createConfigButton.TabIndex = 6;
@@ -239,30 +236,102 @@
             // 
             this.overrideCubeCheckbox.AutoSize = true;
             this.overrideCubeCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.overrideCubeCheckbox.Location = new System.Drawing.Point(11, 256);
+            this.overrideCubeCheckbox.Location = new System.Drawing.Point(11, 275);
             this.overrideCubeCheckbox.Name = "overrideCubeCheckbox";
             this.overrideCubeCheckbox.Size = new System.Drawing.Size(12, 11);
-            this.overrideCubeCheckbox.TabIndex = 16;
+            this.overrideCubeCheckbox.TabIndex = 5;
             this.overrideCubeCheckbox.UseVisualStyleBackColor = true;
             this.overrideCubeCheckbox.CheckedChanged += new System.EventHandler(this.overrideCubeCheckbox_CheckedChanged);
             // 
             // overrideCubePicture
             // 
             this.overrideCubePicture.Image = global::cubeLauncher.Properties.Resources.overridecube;
-            this.overrideCubePicture.Location = new System.Drawing.Point(23, 257);
+            this.overrideCubePicture.Location = new System.Drawing.Point(23, 275);
             this.overrideCubePicture.Name = "overrideCubePicture";
             this.overrideCubePicture.Size = new System.Drawing.Size(107, 12);
             this.overrideCubePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.overrideCubePicture.TabIndex = 17;
+            this.overrideCubePicture.TabIndex = 0;
             this.overrideCubePicture.TabStop = false;
             this.overrideCubePicture.Click += new System.EventHandler(this.overrideCubePicture_Click);
+            // 
+            // launcherPathPicture
+            // 
+            this.launcherPathPicture.Image = global::cubeLauncher.Properties.Resources.mclauncherpath;
+            this.launcherPathPicture.Location = new System.Drawing.Point(12, 327);
+            this.launcherPathPicture.Name = "launcherPathPicture";
+            this.launcherPathPicture.Size = new System.Drawing.Size(104, 17);
+            this.launcherPathPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.launcherPathPicture.TabIndex = 0;
+            this.launcherPathPicture.TabStop = false;
+            // 
+            // pathingPicture
+            // 
+            this.pathingPicture.Image = global::cubeLauncher.Properties.Resources.pathing;
+            this.pathingPicture.Location = new System.Drawing.Point(10, 315);
+            this.pathingPicture.Name = "pathingPicture";
+            this.pathingPicture.Size = new System.Drawing.Size(64, 15);
+            this.pathingPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pathingPicture.TabIndex = 0;
+            this.pathingPicture.TabStop = false;
+            // 
+            // configuratorPicture
+            // 
+            this.configuratorPicture.Image = ((System.Drawing.Image)(resources.GetObject("configuratorPicture.Image")));
+            this.configuratorPicture.Location = new System.Drawing.Point(8, 259);
+            this.configuratorPicture.Name = "configuratorPicture";
+            this.configuratorPicture.Size = new System.Drawing.Size(110, 14);
+            this.configuratorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.configuratorPicture.TabIndex = 0;
+            this.configuratorPicture.TabStop = false;
+            // 
+            // selectPathButton
+            // 
+            this.selectPathButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
+            this.selectPathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectPathButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.selectPathButton.Image = ((System.Drawing.Image)(resources.GetObject("selectPathButton.Image")));
+            this.selectPathButton.Location = new System.Drawing.Point(12, 344);
+            this.selectPathButton.Name = "selectPathButton";
+            this.selectPathButton.Size = new System.Drawing.Size(50, 20);
+            this.selectPathButton.TabIndex = 7;
+            this.selectPathButton.UseVisualStyleBackColor = false;
+            this.selectPathButton.Click += new System.EventHandler(this.selectPathButton_Click);
+            // 
+            // launcherPathLabel
+            // 
+            this.launcherPathLabel.AutoSize = true;
+            this.launcherPathLabel.BackColor = System.Drawing.Color.Transparent;
+            this.launcherPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.launcherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(183)))), ((int)(((byte)(93)))));
+            this.launcherPathLabel.Location = new System.Drawing.Point(10, 364);
+            this.launcherPathLabel.Name = "launcherPathLabel";
+            this.launcherPathLabel.Size = new System.Drawing.Size(0, 12);
+            this.launcherPathLabel.TabIndex = 0;
+            // 
+            // clearPathButton
+            // 
+            this.clearPathButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
+            this.clearPathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearPathButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.clearPathButton.Image = global::cubeLauncher.Properties.Resources.close_x;
+            this.clearPathButton.Location = new System.Drawing.Point(61, 344);
+            this.clearPathButton.Name = "clearPathButton";
+            this.clearPathButton.Size = new System.Drawing.Size(20, 20);
+            this.clearPathButton.TabIndex = 8;
+            this.clearPathButton.UseVisualStyleBackColor = false;
+            this.clearPathButton.Click += new System.EventHandler(this.clearPathButton_Click);
             // 
             // options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(142, 346);
+            this.ClientSize = new System.Drawing.Size(142, 385);
+            this.Controls.Add(this.clearPathButton);
+            this.Controls.Add(this.launcherPathLabel);
+            this.Controls.Add(this.selectPathButton);
+            this.Controls.Add(this.pathingPicture);
+            this.Controls.Add(this.launcherPathPicture);
             this.Controls.Add(this.overrideCubePicture);
             this.Controls.Add(this.overrideCubeCheckbox);
             this.Controls.Add(this.createConfigButton);
@@ -293,8 +362,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.argumentsPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optionsPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overrideCubePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.launcherPathPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pathingPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configuratorPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,9 +387,14 @@
         private System.Windows.Forms.PictureBox xPicture;
         private System.Windows.Forms.PictureBox iconPicture;
         private System.Windows.Forms.PictureBox optionsPicture;
-        private System.Windows.Forms.PictureBox configuratorPicture;
         private System.Windows.Forms.Button createConfigButton;
         private System.Windows.Forms.CheckBox overrideCubeCheckbox;
         private System.Windows.Forms.PictureBox overrideCubePicture;
+        private System.Windows.Forms.PictureBox launcherPathPicture;
+        private System.Windows.Forms.PictureBox pathingPicture;
+        private System.Windows.Forms.PictureBox configuratorPicture;
+        private System.Windows.Forms.Button selectPathButton;
+        private System.Windows.Forms.Label launcherPathLabel;
+        private System.Windows.Forms.Button clearPathButton;
     }
 }

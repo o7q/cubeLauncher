@@ -72,6 +72,12 @@ namespace cubeLauncher
                 string config_args = File.ReadAllText(mainDir + "\\config_args");
                 customArgsBox.Text = config_args;
             }
+
+            if (File.Exists(mainDir + "\\config_lchrpth"))
+            {
+                string config_lchrpth = File.ReadAllText(mainDir + "\\config_lchrpth");
+                launcherPathLabel.Text = config_lchrpth;
+            }
         }
 
         // buttons
@@ -121,6 +127,46 @@ namespace cubeLauncher
             {
                 MessageBox.Show("Unknown Error: Unable to create \".cube Config\"!\n\nFull Error:\n" + ex);
             }
+        }
+
+        // open path selection dialog
+        private void selectPathButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog launcherDiag = new OpenFileDialog();
+            launcherDiag.Filter = "Executable Files (*.exe)|*.exe";
+            launcherDiag.FilterIndex = 1;
+            launcherDiag.Multiselect = true;
+
+            if (launcherDiag.ShowDialog() == DialogResult.OK)
+            {
+                string launcherPath = launcherDiag.FileName;
+
+                launcherPathLabel.Text = launcherPath;
+
+                try
+                {
+                    File.WriteAllText(mainDir + "\\config_lchrpth", launcherPath);
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+        }
+
+        // clear selected path
+        private void clearPathButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                File.Delete(mainDir + "\\config_lchrpth");
+            }
+            catch
+            {
+                // skip
+            }
+
+            launcherPathLabel.Text = "";
         }
 
         // config textboxes
@@ -235,6 +281,7 @@ namespace cubeLauncher
             mvFrm(e);
         }
 
+        // icon sender
         private void iconPicture_MouseDown(object sender, MouseEventArgs e)
         {
             mvFrm(e);

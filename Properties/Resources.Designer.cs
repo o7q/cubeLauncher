@@ -172,6 +172,16 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mclauncherpath {
+            get {
+                object obj = ResourceManager.GetObject("mclauncherpath", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap name {
             get {
                 object obj = ResourceManager.GetObject("name", resourceCulture);
@@ -222,6 +232,16 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pathing {
+            get {
+                object obj = ResourceManager.GetObject("pathing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap resolution {
             get {
                 object obj = ResourceManager.GetObject("resolution", resourceCulture);
@@ -232,9 +252,19 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap v1_1_0 {
+        internal static System.Drawing.Bitmap select {
             get {
-                object obj = ResourceManager.GetObject("v1.1.0", resourceCulture);
+                object obj = ResourceManager.GetObject("select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap v1_2_0 {
+            get {
+                object obj = ResourceManager.GetObject("v1.2.0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

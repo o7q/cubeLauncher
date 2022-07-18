@@ -18,8 +18,8 @@ To utilize the config file, place the ".cube" folder inside the installation fol
 
 If you would like a modloader such as forge or fabric to auto install when installing a folder you can specify it under the "modloader" argument. Place the installer file alongside "config.cube" and specify the name of that file after "modloader:".
 
-<img src="images/v110/v110.png"/>
-<img src="images/v110/v110_2.png"/>
+<img src="images/v120/v120.png"/>
+<img src="images/v120/v120_2.png"/>
 
 
 cubeLauncher: https://github.com/o7q/cubeLauncher

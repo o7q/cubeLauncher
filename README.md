@@ -1,4 +1,4 @@
-<img src="images/gitbanner.png"/>
+<img src="assets/images/readmebanner.png"/>
 
 #### https://github.com/o7q/cubeLauncher
 #### Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!
@@ -37,8 +37,8 @@ Place the installer file alongside "config.cube" and specify the name of that fi
 <b>Clear MC Launcher Path Directory Button:</b> Resets the Minecraft Launcher path to default \
 <br>
 
-<img src="images/v120/v120.png"/> \
-<img src="images/v120/v120_2.png"/> \
+<img src="assets/images/v120/v120.png"/> \
+<img src="assets/images/v120/v120_2.png"/> \
 <br>
 
 Running C# .NET Framework 4.8. \

@@ -69,7 +69,7 @@
             // panelByO7q
             // 
             this.panelByO7q.Image = global::cubeLauncher.Properties.Resources.byo7q;
-            this.panelByO7q.Location = new System.Drawing.Point(85, 33);
+            this.panelByO7q.Location = new System.Drawing.Point(84, 32);
             this.panelByO7q.Name = "panelByO7q";
             this.panelByO7q.Size = new System.Drawing.Size(29, 14);
             this.panelByO7q.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -79,7 +79,7 @@
             // 
             // panelBannerVersion
             // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_2_0;
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_3_0;
             this.panelBannerVersion.Location = new System.Drawing.Point(41, 30);
             this.panelBannerVersion.Name = "panelBannerVersion";
             this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);

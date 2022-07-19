@@ -304,9 +304,11 @@
             this.launcherPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.launcherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(183)))), ((int)(((byte)(93)))));
             this.launcherPathLabel.Location = new System.Drawing.Point(10, 364);
+            this.launcherPathLabel.MaximumSize = new System.Drawing.Size(127, 27);
             this.launcherPathLabel.Name = "launcherPathLabel";
-            this.launcherPathLabel.Size = new System.Drawing.Size(0, 12);
+            this.launcherPathLabel.Size = new System.Drawing.Size(125, 27);
             this.launcherPathLabel.TabIndex = 0;
+            this.launcherPathLabel.Text = "________________________________________________\r\n\r\n";
             // 
             // clearPathButton
             // 
@@ -326,7 +328,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(142, 385);
+            this.ClientSize = new System.Drawing.Size(142, 395);
             this.Controls.Add(this.clearPathButton);
             this.Controls.Add(this.launcherPathLabel);
             this.Controls.Add(this.selectPathButton);
@@ -353,7 +355,6 @@
             this.Name = "options";
             this.Text = "cubeLauncher Options";
             this.Activated += new System.EventHandler(this.options_Activated);
-            this.Load += new System.EventHandler(this.options_Load);
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();

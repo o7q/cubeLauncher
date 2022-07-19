@@ -1,3 +1,7 @@
+~ v1.3.0
+- Now makes two launcher profile backups instead of one. This ensures any previous user data is not lost if an error occurs
+- Moved the appdata path initializer script inside Form_Activated instead of Form_Load for the options form
+
 ~ v1.2.0
 - Added option to specify an alternative Minecraft Launcher path
 - Moved UI components around

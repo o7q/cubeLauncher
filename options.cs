@@ -26,17 +26,15 @@ namespace cubeLauncher
             InitializeComponent();
         }
 
-        // form load
-        private void options_Load(object sender, EventArgs e)
+        // form activate
+        private void options_Activated(object sender, EventArgs e)
         {
             // configure appdata path
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
-        }
 
-        // form activate
-        private void options_Activated(object sender, EventArgs e)
-        {
+            launcherPathLabel.Text = "";
+
             if (File.Exists(mainDir + "\\" + "config_ovrcube"))
             {
                 overrideCubeCheckbox.Checked = true;

@@ -94,7 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.2.0.png" />
+    <None Include="Resources\v1.3.0.png" />
     <None Include="Resources\select.png" />
     <None Include="Resources\pathing.png" />
     <None Include="Resources\mclauncherpath.png" />

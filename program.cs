@@ -88,6 +88,23 @@ namespace cubeLauncher
                 // skip
             }
 
+            // try to make a second backup of launcher profiles
+            if (!File.Exists(mainDir + "\\" + "launcher_profiles_bak2.json"))
+            {
+                try
+                {
+                    File.Copy(mcDir + "\\" + "launcher_profiles.json", mainDir + "\\" + "launcher_profiles_bak2.json");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+            else
+            {
+                // skip
+            }
+
             // update install list
             updInstLst();
 

@@ -68,6 +68,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="program.resx">
       <DependentUpon>program.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,28 +95,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.3.0.png" />
+    <None Include="Resources\close__.png" />
+    <None Include="Resources\close_x.png" />
+    <None Include="Resources\options.png" />
+    <None Include="Resources\launcher.png" />
     <None Include="Resources\select.png" />
-    <None Include="Resources\pathing.png" />
     <None Include="Resources\mclauncherpath.png" />
-    <None Include="Resources\open.png" />
     <None Include="Resources\overridecube.png" />
-    <None Include="Resources\options_header.png" />
-    <None Include="Resources\byo7q.png" />
     <None Include="Resources\createcubeconfig.png" />
-    <None Include="Resources\configurator.png" />
-    <None Include="Resources\logo.png" />
     <None Include="Resources\arguments.png" />
     <None Include="Resources\resolution.png" />
     <None Include="Resources\version.png" />
     <None Include="Resources\name.png" />
-    <None Include="Resources\options.png" />
+    <None Include="Resources\logo_options.png" />
+    <None Include="Resources\close_x_options.png" />
+    <None Include="Resources\v1.4.0.png" />
+    <None Include="Resources\pathing.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\options_header.png" />
+    <None Include="Resources\byo7q.png" />
+    <None Include="Resources\configurator.png" />
+    <None Include="Resources\logo.png" />
     <None Include="Resources\x.png" />
-    <None Include="Resources\close_x.png" />
-    <None Include="Resources\close__.png" />
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
-    <None Include="Resources\iconSerialized.txt" />
     <None Include="Resources\banner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

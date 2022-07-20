@@ -1,3 +1,10 @@
+~ v1.4.0
+- Added an option to merge installations instead of overwritting them if a duplicate is found
+- Updated UI
+- Added tooltips
+- MessageBox updates
+- Removed unneeded code inside the JSON parser
+
 ~ v1.3.0
 - Now makes two launcher profile backups instead of one. This ensures any previous user data is not lost if an error occurs
 - Moved the appdata path initializer script inside Form_Activated instead of Form_Load for the options form

@@ -28,7 +28,6 @@ namespace cubeLauncher
 
         // configure static json parser variables
         string path;
-        string icon;
 
         // configure dynamic json parser variables
         string name;
@@ -56,6 +55,7 @@ namespace cubeLauncher
         // form load
         private void program_Load(object sender, EventArgs e)
         {
+
             // configure appdata path
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
@@ -126,6 +126,19 @@ namespace cubeLauncher
             {
                 // skip
             }
+
+            // configure tooltips
+            programToolTip.SetToolTip(minimizeButton, "Minimize");
+            programToolTip.SetToolTip(closeButton, "Close");
+            string drgDrpTT = "Drag and drop a folder to install";
+            programToolTip.SetToolTip(dropBoxPanel, drgDrpTT);
+            programToolTip.SetToolTip(dropBoxInfoPicture, drgDrpTT);
+            programToolTip.SetToolTip(dropBoxLabel, "Output message");
+            programToolTip.SetToolTip(installList, "Show list of installed installations");
+            programToolTip.SetToolTip(openPathButton, "Open the folder path of the selected installation");
+            programToolTip.SetToolTip(deleteInstallButton, "Remove the selected installation");
+            programToolTip.SetToolTip(optionsButton, "Open the options window");
+            programToolTip.SetToolTip(launchButton, "Launch the selected installation with the specified arguments");
         }
 
         // form close
@@ -209,7 +222,7 @@ namespace cubeLauncher
                 clrDrpBxLbl();
 
                 // prompt user when removing installation
-                DialogResult prompt = MessageBox.Show("Are you sure you want to remove " + installList.Text + "?\nAll data will be removed for that installation.", "", MessageBoxButtons.YesNo);
+                DialogResult prompt = MessageBox.Show("Are you sure you want to remove \"" + installList.Text + "\"?\nAll data (worlds, options, etc.) will be removed for that installation.", "", MessageBoxButtons.YesNo);
                 if (prompt == DialogResult.Yes)
                 {
                     if (Directory.Exists(mainDir + "\\" + installList.Text))
@@ -220,7 +233,7 @@ namespace cubeLauncher
                             string delName = installList.Text;
                             Directory.Delete(mainDir + "\\" + installList.Text, true);
 
-                            dropBoxLabel.Text = "Removed " + delName + " successfully";
+                            dropBoxLabel.Text = "Removed \"" + delName + "\" successfully";
                             dropBoxLabel.Update();
 
                             updInstLst();
@@ -236,7 +249,7 @@ namespace cubeLauncher
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Unknown Error: Unable to delete \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+                            MessageBox.Show("Unknown Error: Unable to remove \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
                         }
                     }
                     else
@@ -341,9 +354,8 @@ namespace cubeLauncher
                 path = mainDir + "\\" + installList.Text;
                 string path2 = Path.GetFullPath(path);
                 path2 = path2.Replace("\\", "\\\\");
-                icon = cubeLauncher.Properties.Resources.iconSerialized;
 
-                string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path2 + "\",\"icon\":\"" + icon + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
+                string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path2 + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
                 // write launcher profile data
                 File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
@@ -381,7 +393,7 @@ namespace cubeLauncher
                     {
                         MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"\n\n* In the options menu you can specify a new launcher path if your launcher is not in the standard directory.");
                     }
-                }          
+                }
             }
             else
             {
@@ -410,14 +422,32 @@ namespace cubeLauncher
             if (Directory.Exists(mainDir + "\\" + installName))
             {
                 drpBxRstClr();
-                DialogResult prompt = MessageBox.Show("Are you sure you want to install " + installName + "?\nAn installation with that name already exists and it will be overwritten.", "", MessageBoxButtons.YesNo);
+                DialogResult prompt = MessageBox.Show("Are you sure you want to reinstall \"" + installName + "\"?\n\nAn installation with that name already exists and it will be reinstalled resulting in all data (worlds, options, etc.) being removed.\n\nOtherwise you can merge the installation which will preserve unchanged data.\n\nYes = Reinstall\nNo = Merge\nCancel = Do nothing", "", MessageBoxButtons.YesNoCancel);
                 if (prompt == DialogResult.Yes)
                 {
-                    Directory.Delete(mainDir + "\\" + installName, true);
-                    dropBoxLabel.Text = "Overwrote " + installName + " successfully";
+                    try
+                    {
+                        Directory.Delete(mainDir + "\\" + installName, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unknown Error: Unable to remove \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+                    }
+
                     instFiles();
 
                     installList.Text = installName;
+                    dropBoxLabel.Text = "Reinstalled \"" + installName + "\" successfully";
+                }
+                else
+                {
+                    if (prompt == DialogResult.No)
+                    {
+                        instFiles();
+
+                        installList.Text = installName;
+                        dropBoxLabel.Text = "Merged \"" + installName + "\" successfully";
+                    }
                 }
             }
             else
@@ -432,7 +462,7 @@ namespace cubeLauncher
             // try to execute install script
             try
             {
-                dropBoxLabel.Text = "Installing " + installName;
+                dropBoxLabel.Text = "Installing \"" + installName + "\"";
                 dropBoxLabel.Update();
 
                 Parallel.ForEach(Directory.GetFileSystemEntries(installPath, "*", SearchOption.AllDirectories), (fileDir) =>
@@ -462,7 +492,7 @@ namespace cubeLauncher
             srtModLdr();
 
             installList.Text = installName;
-            dropBoxLabel.Text = "Installed " + installName + " successfully";
+            dropBoxLabel.Text = "Installed \"" + installName + "\" successfully";
             dropBoxLabel.Update();
         }
 
@@ -515,7 +545,7 @@ namespace cubeLauncher
             // check if config.cube exists, if it does, prompt the user if they want to install the available modloader
             if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
             {
-                DialogResult prompt = MessageBox.Show("Found a modloader for " + installName + ".\nDo you want to install it?", "", MessageBoxButtons.YesNo);
+                DialogResult prompt = MessageBox.Show("Found a modloader for \"" + installName + "\".\nDo you want to install it?", "", MessageBoxButtons.YesNo);
                 if (prompt == DialogResult.Yes)
                 {
                     try

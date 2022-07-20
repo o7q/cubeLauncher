@@ -76,6 +76,21 @@ namespace cubeLauncher
                 string config_lchrpth = File.ReadAllText(mainDir + "\\config_lchrpth");
                 launcherPathLabel.Text = config_lchrpth;
             }
+
+            // configure tooltips
+            optionsToolTip.SetToolTip(closeButton, "Close");
+            optionsToolTip.SetToolTip(customNameBox, "Specify the name override for the launcher");
+            optionsToolTip.SetToolTip(customVersionBox, "Specify the version override for the launcher");
+            optionsToolTip.SetToolTip(customWidthBox, "Specify the resolution width override for the launcher");
+            optionsToolTip.SetToolTip(customHeightBox, "Specify the resolution height version override for the launcher");
+            optionsToolTip.SetToolTip(customArgsBox, "Specify the argument override for the launcher");
+            string ovrCubeChkTT = "Override the .cube override config";
+            optionsToolTip.SetToolTip(overrideCubeCheckbox, ovrCubeChkTT);
+            optionsToolTip.SetToolTip(overrideCubePicture, ovrCubeChkTT);
+            optionsToolTip.SetToolTip(createConfigButton, "Create a blank .cube file and directory next to \"cubeLauncher.exe\"");
+            optionsToolTip.SetToolTip(selectPathButton, "Select an alternative path for the Minecraft Launcher");
+            optionsToolTip.SetToolTip(clearPathButton, "Reset the selected Minecraft Launcher path");
+            optionsToolTip.SetToolTip(launcherPathLabel, "Currently selected Minecraft Launcher path");
         }
 
         // buttons

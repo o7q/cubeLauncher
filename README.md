@@ -37,8 +37,8 @@ Place the installer file alongside "config.cube" and specify the name of that fi
 <b>Clear MC Launcher Path Directory Button:</b> Resets the Minecraft Launcher path to default \
 <br>
 
-<img src="assets/images/v130/v130.png"/> \
-<img src="assets/images/v130/v130_2.png"/> \
+<img src="assets/images/v140/v140.png"/> \
+<img src="assets/images/v140/v140_2.png"/> \
 <br>
 
 Running C# .NET Framework 4.8. \

@@ -248,9 +248,9 @@
             // configuratorPicture
             // 
             this.configuratorPicture.Image = ((System.Drawing.Image)(resources.GetObject("configuratorPicture.Image")));
-            this.configuratorPicture.Location = new System.Drawing.Point(136, 42);
+            this.configuratorPicture.Location = new System.Drawing.Point(140, 42);
             this.configuratorPicture.Name = "configuratorPicture";
-            this.configuratorPicture.Size = new System.Drawing.Size(110, 14);
+            this.configuratorPicture.Size = new System.Drawing.Size(113, 16);
             this.configuratorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.configuratorPicture.TabIndex = 0;
             this.configuratorPicture.TabStop = false;

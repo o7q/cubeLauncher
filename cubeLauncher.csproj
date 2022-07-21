@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\v1.4.1.png" />
     <None Include="Resources\close__.png" />
     <None Include="Resources\close_x.png" />
     <None Include="Resources\options.png" />
@@ -109,7 +110,6 @@
     <None Include="Resources\name.png" />
     <None Include="Resources\logo_options.png" />
     <None Include="Resources\close_x_options.png" />
-    <None Include="Resources\v1.4.0.png" />
     <None Include="Resources\pathing.png" />
     <None Include="Resources\open.png" />
     <None Include="Resources\options_header.png" />

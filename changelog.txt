@@ -1,3 +1,6 @@
+~ v1.4.1
+- Small UI visual patch (options task logo not the right color, made drag & drop panel smaller)
+
 ~ v1.4.0
 - Added an option to merge installations instead of overwritting them if a duplicate is found
 - Updated UI

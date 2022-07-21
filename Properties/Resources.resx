@@ -121,9 +121,6 @@
   <data name="close_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close_x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pathing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pathing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,9 +160,6 @@
   <data name="close_x_options" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close_x_options.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="v1.4.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\v1.4.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="name" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\name.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,10 +181,16 @@
   <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close__" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close__.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close__" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close__.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pathing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pathing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="v1.4.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\v1.4.1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

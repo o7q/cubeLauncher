@@ -75,7 +75,7 @@
             this.dropBoxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.dropBoxLabel.Location = new System.Drawing.Point(-1, 65);
+            this.dropBoxLabel.Location = new System.Drawing.Point(-1, 55);
             this.dropBoxLabel.Name = "dropBoxLabel";
             this.dropBoxLabel.Size = new System.Drawing.Size(224, 15);
             this.dropBoxLabel.TabIndex = 0;
@@ -88,7 +88,7 @@
             this.dropBoxPanel.Controls.Add(this.dropBoxLabel);
             this.dropBoxPanel.Location = new System.Drawing.Point(-2, 42);
             this.dropBoxPanel.Name = "dropBoxPanel";
-            this.dropBoxPanel.Size = new System.Drawing.Size(219, 81);
+            this.dropBoxPanel.Size = new System.Drawing.Size(219, 72);
             this.dropBoxPanel.TabIndex = 0;
             this.dropBoxPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragDrop);
             this.dropBoxPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragEnter);
@@ -98,10 +98,11 @@
             // 
             this.installList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.installList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.installList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.installList.ForeColor = System.Drawing.Color.YellowGreen;
             this.installList.FormattingEnabled = true;
             this.installList.ItemHeight = 13;
-            this.installList.Location = new System.Drawing.Point(2, 126);
+            this.installList.Location = new System.Drawing.Point(2, 114);
             this.installList.Name = "installList";
             this.installList.Size = new System.Drawing.Size(138, 21);
             this.installList.TabIndex = 2;
@@ -114,7 +115,7 @@
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(41)))), ((int)(((byte)(39)))));
             this.optionsButton.Image = ((System.Drawing.Image)(resources.GetObject("optionsButton.Image")));
-            this.optionsButton.Location = new System.Drawing.Point(191, 125);
+            this.optionsButton.Location = new System.Drawing.Point(191, 114);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(25, 25);
             this.optionsButton.TabIndex = 5;
@@ -127,7 +128,7 @@
             this.deleteInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteInstallButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.deleteInstallButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteInstallButton.Image")));
-            this.deleteInstallButton.Location = new System.Drawing.Point(141, 125);
+            this.deleteInstallButton.Location = new System.Drawing.Point(141, 114);
             this.deleteInstallButton.Name = "deleteInstallButton";
             this.deleteInstallButton.Size = new System.Drawing.Size(25, 25);
             this.deleteInstallButton.TabIndex = 3;
@@ -140,7 +141,7 @@
             this.launchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.launchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
             this.launchButton.Image = global::cubeLauncher.Properties.Resources.launch;
-            this.launchButton.Location = new System.Drawing.Point(-1, 150);
+            this.launchButton.Location = new System.Drawing.Point(-1, 139);
             this.launchButton.Name = "launchButton";
             this.launchButton.Size = new System.Drawing.Size(219, 35);
             this.launchButton.TabIndex = 6;
@@ -154,7 +155,7 @@
             this.openPathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openPathButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
             this.openPathButton.Image = global::cubeLauncher.Properties.Resources.open;
-            this.openPathButton.Location = new System.Drawing.Point(166, 125);
+            this.openPathButton.Location = new System.Drawing.Point(166, 114);
             this.openPathButton.Name = "openPathButton";
             this.openPathButton.Size = new System.Drawing.Size(25, 25);
             this.openPathButton.TabIndex = 4;
@@ -165,7 +166,7 @@
             // 
             this.dropBoxInfoPicture.BackColor = System.Drawing.Color.Transparent;
             this.dropBoxInfoPicture.Image = ((System.Drawing.Image)(resources.GetObject("dropBoxInfoPicture.Image")));
-            this.dropBoxInfoPicture.Location = new System.Drawing.Point(13, 31);
+            this.dropBoxInfoPicture.Location = new System.Drawing.Point(13, 25);
             this.dropBoxInfoPicture.Name = "dropBoxInfoPicture";
             this.dropBoxInfoPicture.Size = new System.Drawing.Size(198, 25);
             this.dropBoxInfoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -188,7 +189,7 @@
             // 
             // panelBannerVersion
             // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_4_0;
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_4_1;
             this.panelBannerVersion.Location = new System.Drawing.Point(30, 29);
             this.panelBannerVersion.Name = "panelBannerVersion";
             this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);
@@ -241,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(217, 185);
+            this.ClientSize = new System.Drawing.Size(217, 174);
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.deleteInstallButton);
             this.Controls.Add(this.launchButton);

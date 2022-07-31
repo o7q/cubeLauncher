@@ -1,1 +1,14 @@
-[vMAJOR.MINOR.PATCHdev, release]
+Release titles:
+cubeLauncher vMAJOR.MINOR.PATCH
+
+Release commit titles:
+[vMAJOR.MINOR.PATCHrelease] Ready!
+
+Release commit descriptions:
+(state what is inside of changelog.txt for the specific version)
+
+Dev commit titles:
+[vMAJOR.MINOR.PATCHdev] (short description)
+
+Dev commit descriptions:
+Changes stated in changelog.txt under [vMAJOR.MINOR.PATCHdev] OR (write a short description if there are not many changes)

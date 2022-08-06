@@ -63,6 +63,16 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _new {
+            get {
+                object obj = ResourceManager.GetObject("new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arguments {
             get {
                 object obj = ResourceManager.GetObject("arguments", resourceCulture);
@@ -116,26 +126,6 @@ namespace cubeLauncher.Properties {
         internal static System.Drawing.Bitmap close_x_options {
             get {
                 object obj = ResourceManager.GetObject("close_x_options", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap configurator {
-            get {
-                object obj = ResourceManager.GetObject("configurator", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap createcubeconfig {
-            get {
-                object obj = ResourceManager.GetObject("createcubeconfig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +233,9 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap overridecube {
+        internal static System.Drawing.Bitmap overrideconfig {
             get {
-                object obj = ResourceManager.GetObject("overridecube", resourceCulture);
+                object obj = ResourceManager.GetObject("overrideconfig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,6 +263,16 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap saveconfig {
+            get {
+                object obj = ResourceManager.GetObject("saveconfig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap select {
             get {
                 object obj = ResourceManager.GetObject("select", resourceCulture);
@@ -283,9 +283,9 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap v1_4_1 {
+        internal static System.Drawing.Bitmap v1_5_0 {
             get {
-                object obj = ResourceManager.GetObject("v1.4.1", resourceCulture);
+                object obj = ResourceManager.GetObject("v1.5.0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

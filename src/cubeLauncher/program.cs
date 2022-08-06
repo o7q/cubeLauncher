@@ -19,24 +19,21 @@ namespace cubeLauncher
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        // configure path variables
+        // create global variables
         string mainDir;
         string mcDir;
         string installName;
         string installPath;
         string destDir;
-
-        // configure static json parser variables
+        // static json parser variables
         string path;
-
-        // configure dynamic json parser variables
+        // dynamic json parser variables
         string name;
         string version;
         int width;
         int height;
         string args;
-
-        // configure dynamic .cube file parser variables
+        // dynamic .cube file parser variables
         string line1_name_format;
         string line2_version_format;
         string line3_width_format;
@@ -116,10 +113,10 @@ namespace cubeLauncher
             dropBoxLabel.Text = "";
             dropBoxLabel.Update();
 
-            // try to create config for remembering last session
+            // load last client session
             try
             {
-                string instidx_string = File.ReadAllText(mainDir + "\\config_instidx");
+                string instidx_string = File.ReadAllText(mainDir + "\\config_instindx");
                 installList.SelectedIndex = int.Parse(instidx_string);
             }
             catch
@@ -193,24 +190,41 @@ namespace cubeLauncher
         {
             try
             {
-                File.WriteAllText(mainDir + "\\config_instidx", installList.SelectedIndex.ToString());
+                File.WriteAllText(mainDir + "\\config_instindx", installList.SelectedIndex.ToString());
+                File.WriteAllText(mainDir + "\\config_instname", installList.Text);
             }
             catch
             {
                 // skip
             }
         }
-
-        // open install path directory button
-        private void openPathButton_Click(object sender, EventArgs e)
+        
+        // create button
+        private void createInstallButton_Click(object sender, EventArgs e)
         {
-            try
+            if (installList.Text != "")
             {
-                Process.Start("explorer.exe", mainDir + "\\" + installList.Text);
+                if (!Directory.Exists(mainDir + "\\" + installList.Text))
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(mainDir + "\\" + installList.Text);
+                        dropBoxLabel.Text = "Created \"" + installList.Text + "\" successfully";
+                        updInstLst();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unknown Error: Unable to create \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+                    }
+                }
+                else
+                {
+                    dropBoxLabel.Text = "\"" + installList.Text + "\" already exists";
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Unknown Error: Unable to open \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+                dropBoxLabel.Text = "Please specify a name";
             }
         }
 
@@ -246,6 +260,22 @@ namespace cubeLauncher
                             {
                                 // skip
                             }
+
+                            try
+                            {
+                                if (installList.Text != "")
+                                {
+                                    File.WriteAllText(mainDir + "\\config_instname", installList.Text);
+                                }
+                                else
+                                {
+                                    File.WriteAllText(mainDir + "\\config_instname", "");
+                                }
+                            }
+                            catch
+                            {
+                                // skip
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -262,6 +292,19 @@ namespace cubeLauncher
             {
                 dropBoxLabel.Text = "No installation is selected";
                 dropBoxLabel.Update();
+            }
+        }
+
+        // open install path directory button
+        private void openPathButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", mainDir + "\\" + installList.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unknown Error: Unable to open \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
             }
         }
 

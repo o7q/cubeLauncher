@@ -1,6 +1,7 @@
 ~ v1.5.0dev
-- Change method for versioning slightly (explained in "versioning.txt")
-- Added dev_builds folder. (while cubeLauncher is in its development stage, latest development builds will be available in that folder that you can use to test and find issues)
+- Feature to create installations
+- Options to save and load configs for individual installations
+- Variable and code comment renames
 
 ~ v1.4.1
 - Small UI visual patch (options task logo not the right color, made drag & drop panel smaller)

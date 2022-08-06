@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,18 +87,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -95,15 +110,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.4.1.png" />
-    <None Include="Resources\close__.png" />
-    <None Include="Resources\close_x.png" />
     <None Include="Resources\options.png" />
     <None Include="Resources\launcher.png" />
+    <None Include="Resources\options_header.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\saveconfig.png" />
+    <None Include="Resources\overrideconfig.png" />
+    <None Include="Resources\v1.5.0.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\close__.png" />
+    <None Include="Resources\close_x.png" />
     <None Include="Resources\select.png" />
     <None Include="Resources\mclauncherpath.png" />
-    <None Include="Resources\overridecube.png" />
-    <None Include="Resources\createcubeconfig.png" />
     <None Include="Resources\arguments.png" />
     <None Include="Resources\resolution.png" />
     <None Include="Resources\version.png" />
@@ -111,15 +129,24 @@
     <None Include="Resources\logo_options.png" />
     <None Include="Resources\close_x_options.png" />
     <None Include="Resources\pathing.png" />
-    <None Include="Resources\open.png" />
-    <None Include="Resources\options_header.png" />
     <None Include="Resources\byo7q.png" />
-    <None Include="Resources\configurator.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\x.png" />
     <None Include="Resources\launch.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

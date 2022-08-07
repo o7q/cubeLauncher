@@ -18,7 +18,7 @@ Using the "Override Config" option will globally override any saved configs.
 Using and creating config files manually can be accomplished by following these steps:
 1. Inside of the directory for the installation, create a folder called ".cube"
 2. Inside of the ".cube" folder, create a file called "config.cube"
-3. Inside "config.cube", paste the following code:
+3. Inside of the "config.cube" file, paste the following code:
 ```
 # CUBELAUNCHER OVERRIDE CONFIG
 name: 

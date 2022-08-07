@@ -117,33 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="programToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="createInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="minimizeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAFlJREFUSEvt0EEKACAIBEC/0r0n99e6GG1QqOBFcWAvgbsQlbjaaHOHn/wlHel0
-        4ineCJZZwxWy17E2XCF7HWvDFUbw91cZvH+jBkfBR8B3xFOekUuNFBnRAmhO4IMfixVfAAAAAElFTkSu
-        QmCC
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAFJJREFUSEvtzbEJwDAQQ1GV2cIjBLxLpsj+tYNBRQpBDD5I8x/87mwJAAAA+Md1
+        n2Mln9dJIymf12tdY6mmY+Zn++JIqnzYH37l8zppJOVzvEgPAp5HackdSk4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="deleteInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="closeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAKZJREFUSEvtksEKhEAMQ4sXL/6K+P8398tcWhoIO3QwssIIPsglpgkM2sv47DYf
-        0MdsSbtEzQfqkZoP1CM1H3gQ4oKNCtjn/GrTAXG+C5dVI2kF4454EOJif5qMNMVQftY4M5LWdW4b+S2G
-        2L/8NIDL0grYH3eEC6q3xx/kqvJdqiMeSSuo8l2qo7+OeBDi4urt1XyDeqTmA/VIzQcehNLqouafhtkX
-        oe7jrVKTEPwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="openPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAGRJREFUSEtjGAVUBaG1M/9jw1Bp6gFsloAwVJpygGGgqPJ/ZEw1C+luEaUYahxu
-        gE0TORhqHG4AV4gWZMRiDP24wMBZRCIYtWjUIjgYtYhiPHgsggOYQkoxQYBNEzl4FFAOGBgAXgjGyPLF
-        VrEAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAALNJREFUSEvtkDEKwkAQRafULo1EsEihTSohkNoiOYFgYZUDeP868mA/rCmyoLsE
+        ZB78YnaWecyY4zjOf/J4XWcyTbddePog1f+azcQMJBIMz3Md1+o3nc2kbfdlNl+KQ9uKiRESCfv7saGO
+        hdmloJNK3A2HehwvlcThW37iTZGqPvVWkfAtPxJxXjZVXezEEnBmap2WLREu+9nYTMxAIuHyrKn+z6QG
+        FxMzcG1oqu84TgHM3mUMhQc7VxrFAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="dropBoxInfoPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -696,20 +684,32 @@
         SUVORK5CYII=
 </value>
   </data>
-  <data name="minimizeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="programToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="createInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAFJJREFUSEvtzbEJwDAQQ1GV2cIjBLxLpsj+tYNBRQpBDD5I8x/87mwJAAAA+Md1
-        n2Mln9dJIymf12tdY6mmY+Zn++JIqnzYH37l8zppJOVzvEgPAp5HackdSk4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAFlJREFUSEvt0EEKACAIBEC/0r0n99e6GG1QqOBFcWAvgbsQlbjaaHOHn/wlHel0
+        4ineCJZZwxWy17E2XCF7HWvDFUbw91cZvH+jBkfBR8B3xFOekUuNFBnRAmhO4IMfixVfAAAAAElFTkSu
+        QmCC
 </value>
   </data>
-  <data name="closeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="deleteInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAALNJREFUSEvtkDEKwkAQRafULo1EsEihTSohkNoiOYFgYZUDeP868mA/rCmyoLsE
-        ZB78YnaWecyY4zjOf/J4XWcyTbddePog1f+azcQMJBIMz3Md1+o3nc2kbfdlNl+KQ9uKiRESCfv7saGO
-        hdmloJNK3A2HehwvlcThW37iTZGqPvVWkfAtPxJxXjZVXezEEnBmap2WLREu+9nYTMxAIuHyrKn+z6QG
-        FxMzcG1oqu84TgHM3mUMhQc7VxrFAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAKZJREFUSEvtksEKhEAMQ4sXL/6K+P8398tcWhoIO3QwssIIPsglpgkM2sv47DYf
+        0MdsSbtEzQfqkZoP1CM1H3gQ4oKNCtjn/GrTAXG+C5dVI2kF4454EOJif5qMNMVQftY4M5LWdW4b+S2G
+        2L/8NIDL0grYH3eEC6q3xx/kqvJdqiMeSSuo8l2qo7+OeBDi4urt1XyDeqTmA/VIzQcehNLqouafhtkX
+        oe7jrVKTEPwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="openPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAGRJREFUSEtjGAVUBaG1M/9jw1Bp6gFsloAwVJpygGGgqPJ/ZEw1C+luEaUYahxu
+        gE0TORhqHG4AV4gWZMRiDP24wMBZRCIYtWjUIjgYtYhiPHgsggOYQkoxQYBNEzl4FFAOGBgAXgjGyPLF
+        VrEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

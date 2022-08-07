@@ -31,8 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(program));
             this.panel = new System.Windows.Forms.Panel();
+            this.panelByO7q = new System.Windows.Forms.PictureBox();
+            this.panelBannerVersion = new System.Windows.Forms.PictureBox();
+            this.minimizeButton = new System.Windows.Forms.Button();
+            this.panelBanner = new System.Windows.Forms.PictureBox();
+            this.closeButton = new System.Windows.Forms.Button();
             this.dropBoxLabel = new System.Windows.Forms.Label();
             this.dropBoxPanel = new System.Windows.Forms.Panel();
+            this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
             this.installList = new System.Windows.Forms.ComboBox();
             this.programToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.createInstallButton = new System.Windows.Forms.Button();
@@ -40,18 +46,12 @@
             this.deleteInstallButton = new System.Windows.Forms.Button();
             this.launchButton = new System.Windows.Forms.Button();
             this.openPathButton = new System.Windows.Forms.Button();
-            this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
-            this.panelByO7q = new System.Windows.Forms.PictureBox();
-            this.panelBannerVersion = new System.Windows.Forms.PictureBox();
-            this.minimizeButton = new System.Windows.Forms.Button();
-            this.panelBanner = new System.Windows.Forms.PictureBox();
-            this.closeButton = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
-            this.dropBoxPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelByO7q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBannerVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBanner)).BeginInit();
+            this.dropBoxPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
@@ -68,6 +68,67 @@
             this.panel.Size = new System.Drawing.Size(251, 47);
             this.panel.TabIndex = 0;
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            // 
+            // panelByO7q
+            // 
+            this.panelByO7q.Image = global::cubeLauncher.Properties.Resources.byo7q;
+            this.panelByO7q.Location = new System.Drawing.Point(73, 31);
+            this.panelByO7q.Name = "panelByO7q";
+            this.panelByO7q.Size = new System.Drawing.Size(29, 14);
+            this.panelByO7q.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.panelByO7q.TabIndex = 0;
+            this.panelByO7q.TabStop = false;
+            this.panelByO7q.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelByO7q_MouseDown);
+            // 
+            // panelBannerVersion
+            // 
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_5_0;
+            this.panelBannerVersion.Location = new System.Drawing.Point(30, 29);
+            this.panelBannerVersion.Name = "panelBannerVersion";
+            this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);
+            this.panelBannerVersion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.panelBannerVersion.TabIndex = 0;
+            this.panelBannerVersion.TabStop = false;
+            this.panelBannerVersion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBannerVersion_MouseDown);
+            // 
+            // minimizeButton
+            // 
+            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
+            this.minimizeButton.Location = new System.Drawing.Point(182, 9);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(30, 30);
+            this.minimizeButton.TabIndex = 0;
+            this.minimizeButton.UseVisualStyleBackColor = true;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
+            // panelBanner
+            // 
+            this.panelBanner.Image = global::cubeLauncher.Properties.Resources.banner;
+            this.panelBanner.Location = new System.Drawing.Point(3, 8);
+            this.panelBanner.Name = "panelBanner";
+            this.panelBanner.Size = new System.Drawing.Size(157, 31);
+            this.panelBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.panelBanner.TabIndex = 0;
+            this.panelBanner.TabStop = false;
+            this.panelBanner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBanner_MouseDown);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(211, 9);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(30, 30);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // dropBoxLabel
             // 
@@ -95,6 +156,20 @@
             this.dropBoxPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragEnter);
             this.dropBoxPanel.DragLeave += new System.EventHandler(this.dropBoxPanel_DragLeave);
             // 
+            // dropBoxInfoPicture
+            // 
+            this.dropBoxInfoPicture.BackColor = System.Drawing.Color.Transparent;
+            this.dropBoxInfoPicture.Image = ((System.Drawing.Image)(resources.GetObject("dropBoxInfoPicture.Image")));
+            this.dropBoxInfoPicture.Location = new System.Drawing.Point(24, 23);
+            this.dropBoxInfoPicture.Name = "dropBoxInfoPicture";
+            this.dropBoxInfoPicture.Size = new System.Drawing.Size(202, 29);
+            this.dropBoxInfoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dropBoxInfoPicture.TabIndex = 0;
+            this.dropBoxInfoPicture.TabStop = false;
+            this.dropBoxInfoPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragDrop);
+            this.dropBoxInfoPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragEnter);
+            this.dropBoxInfoPicture.DragLeave += new System.EventHandler(this.dropBoxInfoPicture_DragLeave);
+            // 
             // installList
             // 
             this.installList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
@@ -109,6 +184,10 @@
             this.installList.TabIndex = 2;
             this.installList.DropDown += new System.EventHandler(this.installList_DropDown);
             this.installList.SelectedIndexChanged += new System.EventHandler(this.installList_SelectedIndexChanged);
+            // 
+            // programToolTip
+            // 
+            this.programToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.programToolTip_Draw);
             // 
             // createInstallButton
             // 
@@ -176,81 +255,6 @@
             this.openPathButton.UseVisualStyleBackColor = false;
             this.openPathButton.Click += new System.EventHandler(this.openPathButton_Click);
             // 
-            // dropBoxInfoPicture
-            // 
-            this.dropBoxInfoPicture.BackColor = System.Drawing.Color.Transparent;
-            this.dropBoxInfoPicture.Image = ((System.Drawing.Image)(resources.GetObject("dropBoxInfoPicture.Image")));
-            this.dropBoxInfoPicture.Location = new System.Drawing.Point(25, 24);
-            this.dropBoxInfoPicture.Name = "dropBoxInfoPicture";
-            this.dropBoxInfoPicture.Size = new System.Drawing.Size(202, 29);
-            this.dropBoxInfoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.dropBoxInfoPicture.TabIndex = 0;
-            this.dropBoxInfoPicture.TabStop = false;
-            this.dropBoxInfoPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragDrop);
-            this.dropBoxInfoPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragEnter);
-            this.dropBoxInfoPicture.DragLeave += new System.EventHandler(this.dropBoxInfoPicture_DragLeave);
-            // 
-            // panelByO7q
-            // 
-            this.panelByO7q.Image = global::cubeLauncher.Properties.Resources.byo7q;
-            this.panelByO7q.Location = new System.Drawing.Point(73, 31);
-            this.panelByO7q.Name = "panelByO7q";
-            this.panelByO7q.Size = new System.Drawing.Size(29, 14);
-            this.panelByO7q.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.panelByO7q.TabIndex = 0;
-            this.panelByO7q.TabStop = false;
-            this.panelByO7q.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelByO7q_MouseDown);
-            // 
-            // panelBannerVersion
-            // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_5_0;
-            this.panelBannerVersion.Location = new System.Drawing.Point(30, 29);
-            this.panelBannerVersion.Name = "panelBannerVersion";
-            this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);
-            this.panelBannerVersion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.panelBannerVersion.TabIndex = 0;
-            this.panelBannerVersion.TabStop = false;
-            this.panelBannerVersion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBannerVersion_MouseDown);
-            // 
-            // minimizeButton
-            // 
-            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
-            this.minimizeButton.Location = new System.Drawing.Point(182, 9);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(30, 30);
-            this.minimizeButton.TabIndex = 0;
-            this.minimizeButton.UseVisualStyleBackColor = true;
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            // 
-            // panelBanner
-            // 
-            this.panelBanner.Image = global::cubeLauncher.Properties.Resources.banner;
-            this.panelBanner.Location = new System.Drawing.Point(3, 8);
-            this.panelBanner.Name = "panelBanner";
-            this.panelBanner.Size = new System.Drawing.Size(157, 31);
-            this.panelBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.panelBanner.TabIndex = 0;
-            this.panelBanner.TabStop = false;
-            this.panelBanner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBanner_MouseDown);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(211, 9);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(30, 30);
-            this.closeButton.TabIndex = 1;
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // program
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,17 +271,18 @@
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1, 1);
             this.Name = "program";
             this.Text = "cubeLauncher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.program_FormClosing);
             this.Load += new System.EventHandler(this.program_Load);
             this.panel.ResumeLayout(false);
-            this.dropBoxPanel.ResumeLayout(false);
-            this.dropBoxPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelByO7q)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBannerVersion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBanner)).EndInit();
+            this.dropBoxPanel.ResumeLayout(false);
+            this.dropBoxPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).EndInit();
             this.ResumeLayout(false);
 
         }

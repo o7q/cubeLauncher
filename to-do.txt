@@ -1,2 +1,1 @@
 - Add anti-spam protection. Buttons do not have anti-spam protection
-- Change tooltip colors

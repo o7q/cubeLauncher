@@ -1,7 +1,8 @@
-~ v1.5.0dev
-- Feature to create installations
-- Options to save and load configs for individual installations
-- Variable and code comment renames
+~ v1.5.0
+- Added a feature to create blank installations
+- Added an option to save and load configs for individual installations
+- UI updates
+- Code updates (optimizations, more efficient)
 
 ~ v1.4.1
 - Small UI visual patch (options task logo not the right color, made drag & drop panel smaller)

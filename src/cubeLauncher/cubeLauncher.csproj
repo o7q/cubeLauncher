@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\loadconfig.png" />
     <None Include="Resources\options.png" />
     <None Include="Resources\launcher.png" />
     <None Include="Resources\options_header.png" />

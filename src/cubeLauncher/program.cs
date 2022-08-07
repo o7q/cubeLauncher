@@ -20,10 +20,11 @@ namespace cubeLauncher
         public static extern bool ReleaseCapture();
 
         // create global variables
+        // path variables
         string mainDir;
         string mcDir;
-        string installName;
         string installPath;
+        string installName;
         string destDir;
         // static json parser variables
         string path;
@@ -131,11 +132,25 @@ namespace cubeLauncher
             programToolTip.SetToolTip(dropBoxPanel, drgDrpTT);
             programToolTip.SetToolTip(dropBoxInfoPicture, drgDrpTT);
             programToolTip.SetToolTip(dropBoxLabel, "Output message");
-            programToolTip.SetToolTip(installList, "Show list of installed installations");
-            programToolTip.SetToolTip(openPathButton, "Open the folder path of the selected installation");
+            programToolTip.SetToolTip(installList, "Currently selected installation - Clicking the arrow will show a list of all installations");
+            programToolTip.SetToolTip(createInstallButton, "Create a blank installation - Specify the name in the textbox to the left");
             programToolTip.SetToolTip(deleteInstallButton, "Remove the selected installation");
+            programToolTip.SetToolTip(openPathButton, "Open the folder path of the selected installation");
             programToolTip.SetToolTip(optionsButton, "Open the options window");
-            programToolTip.SetToolTip(launchButton, "Launch the selected installation with the specified arguments");
+            programToolTip.SetToolTip(launchButton, "Launch the selected installation with the specified options");
+
+            // configure tooltip draw
+            programToolTip.OwnerDraw = true;
+            programToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            programToolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(183)))), ((int)(((byte)(93)))));
+        }
+
+        // draw tooltips
+        private void programToolTip_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            e.DrawText();
         }
 
         // form close
@@ -198,7 +213,7 @@ namespace cubeLauncher
                 // skip
             }
         }
-        
+
         // create button
         private void createInstallButton_Click(object sender, EventArgs e)
         {
@@ -280,11 +295,13 @@ namespace cubeLauncher
                         catch (Exception ex)
                         {
                             MessageBox.Show("Unknown Error: Unable to remove \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+                            updInstLst();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Error: Directory does not exist.");
+                        updInstLst();
                     }
                 }
             }
@@ -311,6 +328,19 @@ namespace cubeLauncher
         // options button
         private void optionsButton_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube") && installList.Text != "")
+            {
+                try
+                {
+                    Directory.CreateDirectory(mainDir + "\\" + installList.Text + "\\.cube");
+                    File.WriteAllText(mainDir + "\\" + installList.Text + "\\.cube\\config.cube", "# CUBELAUNCHER OVERRIDE CONFIG\nname: " + installList.Text + "\nversion: latest-release\nwidth: 1280\nheight: 720\narguments: -Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M\nmodloader: ");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+
             // open options form
             options options_form = new options();
             options_form.ShowDialog();
@@ -324,68 +354,61 @@ namespace cubeLauncher
                 clrDrpBxLbl();
 
                 // load from config.cube if it exists
-                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
+                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube") && !File.Exists(mainDir + "\\" + "config_ovrcube"))
                 {
-                    if (!File.Exists(mainDir + "\\" + "config_ovrcube"))
+                    try
                     {
-                        try
-                        {
-                            string line1_name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1);
-                            line1_name_format = line1_name.Replace("name: ", "");
-                            name = line1_name_format;
-                        }
-                        catch
-                        {
-                            // skip
-                        }
-
-                        try
-                        {
-                            string line2_version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2);
-                            line2_version_format = line2_version.Replace("version: ", "");
-                            version = line2_version_format;
-                        }
-                        catch
-                        {
-                            // skip
-                        }
-
-                        try
-                        {
-                            string line3_width = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3);
-                            line3_width_format = line3_width.Replace("width: ", "");
-                            width = int.Parse(line3_width_format);
-                        }
-                        catch
-                        {
-                            // skip
-                        }
-
-                        try
-                        {
-                            string line4_height = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4);
-                            line4_height_format = line4_height.Replace("height: ", "");
-                            height = int.Parse(line4_height_format);
-                        }
-                        catch
-                        {
-                            // skip
-                        }
-
-                        try
-                        {
-                            string line5_arguments = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5);
-                            line5_arguments_format = line5_arguments.Replace("arguments: ", "");
-                            args = line5_arguments_format;
-                        }
-                        catch
-                        {
-                            // skip
-                        }
+                        string line1_name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1);
+                        line1_name_format = line1_name.Replace("name: ", "");
+                        name = line1_name_format;
                     }
-                    else
+                    catch
                     {
-                        readFrmOp();
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line2_version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2);
+                        line2_version_format = line2_version.Replace("version: ", "");
+                        version = line2_version_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line3_width = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3);
+                        line3_width_format = line3_width.Replace("width: ", "");
+                        width = int.Parse(line3_width_format);
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line4_height = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4);
+                        line4_height_format = line4_height.Replace("height: ", "");
+                        height = int.Parse(line4_height_format);
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line5_arguments = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5);
+                        line5_arguments_format = line5_arguments.Replace("arguments: ", "");
+                        args = line5_arguments_format;
+                    }
+                    catch
+                    {
+                        // skip
                     }
                 }
                 else
@@ -450,7 +473,7 @@ namespace cubeLauncher
         // install function
         private void install(DragEventArgs e)
         {
-            drpBxRstClr();
+            drpBxRstColr();
 
             string[] file = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string path in file)
@@ -464,7 +487,7 @@ namespace cubeLauncher
             // prompt user before overwriting installation
             if (Directory.Exists(mainDir + "\\" + installName))
             {
-                drpBxRstClr();
+                drpBxRstColr();
                 DialogResult prompt = MessageBox.Show("Are you sure you want to reinstall \"" + installName + "\"?\n\nAn installation with that name already exists and it will be reinstalled resulting in all data (worlds, options, etc.) being removed.\n\nOtherwise you can merge the installation which will preserve unchanged data.\n\nYes = Reinstall\nNo = Merge\nCancel = Do nothing", "", MessageBoxButtons.YesNoCancel);
                 if (prompt == DialogResult.Yes)
                 {
@@ -523,10 +546,17 @@ namespace cubeLauncher
                 }
                 );
             }
-            catch
+            catch (Exception ex)
             {
-                dropBoxLabel.Text = "Please provide a folder";
+                MessageBox.Show("Unknown Error: Unable to install \"" + installName + "\"!\n\nFull Error:\n" + ex);
+
+                dropBoxLabel.Text = "";
                 dropBoxLabel.Update();
+
+                updInstLst();
+
+                installList.Text = installName;
+
                 return;
             }
 
@@ -549,8 +579,8 @@ namespace cubeLauncher
             string[] files = Directory.GetDirectories(mainDir);
             foreach (string file in files)
             {
-                installList.Items.Add(Path.GetFileNameWithoutExtension(file));
-            }    
+                installList.Items.Add(Path.GetFileName(file));
+            }
         }
 
         // move form function
@@ -564,13 +594,13 @@ namespace cubeLauncher
         }
 
         // highlight dropbox function
-        private void drpBxHiClr()
+        private void drpBxHiColr()
         {
             dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
         }
 
         // reset highlight dropbox function
-        private void drpBxRstClr()
+        private void drpBxRstColr()
         {
             dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
         }
@@ -693,7 +723,7 @@ namespace cubeLauncher
                 e.Effect = DragDropEffects.All;
             }
 
-            drpBxHiClr();
+            drpBxHiColr();
         }
 
         // dropboxpicture enter
@@ -704,19 +734,19 @@ namespace cubeLauncher
                 e.Effect = DragDropEffects.All;
             }
 
-            drpBxHiClr();
+            drpBxHiColr();
         }
 
         // dropbox leave
         private void dropBoxPanel_DragLeave(object sender, EventArgs e)
         {
-            drpBxRstClr();
+            drpBxRstColr();
         }
 
         // dropboxpicture leave
         private void dropBoxInfoPicture_DragLeave(object sender, EventArgs e)
         {
-            drpBxRstClr();
+            drpBxRstColr();
         }
 
         // move form senders

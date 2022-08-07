@@ -125,8 +125,8 @@ namespace cubeLauncher
             optionsToolTip.SetToolTip(customVersionBox, "Specify the version for the launcher");
             optionsToolTip.SetToolTip(customWidthBox, "Specify the resolution width for the launcher");
             optionsToolTip.SetToolTip(customHeightBox, "Specify the resolution height for the launcher");
-            optionsToolTip.SetToolTip(customArgsBox, "Specify the argument override for the launcher");
-            string ovrCubeChkTT = "Override the .cube override config";
+            optionsToolTip.SetToolTip(customArgsBox, "Specify the arguments for the launcher");
+            string ovrCubeChkTT = "Override the .cube config";
             optionsToolTip.SetToolTip(overrideCubeCheckbox, ovrCubeChkTT);
             optionsToolTip.SetToolTip(overrideCubePicture, ovrCubeChkTT);
             optionsToolTip.SetToolTip(saveConfigButton, "Save the current options to a config file specific to the selected installation");
@@ -233,7 +233,7 @@ namespace cubeLauncher
 
             try
             {
-                string cubeConfig = "# CUBELAUNCHER OVERRIDE CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: ";
+                string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: ";
                 if (File.Exists(mainDir + "\\config_instname") && installName != "")
                 {
                     Directory.CreateDirectory(mainDir + "\\" + installName + "\\.cube");

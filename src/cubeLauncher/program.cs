@@ -333,7 +333,7 @@ namespace cubeLauncher
                 try
                 {
                     Directory.CreateDirectory(mainDir + "\\" + installList.Text + "\\.cube");
-                    File.WriteAllText(mainDir + "\\" + installList.Text + "\\.cube\\config.cube", "# CUBELAUNCHER OVERRIDE CONFIG\nname: " + installList.Text + "\nversion: latest-release\nwidth: 1280\nheight: 720\narguments: -Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M\nmodloader: ");
+                    File.WriteAllText(mainDir + "\\" + installList.Text + "\\.cube\\config.cube", "# CUBELAUNCHER CONFIG\nname: " + installList.Text + "\nversion: latest-release\nwidth: 1280\nheight: 720\narguments: -Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M\nmodloader: ");
                 }
                 catch
                 {
@@ -413,7 +413,67 @@ namespace cubeLauncher
                 }
                 else
                 {
-                    readFrmOp();
+                    // if config.cube doesn't exist then read text from options
+                    if (File.Exists(mainDir + "\\config_name"))
+                    {
+                        name = File.ReadAllText(mainDir + "\\config_name");
+                    }
+                    else
+                    {
+                        name = installList.Text;
+                    }
+
+                    if (File.Exists(mainDir + "\\config_ver"))
+                    {
+                        version = File.ReadAllText(mainDir + "\\config_ver");
+                    }
+                    else
+                    {
+                        version = "latest-release";
+                    }
+
+                    if (File.Exists(mainDir + "\\config_x"))
+                    {
+                        try
+                        {
+                            string width_string = File.ReadAllText(mainDir + "\\config_x");
+                            width = int.Parse(width_string);
+                        }
+                        catch
+                        {
+                            width = 1280;
+                        }
+                    }
+                    else
+                    {
+                        width = 1280;
+                    }
+
+                    if (File.Exists(mainDir + "\\config_y"))
+                    {
+                        try
+                        {
+                            string height_string = File.ReadAllText(mainDir + "\\config_y");
+                            height = int.Parse(height_string);
+                        }
+                        catch
+                        {
+                            height = 720;
+                        }
+                    }
+                    else
+                    {
+                        height = 720;
+                    }
+
+                    if (File.Exists(mainDir + "\\config_args"))
+                    {
+                        args = File.ReadAllText(mainDir + "\\config_args");
+                    }
+                    else
+                    {
+                        args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
+                    }
                 }
 
                 // configure static variables
@@ -632,72 +692,6 @@ namespace cubeLauncher
                         MessageBox.Show("Unknown Error: Unable to start \"" + line6_modloader_format + "\"!\n\nFull Error:\n" + ex);
                     }
                 }
-            }
-        }
-
-        // read from options function
-        private void readFrmOp()
-        {
-            // if config.cube doesn't exist then read text from config overrides
-            if (File.Exists(mainDir + "\\config_name"))
-            {
-                name = File.ReadAllText(mainDir + "\\config_name");
-            }
-            else
-            {
-                name = installList.Text;
-            }
-
-            if (File.Exists(mainDir + "\\config_ver"))
-            {
-                version = File.ReadAllText(mainDir + "\\config_ver");
-            }
-            else
-            {
-                version = "latest-release";
-            }
-
-            if (File.Exists(mainDir + "\\config_x"))
-            {
-                try
-                {
-                    string width_string = File.ReadAllText(mainDir + "\\config_x");
-                    width = int.Parse(width_string);
-                }
-                catch
-                {
-                    width = 1280;
-                }
-            }
-            else
-            {
-                width = 1280;
-            }
-
-            if (File.Exists(mainDir + "\\config_y"))
-            {
-                try
-                {
-                    string height_string = File.ReadAllText(mainDir + "\\config_y");
-                    height = int.Parse(height_string);
-                }
-                catch
-                {
-                    height = 720;
-                }
-            }
-            else
-            {
-                height = 720;
-            }
-
-            if (File.Exists(mainDir + "\\config_args"))
-            {
-                args = File.ReadAllText(mainDir + "\\config_args");
-            }
-            else
-            {
-                args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
             }
         }
 

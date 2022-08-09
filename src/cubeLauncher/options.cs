@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -17,8 +18,10 @@ namespace cubeLauncher
         public static extern bool ReleaseCapture();
 
         // create global variables
+
         // path variables
         string mainDir;
+
         // .cube file launcher variables
         string installName;
         string customName;
@@ -26,6 +29,7 @@ namespace cubeLauncher
         string customWidth;
         string customHeight;
         string customArgs;
+
         // dynamic .cube file parser variables
         string line1_name_format;
         string line2_version_format;
@@ -48,75 +52,115 @@ namespace cubeLauncher
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
 
-            launcherPathLabel.Text = "";
-
-            if (File.Exists(mainDir + "\\" + "config_ovrcube"))
-            {
-                overrideCubeCheckbox.Checked = true;
-            }
-
-            // load configs into memory
-
-            // name
-            if (File.Exists(mainDir + "\\config_name"))
-            {
-                string config_name = File.ReadAllText(mainDir + "\\config_name");
-                customNameBox.Text = config_name;
-            }
-
-            // version
-            if (File.Exists(mainDir + "\\config_ver"))
-            {
-                string config_ver = File.ReadAllText(mainDir + "\\config_ver");
-                customVersionBox.Text = config_ver;
-            }
-
-            // width
-            if (File.Exists(mainDir + "\\config_x"))
-            {
-                string config_x = File.ReadAllText(mainDir + "\\config_x");
-                customWidthBox.Text = config_x;
-            }
-
-            // height
-            if (File.Exists(mainDir + "\\config_y"))
-            {
-                string config_y = File.ReadAllText(mainDir + "\\config_y");
-                customHeightBox.Text = config_y;
-            }
-
-            // argument
-            if (File.Exists(mainDir + "\\config_args"))
-            {
-                string config_args = File.ReadAllText(mainDir + "\\config_args");
-                customArgsBox.Text = config_args;
-            }
-
-            // launcher path
-            if (File.Exists(mainDir + "\\config_lchrpth"))
-            {
-                string config_lchrpth = File.ReadAllText(mainDir + "\\config_lchrpth");
-                launcherPathLabel.Text = config_lchrpth;
-            }
-
             // configure installname
             try
             {
-                installName = File.ReadAllText(mainDir + "\\config_instname");
+                installName = File.ReadAllText(mainDir + "\\conf_instname");
             }
             catch
             {
                 // skip
             }
 
-            // configure config label
-            if (File.Exists(mainDir + "\\config_instname") && installName != "")
+            // do not update on window refresh
+            if (!File.Exists(mainDir + "\\conf_norfrsh"))
+            {
+                // load config
+                if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
+                {
+                    try
+                    {
+                        string line1_name = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(1);
+                        line1_name_format = line1_name.Replace("name: ", "");
+                        customNameBox.Text = line1_name_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line2_version = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(2);
+                        line2_version_format = line2_version.Replace("version: ", "");
+                        customVersionBox.Text = line2_version_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line3_width = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(3);
+                        line3_width_format = line3_width.Replace("width: ", "");
+                        customWidthBox.Text = line3_width_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line4_height = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(4);
+                        line4_height_format = line4_height.Replace("height: ", "");
+                        customHeightBox.Text = line4_height_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+
+                    try
+                    {
+                        string line5_arguments = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(5);
+                        line5_arguments_format = line5_arguments.Replace("arguments: ", "");
+                        customArgsBox.Text = line5_arguments_format;
+                    }
+                    catch
+                    {
+                        // skip
+                    }
+                }
+                else
+                {
+                    customNameBox.Text = "";
+                    customVersionBox.Text = "";
+                    customWidthBox.Text = "";
+                    customHeightBox.Text = "";
+                    customArgsBox.Text = "";
+                }
+            }
+
+            // create no refresh config
+            File.WriteAllText(mainDir + "\\conf_norfrsh", "");
+
+            // show config name if it is configured
+            if (installName != "")
             {
                 configNameLabel.Text = "Config for \"" + installName + "\"";
             }
             else
             {
                 configNameLabel.Text = "";
+            }
+
+            // show launcher path if it is configured
+            if (File.Exists(mainDir + "\\conf_lchrpth"))
+            {
+                try
+                {
+                    launcherPathLabel.Text = File.ReadAllText(mainDir + "\\conf_lchrpth");
+                }
+                catch
+                {
+                    // skip
+                }
+            }
+            else
+            {
+                launcherPathLabel.Text = "";
             }
 
             // configure tooltips
@@ -126,11 +170,6 @@ namespace cubeLauncher
             optionsToolTip.SetToolTip(customWidthBox, "Specify the resolution width for the launcher");
             optionsToolTip.SetToolTip(customHeightBox, "Specify the resolution height for the launcher");
             optionsToolTip.SetToolTip(customArgsBox, "Specify the arguments for the launcher");
-            string ovrCubeChkTT = "Override the .cube config";
-            optionsToolTip.SetToolTip(overrideCubeCheckbox, ovrCubeChkTT);
-            optionsToolTip.SetToolTip(overrideCubePicture, ovrCubeChkTT);
-            optionsToolTip.SetToolTip(saveConfigButton, "Save the current options to a config file specific to the selected installation");
-            optionsToolTip.SetToolTip(loadConfigButton, "Load the current config specific to the selected installation");
             optionsToolTip.SetToolTip(selectPathButton, "Select an alternative path for the Minecraft Launcher");
             optionsToolTip.SetToolTip(clearPathButton, "Reset the selected Minecraft Launcher path");
             lchrPthTT();
@@ -154,38 +193,16 @@ namespace cubeLauncher
         // close button
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            try
+            {
+                File.Delete(mainDir + "\\conf_norfrsh");
+            }
+            catch
+            {
+                // skip
+            }
 
-        // ignore .cube file checkbox
-        private void overrideCubeCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (overrideCubeCheckbox.Checked == true)
-            {
-                File.WriteAllText(mainDir + "\\" + "config_ovrcube", "");
-            }
-            else
-            {
-                File.Delete(mainDir + "\\" + "config_ovrcube");
-            }
-        }
-
-        // change checkbox state on click
-        private void overrideCubePicture_Click(object sender, EventArgs e)
-        {
-            if (!overrideCubeCheckbox.Checked == true)
-            {
-                overrideCubeCheckbox.Checked = true;
-            }
-            else
-            {
-                overrideCubeCheckbox.Checked = false;
-            }
-        }
-
-        // create config button
-        private void saveConfigButton_Click(object sender, EventArgs e)
-        {
+            // save config
             if (customNameBox.Text == "")
             {
                 customName = installName;
@@ -233,86 +250,21 @@ namespace cubeLauncher
 
             try
             {
-                string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: ";
-                if (File.Exists(mainDir + "\\config_instname") && installName != "")
+                string modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
+                string modloader_format = modloader.Replace("modloader: ", "");
+                string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: " + modloader_format;
+                if (File.Exists(mainDir + "\\conf_instname") && installName != "")
                 {
                     Directory.CreateDirectory(mainDir + "\\" + installName + "\\.cube");
                     File.WriteAllText(mainDir + "\\" + installName + "\\.cube\\config.cube", cubeConfig);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Unknown Error: Unable to save \"config.cube\"!\n\nFull Error:\n" + ex);
+                // skip
             }
-        }
 
-        private void loadConfigButton_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
-            {
-                try
-                {
-                    string line1_name = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(1);
-                    line1_name_format = line1_name.Replace("name: ", "");
-                    customNameBox.Text = line1_name_format;
-                }
-                catch
-                {
-                    // skip
-                }
-
-                try
-                {
-                    string line2_version = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(2);
-                    line2_version_format = line2_version.Replace("version: ", "");
-                    customVersionBox.Text = line2_version_format;
-                }
-                catch
-                {
-                    // skip
-                }
-
-                try
-                {
-                    string line3_width = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(3);
-                    line3_width_format = line3_width.Replace("width: ", "");
-                    customWidthBox.Text = line3_width_format;
-                }
-                catch
-                {
-                    // skip
-                }
-
-                try
-                {
-                    string line4_height = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(4);
-                    line4_height_format = line4_height.Replace("height: ", "");
-                    customHeightBox.Text = line4_height_format;
-                }
-                catch
-                {
-                    // skip
-                }
-
-                try
-                {
-                    string line5_arguments = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(5);
-                    line5_arguments_format = line5_arguments.Replace("arguments: ", "");
-                    customArgsBox.Text = line5_arguments_format;
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-            else
-            {
-                customNameBox.Text = "";
-                customVersionBox.Text = "";
-                customWidthBox.Text = "";
-                customHeightBox.Text = "";
-                customArgsBox.Text = "";
-            }
+            this.Close();
         }
 
         // open path selection dialog
@@ -331,7 +283,7 @@ namespace cubeLauncher
 
                 try
                 {
-                    File.WriteAllText(mainDir + "\\config_lchrpth", launcherPath);
+                    File.WriteAllText(mainDir + "\\conf_lchrpth", launcherPath);
                 }
                 catch
                 {
@@ -347,7 +299,7 @@ namespace cubeLauncher
         {
             try
             {
-                File.Delete(mainDir + "\\config_lchrpth");
+                File.Delete(mainDir + "\\conf_lchrpth");
             }
             catch
             {
@@ -357,81 +309,36 @@ namespace cubeLauncher
             launcherPathLabel.Text = "";
         }
 
-        // config textboxes
-
-        // name textbox
-        private void customNameBox_TextChanged(object sender, EventArgs e)
+        // play sculk sounds on doubleclick
+        private void grass2Picture_DoubleClick(object sender, EventArgs e)
         {
-            File.WriteAllText(mainDir + "\\config_name", customNameBox.Text);
-
-            if (customNameBox.Text == "")
+            switch (new Random().Next(1, 4))
             {
-                try
-                {
-                    File.Delete(mainDir + "\\config_name");
-                }
-                catch
-                {
-                    // skip
-                }
+                case 1:
+                    System.Reflection.Assembly a1 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s1 = a1.GetManifestResourceStream("cubeLauncher.Resources.sculk1.wav");
+                    SoundPlayer p1 = new SoundPlayer(s1);
+                    p1.Play();
+
+                    break;
+                case 2:
+                    System.Reflection.Assembly a2 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s2 = a2.GetManifestResourceStream("cubeLauncher.Resources.sculk2.wav");
+                    SoundPlayer p2 = new SoundPlayer(s2);
+                    p2.Play();
+
+                    break;
+                case 3:
+                    System.Reflection.Assembly a3 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s3 = a3.GetManifestResourceStream("cubeLauncher.Resources.sculk3.wav");
+                    SoundPlayer p3 = new SoundPlayer(s3);
+                    p3.Play();
+
+                    break;
             }
         }
 
-        // version textbox
-        private void customVersionBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_ver", customVersionBox.Text);
-
-            if (customVersionBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_ver");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        // width textbox
-        private void customWidthBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_x", customWidthBox.Text);
-
-            if (customWidthBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_x");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        // height textbox
-        private void customHeightBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_y", customHeightBox.Text);
-
-            if (customHeightBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_y");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-        }
-
-        //functions
+        // functions
 
         // move form function
         private void mvFrm(MouseEventArgs e)
@@ -446,9 +353,9 @@ namespace cubeLauncher
         // set options tooltip function
         private void lchrPthTT()
         {
-            if (File.Exists(mainDir + "\\config_lchrpth"))
+            if (File.Exists(mainDir + "\\conf_lchrpth"))
             {
-                string lchrpth = File.ReadAllText(mainDir + "\\config_lchrpth");
+                string lchrpth = File.ReadAllText(mainDir + "\\conf_lchrpth");
                 optionsToolTip.SetToolTip(launcherPathLabel, lchrpth);
             }
         }
@@ -471,24 +378,6 @@ namespace cubeLauncher
         private void optionsPicture_MouseDown(object sender, MouseEventArgs e)
         {
             mvFrm(e);
-        }
-
-        // arguments textbox
-        private void customArgsBox_TextChanged(object sender, EventArgs e)
-        {
-            File.WriteAllText(mainDir + "\\config_args", customArgsBox.Text);
-
-            if (customArgsBox.Text == "")
-            {
-                try
-                {
-                    File.Delete(mainDir + "\\config_args");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
         }
     }
 }

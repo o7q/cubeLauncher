@@ -1,6 +1,9 @@
-~ v1.5.1dev
+~ v1.6.0
+- The options menu is much more simple (it now saves and loads automatically, removed unneeded buttons)
+- Made the UI more fancy
+- Added warning if the user trys to launch multiple instances of cubeLauncher (having multiple instances open can cause problems)
 - Fixed typos
-- Removed unneeded function
+- Code updates (removed unneeded functions)
 
 ~ v1.5.0
 - Added a feature to create blank installations

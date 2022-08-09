@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading.Tasks;
@@ -20,20 +21,24 @@ namespace cubeLauncher
         public static extern bool ReleaseCapture();
 
         // create global variables
+
         // path variables
         string mainDir;
         string mcDir;
         string installPath;
         string installName;
         string destDir;
+
         // static json parser variables
         string path;
+
         // dynamic json parser variables
         string name;
         string version;
         int width;
         int height;
         string args;
+
         // dynamic .cube file parser variables
         string line1_name_format;
         string line2_version_format;
@@ -53,13 +58,25 @@ namespace cubeLauncher
         // form load
         private void program_Load(object sender, EventArgs e)
         {
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                DialogResult prompt = MessageBox.Show("An instance of cubeLauncher is already running.\nHaving two or more instances of cubeLauncher running simultaneously can cause issues (file corruption, malfunctioning).\n\nAre you sure you want to continue?", "", MessageBoxButtons.YesNo);
+                if (prompt == DialogResult.Yes)
+                {
+                    // continue
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
 
             // configure appdata path
             string roamingDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
             mcDir = roamingDir + "\\.minecraft";
 
-            // try to create main directory
+            // try to create the main directory
             try
             {
                 Directory.CreateDirectory(mainDir);
@@ -70,18 +87,11 @@ namespace cubeLauncher
             }
 
             // try to make a backup of launcher profiles
-            if (!File.Exists(mainDir + "\\" + "launcher_profiles_bak.json"))
+            try
             {
-                try
-                {
-                    File.Copy(mcDir + "\\" + "launcher_profiles.json", mainDir + "\\" + "launcher_profiles_bak.json");
-                }
-                catch
-                {
-                    // skip
-                }
+                File.Copy(mcDir + "\\" + "launcher_profiles.json", mainDir + "\\" + "launcher_profiles_bak.json");
             }
-            else
+            catch
             {
                 // skip
             }
@@ -98,10 +108,6 @@ namespace cubeLauncher
                     // skip
                 }
             }
-            else
-            {
-                // skip
-            }
 
             // update install list
             updInstLst();
@@ -110,14 +116,15 @@ namespace cubeLauncher
             this.dropBoxPanel.AllowDrop = true;
             this.dropBoxInfoPicture.AllowDrop = true;
 
-            // clear drop box label test
+            // configure drop box label
+            dropBoxLabel.BringToFront();
             dropBoxLabel.Text = "";
             dropBoxLabel.Update();
 
             // load last client session
             try
             {
-                string instidx_string = File.ReadAllText(mainDir + "\\config_instindx");
+                string instidx_string = File.ReadAllText(mainDir + "\\conf_instindx");
                 installList.SelectedIndex = int.Parse(instidx_string);
             }
             catch
@@ -131,6 +138,7 @@ namespace cubeLauncher
             string drgDrpTT = "Drag and drop a folder to install";
             programToolTip.SetToolTip(dropBoxPanel, drgDrpTT);
             programToolTip.SetToolTip(dropBoxInfoPicture, drgDrpTT);
+            programToolTip.SetToolTip(grassBanner, drgDrpTT);
             programToolTip.SetToolTip(dropBoxLabel, "Output message");
             programToolTip.SetToolTip(installList, "Currently selected installation - Clicking the arrow will show a list of all installations");
             programToolTip.SetToolTip(createInstallButton, "Create a blank installation - Specify the name in the textbox to the left");
@@ -163,14 +171,7 @@ namespace cubeLauncher
                 {
                     string profileContent = File.ReadAllText(mainDir + "\\launcher_profiles_bak.json");
                     File.WriteAllText(mcDir + "\\launcher_profiles.json", profileContent);
-                }
-                catch
-                {
-                    // skip
-                }
 
-                try
-                {
                     File.Delete(mainDir + "\\launcher_profiles_bak.json");
                 }
                 catch
@@ -205,8 +206,8 @@ namespace cubeLauncher
         {
             try
             {
-                File.WriteAllText(mainDir + "\\config_instindx", installList.SelectedIndex.ToString());
-                File.WriteAllText(mainDir + "\\config_instname", installList.Text);
+                File.WriteAllText(mainDir + "\\conf_instindx", installList.SelectedIndex.ToString());
+                File.WriteAllText(mainDir + "\\conf_instname", installList.Text);
             }
             catch
             {
@@ -259,9 +260,9 @@ namespace cubeLauncher
                         // try to delete installation and update labels
                         try
                         {
-                            string delName = installList.Text;
                             Directory.Delete(mainDir + "\\" + installList.Text, true);
 
+                            string delName = installList.Text;
                             dropBoxLabel.Text = "Removed \"" + delName + "\" successfully";
                             dropBoxLabel.Update();
 
@@ -270,21 +271,14 @@ namespace cubeLauncher
                             try
                             {
                                 installList.SelectedIndex = 0;
-                            }
-                            catch
-                            {
-                                // skip
-                            }
 
-                            try
-                            {
                                 if (installList.Text != "")
                                 {
-                                    File.WriteAllText(mainDir + "\\config_instname", installList.Text);
+                                    File.WriteAllText(mainDir + "\\conf_instname", installList.Text);
                                 }
                                 else
                                 {
-                                    File.WriteAllText(mainDir + "\\config_instname", "");
+                                    File.WriteAllText(mainDir + "\\conf_instname", "");
                                 }
                             }
                             catch
@@ -295,12 +289,14 @@ namespace cubeLauncher
                         catch (Exception ex)
                         {
                             MessageBox.Show("Unknown Error: Unable to remove \"" + installList.Text + "\"!\n\nFull Error:\n" + ex);
+
                             updInstLst();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Error: Directory does not exist.");
+
                         updInstLst();
                     }
                 }
@@ -354,7 +350,7 @@ namespace cubeLauncher
                 clrDrpBxLbl();
 
                 // load from config.cube if it exists
-                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube") && !File.Exists(mainDir + "\\" + "config_ovrcube"))
+                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube") && !File.Exists(mainDir + "\\" + "conf_ovrcube"))
                 {
                     try
                     {
@@ -413,67 +409,11 @@ namespace cubeLauncher
                 }
                 else
                 {
-                    // if config.cube doesn't exist then read text from options
-                    if (File.Exists(mainDir + "\\config_name"))
-                    {
-                        name = File.ReadAllText(mainDir + "\\config_name");
-                    }
-                    else
-                    {
-                        name = installList.Text;
-                    }
-
-                    if (File.Exists(mainDir + "\\config_ver"))
-                    {
-                        version = File.ReadAllText(mainDir + "\\config_ver");
-                    }
-                    else
-                    {
-                        version = "latest-release";
-                    }
-
-                    if (File.Exists(mainDir + "\\config_x"))
-                    {
-                        try
-                        {
-                            string width_string = File.ReadAllText(mainDir + "\\config_x");
-                            width = int.Parse(width_string);
-                        }
-                        catch
-                        {
-                            width = 1280;
-                        }
-                    }
-                    else
-                    {
-                        width = 1280;
-                    }
-
-                    if (File.Exists(mainDir + "\\config_y"))
-                    {
-                        try
-                        {
-                            string height_string = File.ReadAllText(mainDir + "\\config_y");
-                            height = int.Parse(height_string);
-                        }
-                        catch
-                        {
-                            height = 720;
-                        }
-                    }
-                    else
-                    {
-                        height = 720;
-                    }
-
-                    if (File.Exists(mainDir + "\\config_args"))
-                    {
-                        args = File.ReadAllText(mainDir + "\\config_args");
-                    }
-                    else
-                    {
-                        args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
-                    }
+                    name = installList.Text;
+                    version = "latest-release";
+                    width = 1280;
+                    height = 720;
+                    args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
                 }
 
                 // configure static variables
@@ -487,11 +427,10 @@ namespace cubeLauncher
                 File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
 
                 // attempt to launch the minecraft launcher
-                if (File.Exists(mainDir + "\\config_lchrpth"))
+                if (File.Exists(mainDir + "\\conf_lchrpth"))
                 {
                     // try to launch from the custom directory
-                    string launcherPath = File.ReadAllText(mainDir + "\\config_lchrpth");
-
+                    string launcherPath = File.ReadAllText(mainDir + "\\conf_lchrpth");
                     try
                     {
                         Process.Start(launcherPath);
@@ -525,6 +464,35 @@ namespace cubeLauncher
             {
                 dropBoxLabel.Text = "No installation is selected";
                 dropBoxLabel.Update();
+            }
+        }
+
+        // play grass sounds on doubleclick
+        private void grassBanner_DoubleClick(object sender, EventArgs e)
+        {
+            switch (new Random().Next(1, 4))
+            {
+                case 1:
+                    System.Reflection.Assembly a1 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s1 = a1.GetManifestResourceStream("cubeLauncher.Resources.grass1.wav");
+                    SoundPlayer p1 = new SoundPlayer(s1);
+                    p1.Play();
+
+                    break;
+                case 2:
+                    System.Reflection.Assembly a2 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s2 = a2.GetManifestResourceStream("cubeLauncher.Resources.grass2.wav");
+                    SoundPlayer p2 = new SoundPlayer(s2);
+                    p2.Play();
+
+                    break;
+                case 3:
+                    System.Reflection.Assembly a3 = System.Reflection.Assembly.GetExecutingAssembly();
+                    System.IO.Stream s3 = a3.GetManifestResourceStream("cubeLauncher.Resources.grass3.wav");
+                    SoundPlayer p3 = new SoundPlayer(s3);
+                    p3.Play();
+
+                    break;
             }
         }
 
@@ -615,7 +583,7 @@ namespace cubeLauncher
 
                 updInstLst();
 
-                installList.Text = installName;
+                installList.Text = "";
 
                 return;
             }

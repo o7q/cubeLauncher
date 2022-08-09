@@ -110,14 +110,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\loadconfig.png" />
-    <None Include="Resources\options.png" />
-    <None Include="Resources\launcher.png" />
-    <None Include="Resources\options_header.png" />
+    <None Include="Resources\dragndrop.png" />
+    <None Include="Resources\127x240_gradient.png" />
+    <EmbeddedResource Include="Resources\sculk1.wav" />
+    <EmbeddedResource Include="Resources\sculk2.wav" />
+    <EmbeddedResource Include="Resources\sculk3.wav" />
+    <EmbeddedResource Include="Resources\grass1.wav" />
+    <EmbeddedResource Include="Resources\grass2.wav" />
+    <EmbeddedResource Include="Resources\grass3.wav" />
+    <None Include="Resources\menu_gradient.png" />
     <None Include="Resources\open.png" />
-    <None Include="Resources\saveconfig.png" />
-    <None Include="Resources\overrideconfig.png" />
-    <None Include="Resources\v1.5.0.png" />
+    <None Include="Resources\launch_gradient.png" />
+    <None Include="Resources\25x_gradient.png" />
+    <None Include="Resources\v1.6.0.png" />
+    <None Include="Resources\grass2.png" />
+    <None Include="Resources\grass.png" />
+    <None Include="Resources\options.png" />
+    <None Include="Resources\options_header.png" />
     <None Include="Resources\new.png" />
     <None Include="Resources\close__.png" />
     <None Include="Resources\close_x.png" />
@@ -129,12 +138,10 @@
     <None Include="Resources\name.png" />
     <None Include="Resources\logo_options.png" />
     <None Include="Resources\close_x_options.png" />
-    <None Include="Resources\pathing.png" />
     <None Include="Resources\byo7q.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\x.png" />
     <None Include="Resources\launch.png" />
-    <None Include="Resources\dragndrop.png" />
     <None Include="Resources\banner.png" />
   </ItemGroup>
   <ItemGroup>
@@ -149,5 +156,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

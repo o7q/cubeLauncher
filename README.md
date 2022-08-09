@@ -56,8 +56,8 @@ Place the installer file alongside "config.cube" and specify the name of that fi
 
 <br>
 
-<img src="assets/images/v150/v150.png"/> \
-<img src="assets/images/v150/v150_2.png"/>
+<img src="assets/images/v160/v160.png"/> \
+<img src="assets/images/v160/v160_2.png"/>
 
 <br>
 

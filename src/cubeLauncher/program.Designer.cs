@@ -36,9 +36,6 @@
             this.minimizeButton = new System.Windows.Forms.Button();
             this.panelBanner = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.Button();
-            this.dropBoxLabel = new System.Windows.Forms.Label();
-            this.dropBoxPanel = new System.Windows.Forms.Panel();
-            this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
             this.installList = new System.Windows.Forms.ComboBox();
             this.programToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.createInstallButton = new System.Windows.Forms.Button();
@@ -46,11 +43,16 @@
             this.deleteInstallButton = new System.Windows.Forms.Button();
             this.launchButton = new System.Windows.Forms.Button();
             this.openPathButton = new System.Windows.Forms.Button();
+            this.dropBoxPanel = new System.Windows.Forms.Panel();
+            this.grassBanner = new System.Windows.Forms.PictureBox();
+            this.dropBoxInfoPicture = new System.Windows.Forms.PictureBox();
+            this.dropBoxLabel = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelByO7q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBannerVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBanner)).BeginInit();
             this.dropBoxPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grassBanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             // 
             // panelBannerVersion
             // 
-            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_5_0;
+            this.panelBannerVersion.Image = global::cubeLauncher.Properties.Resources.v1_6_0;
             this.panelBannerVersion.Location = new System.Drawing.Point(30, 29);
             this.panelBannerVersion.Name = "panelBannerVersion";
             this.panelBannerVersion.Size = new System.Drawing.Size(47, 17);
@@ -98,7 +100,7 @@
             this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
-            this.minimizeButton.Location = new System.Drawing.Point(182, 9);
+            this.minimizeButton.Location = new System.Drawing.Point(183, 9);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(30, 30);
             this.minimizeButton.TabIndex = 0;
@@ -123,58 +125,18 @@
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(211, 9);
+            this.closeButton.Location = new System.Drawing.Point(212, 9);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(30, 30);
             this.closeButton.TabIndex = 1;
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // dropBoxLabel
-            // 
-            this.dropBoxLabel.AutoSize = true;
-            this.dropBoxLabel.BackColor = System.Drawing.Color.Transparent;
-            this.dropBoxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.dropBoxLabel.Location = new System.Drawing.Point(-1, 55);
-            this.dropBoxLabel.Name = "dropBoxLabel";
-            this.dropBoxLabel.Size = new System.Drawing.Size(224, 15);
-            this.dropBoxLabel.TabIndex = 0;
-            this.dropBoxLabel.Text = "_______________________________";
-            // 
-            // dropBoxPanel
-            // 
-            this.dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.dropBoxPanel.Controls.Add(this.dropBoxInfoPicture);
-            this.dropBoxPanel.Controls.Add(this.dropBoxLabel);
-            this.dropBoxPanel.Location = new System.Drawing.Point(-2, 42);
-            this.dropBoxPanel.Name = "dropBoxPanel";
-            this.dropBoxPanel.Size = new System.Drawing.Size(249, 72);
-            this.dropBoxPanel.TabIndex = 0;
-            this.dropBoxPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragDrop);
-            this.dropBoxPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragEnter);
-            this.dropBoxPanel.DragLeave += new System.EventHandler(this.dropBoxPanel_DragLeave);
-            // 
-            // dropBoxInfoPicture
-            // 
-            this.dropBoxInfoPicture.BackColor = System.Drawing.Color.Transparent;
-            this.dropBoxInfoPicture.Image = ((System.Drawing.Image)(resources.GetObject("dropBoxInfoPicture.Image")));
-            this.dropBoxInfoPicture.Location = new System.Drawing.Point(24, 23);
-            this.dropBoxInfoPicture.Name = "dropBoxInfoPicture";
-            this.dropBoxInfoPicture.Size = new System.Drawing.Size(202, 29);
-            this.dropBoxInfoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.dropBoxInfoPicture.TabIndex = 0;
-            this.dropBoxInfoPicture.TabStop = false;
-            this.dropBoxInfoPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragDrop);
-            this.dropBoxInfoPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragEnter);
-            this.dropBoxInfoPicture.DragLeave += new System.EventHandler(this.dropBoxInfoPicture_DragLeave);
-            // 
             // installList
             // 
             this.installList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.installList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.installList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.installList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.installList.ForeColor = System.Drawing.Color.YellowGreen;
             this.installList.FormattingEnabled = true;
             this.installList.ItemHeight = 13;
@@ -192,6 +154,7 @@
             // createInstallButton
             // 
             this.createInstallButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(55)))), ((int)(((byte)(5)))));
+            this.createInstallButton.BackgroundImage = global::cubeLauncher.Properties.Resources._25x_gradient;
             this.createInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createInstallButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(55)))), ((int)(((byte)(5)))));
             this.createInstallButton.Image = ((System.Drawing.Image)(resources.GetObject("createInstallButton.Image")));
@@ -205,6 +168,7 @@
             // optionsButton
             // 
             this.optionsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(41)))), ((int)(((byte)(39)))));
+            this.optionsButton.BackgroundImage = global::cubeLauncher.Properties.Resources._25x_gradient;
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(41)))), ((int)(((byte)(39)))));
             this.optionsButton.Image = global::cubeLauncher.Properties.Resources.options;
@@ -218,6 +182,7 @@
             // deleteInstallButton
             // 
             this.deleteInstallButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.deleteInstallButton.BackgroundImage = global::cubeLauncher.Properties.Resources._25x_gradient;
             this.deleteInstallButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteInstallButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
             this.deleteInstallButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteInstallButton.Image")));
@@ -231,6 +196,7 @@
             // launchButton
             // 
             this.launchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
+            this.launchButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("launchButton.BackgroundImage")));
             this.launchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.launchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
             this.launchButton.Image = global::cubeLauncher.Properties.Resources.launch;
@@ -244,6 +210,7 @@
             // openPathButton
             // 
             this.openPathButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
+            this.openPathButton.BackgroundImage = global::cubeLauncher.Properties.Resources._25x_gradient;
             this.openPathButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.openPathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openPathButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(50)))));
@@ -255,12 +222,65 @@
             this.openPathButton.UseVisualStyleBackColor = false;
             this.openPathButton.Click += new System.EventHandler(this.openPathButton_Click);
             // 
+            // dropBoxPanel
+            // 
+            this.dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
+            this.dropBoxPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dropBoxPanel.BackgroundImage")));
+            this.dropBoxPanel.Controls.Add(this.grassBanner);
+            this.dropBoxPanel.Controls.Add(this.dropBoxInfoPicture);
+            this.dropBoxPanel.Controls.Add(this.dropBoxLabel);
+            this.dropBoxPanel.Location = new System.Drawing.Point(-2, 42);
+            this.dropBoxPanel.Name = "dropBoxPanel";
+            this.dropBoxPanel.Size = new System.Drawing.Size(249, 72);
+            this.dropBoxPanel.TabIndex = 0;
+            this.dropBoxPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragDrop);
+            this.dropBoxPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxPanel_DragEnter);
+            this.dropBoxPanel.DragLeave += new System.EventHandler(this.dropBoxPanel_DragLeave);
+            // 
+            // grassBanner
+            // 
+            this.grassBanner.BackColor = System.Drawing.Color.Transparent;
+            this.grassBanner.Image = ((System.Drawing.Image)(resources.GetObject("grassBanner.Image")));
+            this.grassBanner.Location = new System.Drawing.Point(2, 0);
+            this.grassBanner.Name = "grassBanner";
+            this.grassBanner.Size = new System.Drawing.Size(242, 16);
+            this.grassBanner.TabIndex = 0;
+            this.grassBanner.TabStop = false;
+            this.grassBanner.DoubleClick += new System.EventHandler(this.grassBanner_DoubleClick);
+            // 
+            // dropBoxInfoPicture
+            // 
+            this.dropBoxInfoPicture.BackColor = System.Drawing.Color.Transparent;
+            this.dropBoxInfoPicture.Image = ((System.Drawing.Image)(resources.GetObject("dropBoxInfoPicture.Image")));
+            this.dropBoxInfoPicture.Location = new System.Drawing.Point(20, 20);
+            this.dropBoxInfoPicture.Name = "dropBoxInfoPicture";
+            this.dropBoxInfoPicture.Size = new System.Drawing.Size(210, 40);
+            this.dropBoxInfoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dropBoxInfoPicture.TabIndex = 0;
+            this.dropBoxInfoPicture.TabStop = false;
+            this.dropBoxInfoPicture.DragDrop += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragDrop);
+            this.dropBoxInfoPicture.DragEnter += new System.Windows.Forms.DragEventHandler(this.dropBoxInfoPicture_DragEnter);
+            this.dropBoxInfoPicture.DragLeave += new System.EventHandler(this.dropBoxInfoPicture_DragLeave);
+            // 
+            // dropBoxLabel
+            // 
+            this.dropBoxLabel.AutoSize = true;
+            this.dropBoxLabel.BackColor = System.Drawing.Color.Transparent;
+            this.dropBoxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dropBoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(120)))), ((int)(((byte)(80)))));
+            this.dropBoxLabel.Location = new System.Drawing.Point(-1, 55);
+            this.dropBoxLabel.Name = "dropBoxLabel";
+            this.dropBoxLabel.Size = new System.Drawing.Size(245, 15);
+            this.dropBoxLabel.TabIndex = 0;
+            this.dropBoxLabel.Text = "__________________________________";
+            // 
             // program
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(242, 174);
+            this.ClientSize = new System.Drawing.Size(242, 173);
             this.Controls.Add(this.createInstallButton);
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.deleteInstallButton);
@@ -282,6 +302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelBanner)).EndInit();
             this.dropBoxPanel.ResumeLayout(false);
             this.dropBoxPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grassBanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropBoxInfoPicture)).EndInit();
             this.ResumeLayout(false);
 
@@ -305,6 +326,6 @@
         private System.Windows.Forms.Button optionsButton;
         private System.Windows.Forms.ToolTip programToolTip;
         private System.Windows.Forms.Button createInstallButton;
+        private System.Windows.Forms.PictureBox grassBanner;
     }
 }
-

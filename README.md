@@ -8,11 +8,6 @@
 # Overview
 This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
 
-The options menu includes several features that allow you to change the settings for the installation, such as the name, arguments, resolution, etc.
-
-To use the config features simply use the "Save Config" and "Load Config" buttons. Doing this will save/load the specified options to a config file specific to the selected installation. \
-Using the "Override Config" option will globally override any saved configs.
-
 <br>
 
 Using and creating config files manually can be accomplished by following these steps:

@@ -48,9 +48,6 @@ Place the installer file alongside "config.cube" and specify the name of that fi
 <b>Version Input:</b> Minecraft launcher version \
 <b>Resolution Input:</b> Minecraft launcher resolution \
 <b>Arguments Input:</b> Minecraft launcher arguments \
-<b>Override Config Checkbox:</b> Overrides the config file of all installations \
-<b>Save Config Button:</b> Saves the current options to a config file specific to the selected installation \
-<b>Load Config Button:</b> Loads the current config specific to the selected installation \
 <b>Select MC Launcher Path Directory Button:</b> Specify an alternate path for the Minecraft Launcher \
 <b>Clear MC Launcher Path Directory Button:</b> Resets the Minecraft Launcher path to default
 

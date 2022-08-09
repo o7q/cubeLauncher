@@ -1,7 +1,7 @@
 ~ v1.6.0
 - The options menu is much more simple (it now saves and loads automatically, removed unneeded buttons)
 - Made the UI more fancy
-- Added warning if the user trys to launch multiple instances of cubeLauncher (having multiple instances open can cause problems)
+- Added warning if the user tries to launch multiple instances of cubeLauncher (having multiple instances open can cause problems)
 - Fixed typos
 - Code updates (removed unneeded functions)
 

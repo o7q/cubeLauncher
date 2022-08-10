@@ -1,6 +1,6 @@
-~ vdev
+~ v1.6.1
 - Fix code (fix try-catch bug, remove unnecessary pieces used by old config)
-- Optimize code (make function for sound player)
+- Optimize code (now using ternary operators to make some logic operations shorter, make function for sound player)
 - Change method for versioning slightly (explained in "versioning.txt")
 
 ~ v1.6.0

@@ -294,7 +294,7 @@ namespace cubeLauncher
                             }
                             catch
                             {
-                                //skip
+                                // skip
                             }
                         }
                         catch (Exception ex)

@@ -141,14 +141,7 @@ namespace cubeLauncher
             File.WriteAllText(mainDir + "\\conf_norfrsh", "");
 
             // show install name if it is configured
-            if (installName != "")
-            {
-                configNameLabel.Text = "Config for \"" + installName + "\"";
-            }
-            else
-            {
-                configNameLabel.Text = "";
-            }
+            configNameLabel.Text = installName != "" ? "Config for \"" + installName + "\"" : "No installation is selected";
 
             // show launcher path if it is configured
             if (File.Exists(mainDir + "\\conf_lchrpth"))
@@ -207,50 +200,15 @@ namespace cubeLauncher
             }
 
             // save config.cube
-            if (customNameBox.Text == "")
-            {
-                customName = installName;
-            }
-            else
-            {
-                customName = customNameBox.Text;
-            }
+            customName = customNameBox.Text == "" ? installName : customNameBox.Text;
 
-            if (customVersionBox.Text == "")
-            {
-                customVersion = "latest-release";
-            }
-            else
-            {
-                customVersion = customVersionBox.Text;
-            }
+            customVersion = customVersionBox.Text == "" ? "latest-release" : customVersionBox.Text;
 
-            if (customWidthBox.Text == "")
-            {
-                customWidth = "1280";
-            }
-            else
-            {
-                customWidth = customWidthBox.Text;
-            }
+            customWidth = customWidthBox.Text == "" ? "1280" : customWidthBox.Text;
 
-            if (customHeightBox.Text == "")
-            {
-                customHeight = "720";
-            }
-            else
-            {
-                customHeight = customHeightBox.Text;
-            }
+            customHeight = customHeightBox.Text == "" ? "720" : customHeightBox.Text;
 
-            if (customArgsBox.Text == "")
-            {
-                customArgs = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
-            }
-            else
-            {
-                customArgs = customArgsBox.Text;
-            }
+            customArgs = customArgsBox.Text == "" ? "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M" : customArgsBox.Text;
 
             try
             {

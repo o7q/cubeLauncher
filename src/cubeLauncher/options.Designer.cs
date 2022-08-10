@@ -175,7 +175,7 @@
             this.configNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.configNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.configNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(183)))), ((int)(((byte)(153)))));
-            this.configNameLabel.Location = new System.Drawing.Point(9, 174);
+            this.configNameLabel.Location = new System.Drawing.Point(8, 174);
             this.configNameLabel.MaximumSize = new System.Drawing.Size(110, 15);
             this.configNameLabel.Name = "configNameLabel";
             this.configNameLabel.Size = new System.Drawing.Size(110, 12);
@@ -337,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

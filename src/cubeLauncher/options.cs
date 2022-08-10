@@ -141,24 +141,10 @@ namespace cubeLauncher
             File.WriteAllText(mainDir + "\\conf_norfrsh", "");
 
             // show install name if it is configured
-            configNameLabel.Text = installName != "" ? "Config for \"" + installName + "\"" : "No installation is selected";
+            configNameLabel.Text = installName != "" && File.Exists(mainDir + "\\conf_instname") ? "Config for \"" + installName + "\"" : "No installation is selected";
 
             // show launcher path if it is configured
-            if (File.Exists(mainDir + "\\conf_lchrpth"))
-            {
-                try
-                {
-                    launcherPathLabel.Text = File.ReadAllText(mainDir + "\\conf_lchrpth");
-                }
-                catch
-                {
-                    // skip
-                }
-            }
-            else
-            {
-                launcherPathLabel.Text = "";
-            }
+            launcherPathLabel.Text = File.Exists(mainDir + "\\conf_lchrpth") ? File.ReadAllText(mainDir + "\\conf_lchrpth") : "Using the default path";
 
             // configure tooltips
             optionsToolTip.SetToolTip(closeButton, "Close");
@@ -200,14 +186,20 @@ namespace cubeLauncher
             }
 
             // save config.cube
+
+            // name
             customName = customNameBox.Text == "" ? installName : customNameBox.Text;
 
+            // version
             customVersion = customVersionBox.Text == "" ? "latest-release" : customVersionBox.Text;
 
+            // width
             customWidth = customWidthBox.Text == "" ? "1280" : customWidthBox.Text;
 
+            // height
             customHeight = customHeightBox.Text == "" ? "720" : customHeightBox.Text;
 
+            // arguments
             customArgs = customArgsBox.Text == "" ? "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M" : customArgsBox.Text;
 
             try
@@ -268,7 +260,9 @@ namespace cubeLauncher
                 // skip
             }
 
-            launcherPathLabel.Text = "";
+            optionsToolTip.SetToolTip(launcherPathLabel, "");
+
+            launcherPathLabel.Text = "Using the default path";
         }
 
         // play sculk sounds on doubleclick

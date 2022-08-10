@@ -1,3 +1,7 @@
+~ vdev
+- Fix options label bug
+- Optimize code (using more ternary operators)
+
 ~ v1.6.1
 - Fix code (fix try-catch bug, remove unnecessary pieces used by old config)
 - Optimize code (now using ternary operators to make some logic operations shorter, make function for sound player)

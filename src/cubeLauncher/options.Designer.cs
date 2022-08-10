@@ -157,8 +157,8 @@
             this.launcherPathLabel.AutoSize = true;
             this.launcherPathLabel.BackColor = System.Drawing.Color.Transparent;
             this.launcherPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.launcherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(183)))), ((int)(((byte)(153)))));
-            this.launcherPathLabel.Location = new System.Drawing.Point(9, 223);
+            this.launcherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
+            this.launcherPathLabel.Location = new System.Drawing.Point(8, 223);
             this.launcherPathLabel.MaximumSize = new System.Drawing.Size(110, 15);
             this.launcherPathLabel.Name = "launcherPathLabel";
             this.launcherPathLabel.Size = new System.Drawing.Size(110, 12);
@@ -174,7 +174,7 @@
             this.configNameLabel.AutoSize = true;
             this.configNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.configNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.configNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(183)))), ((int)(((byte)(153)))));
+            this.configNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
             this.configNameLabel.Location = new System.Drawing.Point(8, 174);
             this.configNameLabel.MaximumSize = new System.Drawing.Size(110, 15);
             this.configNameLabel.Name = "configNameLabel";

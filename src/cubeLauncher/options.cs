@@ -37,6 +37,10 @@ namespace cubeLauncher
         string line4_height_format;
         string line5_arguments_format;
 
+        // path for sfx
+        string sndPth;
+        string srtSndPth = "cubeLauncher.Resources.sculk";
+
         // form events
 
         // form initialize component
@@ -65,7 +69,7 @@ namespace cubeLauncher
             // do not update on window refresh
             if (!File.Exists(mainDir + "\\conf_norfrsh"))
             {
-                // load config
+                // load config.cube
                 if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
                 {
                     try
@@ -136,7 +140,7 @@ namespace cubeLauncher
             // create no refresh config
             File.WriteAllText(mainDir + "\\conf_norfrsh", "");
 
-            // show config name if it is configured
+            // show install name if it is configured
             if (installName != "")
             {
                 configNameLabel.Text = "Config for \"" + installName + "\"";
@@ -202,7 +206,7 @@ namespace cubeLauncher
                 // skip
             }
 
-            // save config
+            // save config.cube
             if (customNameBox.Text == "")
             {
                 customName = installName;
@@ -315,24 +319,18 @@ namespace cubeLauncher
             switch (new Random().Next(1, 4))
             {
                 case 1:
-                    System.Reflection.Assembly a1 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s1 = a1.GetManifestResourceStream("cubeLauncher.Resources.sculk1.wav");
-                    SoundPlayer p1 = new SoundPlayer(s1);
-                    p1.Play();
+                    sndPth = srtSndPth + "1.wav";
+                    playSfx();
 
                     break;
                 case 2:
-                    System.Reflection.Assembly a2 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s2 = a2.GetManifestResourceStream("cubeLauncher.Resources.sculk2.wav");
-                    SoundPlayer p2 = new SoundPlayer(s2);
-                    p2.Play();
+                    sndPth = srtSndPth + "2.wav";
+                    playSfx();
 
                     break;
                 case 3:
-                    System.Reflection.Assembly a3 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s3 = a3.GetManifestResourceStream("cubeLauncher.Resources.sculk3.wav");
-                    SoundPlayer p3 = new SoundPlayer(s3);
-                    p3.Play();
+                    sndPth = srtSndPth + "3.wav";
+                    playSfx();
 
                     break;
             }
@@ -358,6 +356,15 @@ namespace cubeLauncher
                 string lchrpth = File.ReadAllText(mainDir + "\\conf_lchrpth");
                 optionsToolTip.SetToolTip(launcherPathLabel, lchrpth);
             }
+        }
+
+        // play sound function
+        private void playSfx()
+        {
+            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+            System.IO.Stream s = a.GetManifestResourceStream(sndPth);
+            SoundPlayer p = new SoundPlayer(s);
+            p.Play();
         }
 
         // move form senders

@@ -303,9 +303,9 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap v1_6_0 {
+        internal static System.Drawing.Bitmap vdev {
             get {
-                object obj = ResourceManager.GetObject("v1.6.0", resourceCulture);
+                object obj = ResourceManager.GetObject("vdev", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

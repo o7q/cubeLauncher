@@ -47,6 +47,10 @@ namespace cubeLauncher
         string line5_arguments_format;
         string line6_modloader_format;
 
+        // path for sfx
+        string sndPth;
+        string srtSndPth = "cubeLauncher.Resources.grass";
+
         // form events
 
         // form initialize component
@@ -271,7 +275,14 @@ namespace cubeLauncher
                             try
                             {
                                 installList.SelectedIndex = 0;
+                            }
+                            catch
+                            {
+                                // skip
+                            }
 
+                            try
+                            {
                                 if (installList.Text != "")
                                 {
                                     File.WriteAllText(mainDir + "\\conf_instname", installList.Text);
@@ -283,7 +294,7 @@ namespace cubeLauncher
                             }
                             catch
                             {
-                                // skip
+                                //skip
                             }
                         }
                         catch (Exception ex)
@@ -350,7 +361,7 @@ namespace cubeLauncher
                 clrDrpBxLbl();
 
                 // load from config.cube if it exists
-                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube") && !File.Exists(mainDir + "\\" + "conf_ovrcube"))
+                if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
                 {
                     try
                     {
@@ -473,24 +484,18 @@ namespace cubeLauncher
             switch (new Random().Next(1, 4))
             {
                 case 1:
-                    System.Reflection.Assembly a1 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s1 = a1.GetManifestResourceStream("cubeLauncher.Resources.grass1.wav");
-                    SoundPlayer p1 = new SoundPlayer(s1);
-                    p1.Play();
+                    sndPth = srtSndPth + "1.wav";
+                    playSfx();
 
                     break;
                 case 2:
-                    System.Reflection.Assembly a2 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s2 = a2.GetManifestResourceStream("cubeLauncher.Resources.grass2.wav");
-                    SoundPlayer p2 = new SoundPlayer(s2);
-                    p2.Play();
+                    sndPth = srtSndPth + "2.wav";
+                    playSfx();
 
                     break;
                 case 3:
-                    System.Reflection.Assembly a3 = System.Reflection.Assembly.GetExecutingAssembly();
-                    System.IO.Stream s3 = a3.GetManifestResourceStream("cubeLauncher.Resources.grass3.wav");
-                    SoundPlayer p3 = new SoundPlayer(s3);
-                    p3.Play();
+                    sndPth = srtSndPth + "3.wav";
+                    playSfx();
 
                     break;
             }
@@ -597,6 +602,29 @@ namespace cubeLauncher
             dropBoxLabel.Update();
         }
 
+        // modloader installer function
+        private void srtModLdr()
+        {
+            // check if config.cube exists, if it does, prompt the user if they want to install the available modloader
+            if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
+            {
+                DialogResult prompt = MessageBox.Show("Found a modloader for \"" + installName + "\".\nDo you want to install it?", "", MessageBoxButtons.YesNo);
+                if (prompt == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string line6_modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
+                        line6_modloader_format = line6_modloader.Replace("modloader: ", "");
+                        Process.Start(mainDir + "\\" + installName + "\\.cube\\" + line6_modloader_format);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unknown Error: Unable to start \"" + line6_modloader_format + "\"!\n\nFull Error:\n" + ex);
+                    }
+                }
+            }
+        }
+
         // update install list function
         private void updInstLst()
         {
@@ -640,27 +668,13 @@ namespace cubeLauncher
             dropBoxLabel.Update();
         }
 
-        // modloader installer function
-        private void srtModLdr()
+        // play sound function
+        private void playSfx()
         {
-            // check if config.cube exists, if it does, prompt the user if they want to install the available modloader
-            if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
-            {
-                DialogResult prompt = MessageBox.Show("Found a modloader for \"" + installName + "\".\nDo you want to install it?", "", MessageBoxButtons.YesNo);
-                if (prompt == DialogResult.Yes)
-                {
-                    try
-                    {
-                        string line6_modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
-                        line6_modloader_format = line6_modloader.Replace("modloader: ", "");
-                        Process.Start(mainDir + "\\" + installName + "\\.cube\\" + line6_modloader_format);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Unknown Error: Unable to start \"" + line6_modloader_format + "\"!\n\nFull Error:\n" + ex);
-                    }
-                }
-            }
+            System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+            System.IO.Stream s = a.GetManifestResourceStream(sndPth);
+            SoundPlayer p = new SoundPlayer(s);
+            p.Play();
         }
 
         // drag drop events

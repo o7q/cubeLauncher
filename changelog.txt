@@ -1,3 +1,8 @@
+~ vdev
+- Fix code (fix try-catch bug, remove unnecessary pieces used by old config)
+- Optimize code (make function for sound player)
+- Change method for versioning slightly (explained in "versioning.txt")
+
 ~ v1.6.0
 - The options menu is much more simple (it now saves and loads automatically, removed unneeded buttons)
 - Made the UI more fancy

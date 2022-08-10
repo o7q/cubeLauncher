@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\vdev.png" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\127x240_gradient.png" />
     <EmbeddedResource Include="Resources\sculk1.wav" />
@@ -122,7 +123,6 @@
     <None Include="Resources\open.png" />
     <None Include="Resources\launch_gradient.png" />
     <None Include="Resources\25x_gradient.png" />
-    <None Include="Resources\v1.6.0.png" />
     <None Include="Resources\grass2.png" />
     <None Include="Resources\grass.png" />
     <None Include="Resources\options.png" />

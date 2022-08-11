@@ -736,6 +736,11 @@ namespace cubeLauncher
         // panel banner sender
         private void panelBanner_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left && e.Clicks == 2)
+            {
+                System.Diagnostics.Process.Start("https://github.com/o7q/cubeLauncher");
+            }
+
             mvFrm(e);
         }
 

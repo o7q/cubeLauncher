@@ -34,19 +34,19 @@ Place the installer file alongside `config.cube` and specify the name of that fi
 <br>
 
 ## <b>Components</b>
-`Drag & Drop a Folder Window` Dragging a folder here will install and then search for modloaders for the dropped folder \
-`Installation Selection Dropdown` Selects an installation to be launched \
-`Create Installation Button` Create a blank installation \
-`Delete Installation Button` Deletes the selected installation \
-`Open Installation Directory Button` Opens the directory for the selected installation \
-`Options Button` Opens options window \
-`Launch Button` Launches the selected installation with the specified arguments \
-`Name Input` Minecraft launcher name \
-`Version Input` Minecraft launcher version \
-`Resolution Input` Minecraft launcher resolution \
-`Arguments Input` Minecraft launcher arguments \
-`Select MC Launcher Path Button` Specify an alternate path for the Minecraft Launcher \
-`Clear MC Launcher Path Directory` Button Resets the Minecraft Launcher path to default
+<b>Drag & Drop a Folder Window</b> Dragging a folder here will install and then search for modloaders for the dropped folder \
+<b>Installation Selection Dropdown</b> Selects an installation to be launched \
+<b>Create Installation Button</b> Create a blank installation \
+<b>Delete Installation Button</b> Deletes the selected installation \
+<b>Open Installation Directory Button</b> Opens the directory for the selected installation \
+<b>Options Button</b> Opens the options window \
+<b>Launch Button</b> Launches the selected installation with the specified arguments \
+<b>Name Input</b> Minecraft launcher name \
+<b>Version Input</b> Minecraft launcher version \
+<b>Resolution Input</b> Minecraft launcher resolution \
+<b>Arguments Input</b> Minecraft launcher arguments \
+<b>Select MC Launcher</b> Path Button Specify an alternate path for the Minecraft Launcher \
+<b>Clear MC Launcher</b> Path Directory Button Resets the Minecraft Launcher path to default
 
 <br>
 

@@ -8,7 +8,7 @@ namespace cubeLauncher
         [STAThread]
         static void Main()
         {
-			// start program.cs
+            // start program.cs
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new program());

@@ -1,5 +1,0 @@
-Version:
-v1.6.2
-
-Requirements:
-n/a

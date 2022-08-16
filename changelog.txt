@@ -1,3 +1,6 @@
+~
+- Now using the MIT license
+
 ~ v1.6.2
 - Double-clicking the cubeLauncher banner will open the repository page
 - Minor UI updates

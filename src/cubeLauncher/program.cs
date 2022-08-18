@@ -51,6 +51,9 @@ namespace cubeLauncher
         string sndPth;
         string srtSndPth = "cubeLauncher.Resources.grass";
 
+        // info
+        int toggle;
+
         // form events
 
         // form initialize component
@@ -736,9 +739,18 @@ namespace cubeLauncher
         // panel banner sender
         private void panelBanner_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && e.Clicks == 2)
+            if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 0)
             {
-                System.Diagnostics.Process.Start("https://github.com/o7q/cubeLauncher");
+                string infoText = Properties.Resources.infoText;
+                MessageBox.Show(infoText);
+
+                toggle = 1;
+            }
+            else if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 1)
+            {
+                Process.Start("https://github.com/o7q/cubeLauncher");
+
+                toggle = 0;
             }
 
             mvFrm(e);

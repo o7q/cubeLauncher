@@ -181,6 +181,21 @@ namespace cubeLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cubeLauncher by o7q
+        ///A simple, lightweight installation manager for Minecraft.
+        ///
+        ///This tool works like CurseForge except it is inside of a single executable file without the need of an installer.
+        ///It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
+        ///
+        ///* Farther documentation can be found on the cubeLauncher GitHub page which can be accessed by double-clicking on the &quot;cubeLauncher banner&quot; again.
+        /// </summary>
+        internal static string infoText {
+            get {
+                return ResourceManager.GetString("infoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap launch {
@@ -303,9 +318,9 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap v1_6_2 {
+        internal static System.Drawing.Bitmap v1_6_3 {
             get {
-                object obj = ResourceManager.GetObject("v1.6.2", resourceCulture);
+                object obj = ResourceManager.GetObject("v1.6.3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

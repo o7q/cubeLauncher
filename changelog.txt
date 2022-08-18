@@ -1,4 +1,5 @@
-~
+~ v1.6.3
+- Added an info panel (accessed through double-clicking the cubeLauncher banner)
 - Now using the MIT license
 
 ~ v1.6.2

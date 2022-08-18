@@ -1,6 +1,6 @@
 <img src="assets/images/readmebanner.png"/>
 
-#### https://github.com/o7q/cubeLauncher/releases
+# Downloads: https://github.com/o7q/cubeLauncher/releases
 ### Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!
 
 <br>

@@ -10,8 +10,11 @@
 <br>
 
 # Overview
-This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
+### This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
 
+<br>
+
+# Usage
 Using and creating config files manually can be accomplished by following these steps:
 1. Inside of the directory for the installation, create a folder called `.cube`
 2. Inside of the `.cube` folder, create a file called `config.cube`
@@ -25,8 +28,6 @@ height:
 arguments: 
 modloader: 
 ```
-
-<br>
 
 If you would like a modloader such as forge or fabric to auto install when installing a folder you can specify it under the `modloader` argument inside `config.cube`. \
 Place the installer file alongside `config.cube` and specify the name of that file after `modloader: `.

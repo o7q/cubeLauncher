@@ -131,7 +131,7 @@ namespace cubeLauncher
             // load last client session
             try
             {
-                string instidx_string = File.ReadAllText(mainDir + "\\conf_instindx");
+                string instidx_string = File.ReadAllText(mainDir + "\\cfg_instindx");
                 installList.SelectedIndex = int.Parse(instidx_string);
             }
             catch
@@ -213,8 +213,8 @@ namespace cubeLauncher
         {
             try
             {
-                File.WriteAllText(mainDir + "\\conf_instindx", installList.SelectedIndex.ToString());
-                File.WriteAllText(mainDir + "\\conf_instname", installList.Text);
+                File.WriteAllText(mainDir + "\\cfg_instindx", installList.SelectedIndex.ToString());
+                File.WriteAllText(mainDir + "\\cfg_instname", installList.Text);
             }
             catch
             {
@@ -288,11 +288,11 @@ namespace cubeLauncher
                             {
                                 if (installList.Text != "")
                                 {
-                                    File.WriteAllText(mainDir + "\\conf_instname", installList.Text);
+                                    File.WriteAllText(mainDir + "\\cfg_instname", installList.Text);
                                 }
                                 else
                                 {
-                                    File.WriteAllText(mainDir + "\\conf_instname", "");
+                                    File.WriteAllText(mainDir + "\\cfg_instname", "");
                                 }
                             }
                             catch
@@ -441,10 +441,10 @@ namespace cubeLauncher
                 File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
 
                 // attempt to launch the minecraft launcher
-                if (File.Exists(mainDir + "\\conf_lchrpth"))
+                if (File.Exists(mainDir + "\\cfg_lchrpth"))
                 {
                     // try to launch from the custom directory
-                    string launcherPath = File.ReadAllText(mainDir + "\\conf_lchrpth");
+                    string launcherPath = File.ReadAllText(mainDir + "\\cfg_lchrpth");
                     try
                     {
                         Process.Start(launcherPath);

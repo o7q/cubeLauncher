@@ -59,7 +59,7 @@ namespace cubeLauncher
             // configure installname
             try
             {
-                installName = File.ReadAllText(mainDir + "\\conf_instname");
+                installName = File.ReadAllText(mainDir + "\\cfg_instname");
             }
             catch
             {
@@ -67,7 +67,7 @@ namespace cubeLauncher
             }
 
             // do not update on window refresh
-            if (!File.Exists(mainDir + "\\conf_norfrsh"))
+            if (!File.Exists(mainDir + "\\cfg_norfrsh"))
             {
                 // load config.cube
                 if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
@@ -138,13 +138,13 @@ namespace cubeLauncher
             }
 
             // create no refresh config
-            File.WriteAllText(mainDir + "\\conf_norfrsh", "");
+            File.WriteAllText(mainDir + "\\cfg_norfrsh", "");
 
             // show install name if it is configured
-            configNameLabel.Text = installName != "" && File.Exists(mainDir + "\\conf_instname") ? "Config for \"" + installName + "\"" : "No installation is selected";
+            configNameLabel.Text = installName != "" && File.Exists(mainDir + "\\cfg_instname") ? "Config for \"" + installName + "\"" : "No installation is selected";
 
             // show launcher path if it is configured
-            launcherPathLabel.Text = File.Exists(mainDir + "\\conf_lchrpth") ? File.ReadAllText(mainDir + "\\conf_lchrpth") : "Using the default path";
+            launcherPathLabel.Text = File.Exists(mainDir + "\\cfg_lchrpth") ? File.ReadAllText(mainDir + "\\cfg_lchrpth") : "Using the default path";
 
             // configure tooltips
             optionsToolTip.SetToolTip(closeButton, "Close");
@@ -178,7 +178,7 @@ namespace cubeLauncher
         {
             try
             {
-                File.Delete(mainDir + "\\conf_norfrsh");
+                File.Delete(mainDir + "\\cfg_norfrsh");
             }
             catch
             {
@@ -207,7 +207,7 @@ namespace cubeLauncher
                 string modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
                 string modloader_format = modloader.Replace("modloader: ", "");
                 string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: " + modloader_format;
-                if (File.Exists(mainDir + "\\conf_instname") && installName != "")
+                if (File.Exists(mainDir + "\\cfg_instname") && installName != "")
                 {
                     Directory.CreateDirectory(mainDir + "\\" + installName + "\\.cube");
                     File.WriteAllText(mainDir + "\\" + installName + "\\.cube\\config.cube", cubeConfig);
@@ -237,7 +237,7 @@ namespace cubeLauncher
 
                 try
                 {
-                    File.WriteAllText(mainDir + "\\conf_lchrpth", launcherPath);
+                    File.WriteAllText(mainDir + "\\cfg_lchrpth", launcherPath);
                 }
                 catch
                 {
@@ -253,7 +253,7 @@ namespace cubeLauncher
         {
             try
             {
-                File.Delete(mainDir + "\\conf_lchrpth");
+                File.Delete(mainDir + "\\cfg_lchrpth");
             }
             catch
             {
@@ -303,9 +303,9 @@ namespace cubeLauncher
         // set options tooltip function
         private void lchrPthTT()
         {
-            if (File.Exists(mainDir + "\\conf_lchrpth"))
+            if (File.Exists(mainDir + "\\cfg_lchrpth"))
             {
-                string lchrpth = File.ReadAllText(mainDir + "\\conf_lchrpth");
+                string lchrpth = File.ReadAllText(mainDir + "\\cfg_lchrpth");
                 optionsToolTip.SetToolTip(launcherPathLabel, lchrpth);
             }
         }

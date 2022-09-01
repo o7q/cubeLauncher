@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.6.3.png" />
+    <None Include="Resources\v1.6.4.png" />
     <None Include="Resources\infoText.txt" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\127x240_gradient.png" />

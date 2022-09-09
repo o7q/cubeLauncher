@@ -120,8 +120,8 @@ namespace cubeLauncher
             updInstLst();
 
             // enable folder dropping
-            this.dropBoxPanel.AllowDrop = true;
-            this.dropBoxInfoPicture.AllowDrop = true;
+            dropBoxPanel.AllowDrop = true;
+            dropBoxInfoPicture.AllowDrop = true;
 
             // configure drop box label
             dropBoxLabel.BringToFront();
@@ -193,7 +193,7 @@ namespace cubeLauncher
         // minimize button
         private void minimizeButton_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         // close button
@@ -675,7 +675,7 @@ namespace cubeLauncher
         private void playSfx()
         {
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            System.IO.Stream s = a.GetManifestResourceStream(sndPth);
+            Stream s = a.GetManifestResourceStream(sndPth);
             SoundPlayer p = new SoundPlayer(s);
             p.Play();
         }

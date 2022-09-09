@@ -218,7 +218,7 @@ namespace cubeLauncher
                 // skip
             }
 
-            this.Close();
+            Close();
         }
 
         // open path selection dialog
@@ -314,7 +314,7 @@ namespace cubeLauncher
         private void playSfx()
         {
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-            System.IO.Stream s = a.GetManifestResourceStream(sndPth);
+            Stream s = a.GetManifestResourceStream(sndPth);
             SoundPlayer p = new SoundPlayer(s);
             p.Play();
         }

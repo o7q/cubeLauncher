@@ -19,7 +19,7 @@ Using and creating config files manually can be accomplished by following these 
 1. Inside of the directory for the installation, create a folder called `.cube`
 2. Inside of the `.cube` folder, create a file called `config.cube`
 3. Inside of the `config.cube` file, paste the following code:
-```
+```js
 # CUBELAUNCHER OVERRIDE CONFIG
 name: 
 version: 

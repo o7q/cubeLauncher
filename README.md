@@ -1,7 +1,7 @@
 <img src="assets/images/readmebanner.png">
 
 # [>> Downloads](https://github.com/o7q/cubeLauncher/releases)
-<h3>Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!</h3>
+### Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!
 
 <br>
 
@@ -10,7 +10,7 @@
 <br>
 
 # Overview
-<h3>This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.</h3>
+### This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
 
 <br>
 

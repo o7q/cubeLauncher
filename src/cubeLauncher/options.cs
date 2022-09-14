@@ -30,13 +30,6 @@ namespace cubeLauncher
         string customHeight;
         string customArgs;
 
-        // dynamic .cube file parser variables
-        string line1_name_format;
-        string line2_version_format;
-        string line3_width_format;
-        string line4_height_format;
-        string line5_arguments_format;
-
         // path for sfx
         string sndPth;
         string srtSndPth = "cubeLauncher.Resources.sculk";
@@ -57,14 +50,7 @@ namespace cubeLauncher
             mainDir = roamingDir + "\\.minecraft\\.cubelauncher";
 
             // configure installname
-            try
-            {
-                installName = File.ReadAllText(mainDir + "\\cfg_instname");
-            }
-            catch
-            {
-                // skip
-            }
+            try { installName = File.ReadAllText(mainDir + "\\cfg_instname"); } catch { }
 
             // do not update on window refresh
             if (!File.Exists(mainDir + "\\cfg_norfrsh"))
@@ -72,60 +58,11 @@ namespace cubeLauncher
                 // load config.cube
                 if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
                 {
-                    try
-                    {
-                        string line1_name = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(1);
-                        line1_name_format = line1_name.Replace("name: ", "");
-                        customNameBox.Text = line1_name_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
-
-                    try
-                    {
-                        string line2_version = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(2);
-                        line2_version_format = line2_version.Replace("version: ", "");
-                        customVersionBox.Text = line2_version_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
-
-                    try
-                    {
-                        string line3_width = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(3);
-                        line3_width_format = line3_width.Replace("width: ", "");
-                        customWidthBox.Text = line3_width_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
-
-                    try
-                    {
-                        string line4_height = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(4);
-                        line4_height_format = line4_height.Replace("height: ", "");
-                        customHeightBox.Text = line4_height_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
-
-                    try
-                    {
-                        string line5_arguments = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(5);
-                        line5_arguments_format = line5_arguments.Replace("arguments: ", "");
-                        customArgsBox.Text = line5_arguments_format;
-                    }
-                    catch
-                    {
-                        // skip
-                    }
+                    try { customNameBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(1).Replace("name: ", ""); } catch { }
+                    try { customVersionBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(2).Replace("version: ", ""); } catch { }
+                    try { customWidthBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(3).Replace("width: ", ""); } catch { }
+                    try { customHeightBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(4).Replace("height: ", ""); } catch { }
+                    try { customArgsBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(5).Replace("arguments: ", ""); } catch { }
                 }
                 else
                 {
@@ -176,47 +113,25 @@ namespace cubeLauncher
         // close button
         private void closeButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                File.Delete(mainDir + "\\cfg_norfrsh");
-            }
-            catch
-            {
-                // skip
-            }
+            try { File.Delete(mainDir + "\\cfg_norfrsh"); } catch { }
 
             // save config.cube
-
-            // name
             customName = customNameBox.Text == "" ? installName : customNameBox.Text;
-
-            // version
             customVersion = customVersionBox.Text == "" ? "latest-release" : customVersionBox.Text;
-
-            // width
             customWidth = customWidthBox.Text == "" ? "1280" : customWidthBox.Text;
-
-            // height
             customHeight = customHeightBox.Text == "" ? "720" : customHeightBox.Text;
-
-            // arguments
             customArgs = customArgsBox.Text == "" ? "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M" : customArgsBox.Text;
 
             try
             {
-                string modloader = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6);
-                string modloader_format = modloader.Replace("modloader: ", "");
-                string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: " + modloader_format;
+                string cubeConfig = "# CUBELAUNCHER CONFIG\nname: " + customName + "\nversion: " + customVersion + "\nwidth: " + customWidth + "\nheight: " + customHeight + "\narguments: " + customArgs + "\nmodloader: " + File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(6).Replace("modloader: ", "");
                 if (File.Exists(mainDir + "\\cfg_instname") && installName != "")
                 {
                     Directory.CreateDirectory(mainDir + "\\" + installName + "\\.cube");
                     File.WriteAllText(mainDir + "\\" + installName + "\\.cube\\config.cube", cubeConfig);
                 }
             }
-            catch
-            {
-                // skip
-            }
+            catch { }
 
             Close();
         }
@@ -228,21 +143,10 @@ namespace cubeLauncher
             launcherDiag.Filter = "Executable Files (*.exe)|*.exe";
             launcherDiag.FilterIndex = 1;
             launcherDiag.Multiselect = true;
-
             if (launcherDiag.ShowDialog() == DialogResult.OK)
             {
-                string launcherPath = launcherDiag.FileName;
-
-                launcherPathLabel.Text = launcherPath;
-
-                try
-                {
-                    File.WriteAllText(mainDir + "\\cfg_lchrpth", launcherPath);
-                }
-                catch
-                {
-                    // skip
-                }
+                launcherPathLabel.Text = launcherDiag.FileName;
+                try { File.WriteAllText(mainDir + "\\cfg_lchrpth", launcherDiag.FileName); } catch { }
 
                 lchrPthTT();
             }
@@ -251,18 +155,10 @@ namespace cubeLauncher
         // clear selected path
         private void clearPathButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                File.Delete(mainDir + "\\cfg_lchrpth");
-            }
-            catch
-            {
-                // skip
-            }
-
-            optionsToolTip.SetToolTip(launcherPathLabel, "");
+            try { File.Delete(mainDir + "\\cfg_lchrpth"); } catch { }
 
             launcherPathLabel.Text = "Using the default path";
+            optionsToolTip.SetToolTip(launcherPathLabel, "");
         }
 
         // play sculk sounds on doubleclick
@@ -272,20 +168,15 @@ namespace cubeLauncher
             {
                 case 1:
                     sndPth = srtSndPth + "1.wav";
-                    playSfx();
-
                     break;
                 case 2:
                     sndPth = srtSndPth + "2.wav";
-                    playSfx();
-
                     break;
                 case 3:
                     sndPth = srtSndPth + "3.wav";
-                    playSfx();
-
                     break;
             }
+            playSfx();
         }
 
         // functions
@@ -303,11 +194,7 @@ namespace cubeLauncher
         // set options tooltip function
         private void lchrPthTT()
         {
-            if (File.Exists(mainDir + "\\cfg_lchrpth"))
-            {
-                string lchrpth = File.ReadAllText(mainDir + "\\cfg_lchrpth");
-                optionsToolTip.SetToolTip(launcherPathLabel, lchrpth);
-            }
+            if (File.Exists(mainDir + "\\cfg_lchrpth")) optionsToolTip.SetToolTip(launcherPathLabel, File.ReadAllText(mainDir + "\\cfg_lchrpth"));
         }
 
         // play sound function

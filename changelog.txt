@@ -1,3 +1,6 @@
+~
+- Optimize code
+
 ~ v1.6.4
 - Shortened program file names
 

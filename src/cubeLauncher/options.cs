@@ -32,7 +32,7 @@ namespace cubeLauncher
 
         // path for sfx
         string sndPth;
-        string srtSndPth = "cubeLauncher.Resources.sculk";
+        const string srtSndPth = "cubeLauncher.Resources.sculk";
 
         // form events
 
@@ -83,18 +83,58 @@ namespace cubeLauncher
             // show launcher path if it is configured
             launcherPathLabel.Text = File.Exists(mainDir + "\\cfg_lchrpth") ? File.ReadAllText(mainDir + "\\cfg_lchrpth") : "Using the default path";
 
+            #region tooltipDictionary
+
+            // configure variables
+            string nTT = "Specify the name for the client";
+            string vTT = "Specify the version for the client";
+            string aTT = "Specify the arguments for the client";
+            string pTT = "Specify an alternative path for the Minecraft Launcher";
+
+            // components
+            var component = new Control[]
+            {
+                closeButton,
+                namePicture,
+                customNameBox,
+                versionPicture,
+                customVersionBox,
+                resolutionPicture,
+                customWidthBox,
+                customHeightBox,
+                argumentsPicture,
+                customArgsBox,
+                launcherPathPicture,
+                selectPathButton,
+                clearPathButton
+            };
+
+            // tooltips
+            string[] tooltip =
+            {
+                "Close",
+                nTT,
+                nTT,
+                vTT,
+                vTT,
+                "Specify the resolution for the client",
+                "Specify the resolution width for the client",
+                "Specify the resolution height for the client",
+                aTT,
+                aTT,
+                pTT,
+                pTT,
+                "Reset the selected Minecraft Launcher path"
+            };
+
+            #endregion
+
             // configure tooltips
-            optionsToolTip.SetToolTip(closeButton, "Close");
-            optionsToolTip.SetToolTip(customNameBox, "Specify the name for the launcher");
-            optionsToolTip.SetToolTip(customVersionBox, "Specify the version for the launcher");
-            optionsToolTip.SetToolTip(customWidthBox, "Specify the resolution width for the launcher");
-            optionsToolTip.SetToolTip(customHeightBox, "Specify the resolution height for the launcher");
-            optionsToolTip.SetToolTip(customArgsBox, "Specify the arguments for the launcher");
-            optionsToolTip.SetToolTip(selectPathButton, "Select an alternative path for the Minecraft Launcher");
-            optionsToolTip.SetToolTip(clearPathButton, "Reset the selected Minecraft Launcher path");
+            for (int i = 0; i < 13; i++) optionsToolTip.SetToolTip(component[i], tooltip[i]);
             lchrPthTT();
 
             // configure tooltip draw
+            optionsToolTip.AutoPopDelay = 10000;
             optionsToolTip.OwnerDraw = true;
             optionsToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             optionsToolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(183)))), ((int)(((byte)(159)))));

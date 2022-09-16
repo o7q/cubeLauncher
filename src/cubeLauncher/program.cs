@@ -22,6 +22,9 @@ namespace cubeLauncher
 
         // create global variables
 
+        // program attributes
+        const string ver = "v1.6.5";
+
         // path variables
         string mainDir;
         string mcDir;
@@ -41,7 +44,7 @@ namespace cubeLauncher
 
         // path for sfx
         string sndPth;
-        string srtSndPth = "cubeLauncher.Resources.grass";
+        const string srtSndPth = "cubeLauncher.Resources.grass";
 
         // info
         int toggle;
@@ -92,22 +95,56 @@ namespace cubeLauncher
             // load last client session
             try { installList.SelectedIndex = int.Parse(File.ReadAllText(mainDir + "\\cfg_instindx")); } catch { }
 
-            // configure tooltips
-            programToolTip.SetToolTip(minimizeButton, "Minimize");
-            programToolTip.SetToolTip(closeButton, "Close");
+            #region tooltipDictionary
+
+            // configure variables
             string drgDrpTT = "Drag and drop a folder to install";
-            programToolTip.SetToolTip(dropBoxPanel, drgDrpTT);
-            programToolTip.SetToolTip(dropBoxInfoPicture, drgDrpTT);
-            programToolTip.SetToolTip(grassBanner, drgDrpTT);
-            programToolTip.SetToolTip(dropBoxLabel, "Output message");
-            programToolTip.SetToolTip(installList, "Currently selected installation - Clicking the arrow will show a list of all installations");
-            programToolTip.SetToolTip(createInstallButton, "Create a blank installation - Specify the name in the textbox to the left");
-            programToolTip.SetToolTip(deleteInstallButton, "Remove the selected installation");
-            programToolTip.SetToolTip(openPathButton, "Open the folder path of the selected installation");
-            programToolTip.SetToolTip(optionsButton, "Open the options window");
-            programToolTip.SetToolTip(launchButton, "Launch the selected installation with the specified options");
+
+            // components
+            var component = new Control[]
+            {
+                panelBanner,
+                panelBannerVersion,
+                minimizeButton,
+                closeButton,
+                dropBoxPanel,
+                dropBoxInfoPicture,
+                grassBanner,
+                dropBoxLabel,
+                installList,
+                createInstallButton,
+                deleteInstallButton,
+                openPathButton,
+                optionsButton,
+                launchButton
+            };
+
+            // tooltips
+            string[] tooltip =
+            {
+                "cubeLauncher by o7q",
+                "Running " + ver,
+                "Minimize",
+                "Close",
+                drgDrpTT,
+                drgDrpTT,
+                drgDrpTT,
+                "Output message",
+                "Currently selected installation - Clicking the arrow will show a list of all installations",
+                "Create a blank installation - Specify the name in the textbox to the left",
+                "Remove the selected installation",
+                "Open the folder path of the selected installation",
+                "Open the options window",
+                "Launch the selected installation with the specified options"
+            };
+
+            #endregion
+
+            // configure tooltips
+            for (int i = 0; i < 14; i++) programToolTip.SetToolTip(component[i], tooltip[i]);
 
             // configure tooltip draw
+            programToolTip.AutoPopDelay = 10000;
             programToolTip.OwnerDraw = true;
             programToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
             programToolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(183)))), ((int)(((byte)(93)))));
@@ -204,15 +241,10 @@ namespace cubeLauncher
                         try
                         {
                             Directory.Delete(mainDir + "\\" + installList.Text, true);
-
-                            string delName = installList.Text;
-                            dropBoxLabel.Text = "Removed \"" + delName + "\" successfully";
+                            dropBoxLabel.Text = "Removed \"" + installList.Text + "\" successfully";
                             dropBoxLabel.Update();
-
                             updInstLst();
-
                             try { installList.SelectedIndex = 0; } catch { }
-
                             try { if (installList.Text != "") File.WriteAllText(mainDir + "\\cfg_instname", installList.Text); else File.WriteAllText(mainDir + "\\cfg_instname", ""); } catch { }
                         }
                         catch (Exception ex)
@@ -390,7 +422,7 @@ namespace cubeLauncher
                         Directory.CreateDirectory(Path.GetDirectoryName(outputDir));
                         File.Copy(fileDir, outputDir, true);
                     }
-                    else  Directory.CreateDirectory(outputDir);
+                    else Directory.CreateDirectory(outputDir);
                 }
                 );
             }

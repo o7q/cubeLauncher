@@ -1,5 +1,6 @@
 ~ v1.6.5
 - Optimize code
+- Prevent multiple Minecraft Launchers from opening
 
 ~ v1.6.4
 - Shortened program file names

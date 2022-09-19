@@ -34,6 +34,9 @@ namespace cubeLauncher
         string sndPth;
         const string srtSndPth = "cubeLauncher.Resources.sculk";
 
+        // create refresh bool
+        bool refresh = true;
+
         // form events
 
         // form initialize component
@@ -53,16 +56,22 @@ namespace cubeLauncher
             try { installName = File.ReadAllText(mainDir + "\\cfg_instname"); } catch { }
 
             // do not update on window refresh
-            if (!File.Exists(mainDir + "\\cfg_norfrsh"))
+            if (refresh == true)
             {
                 // load config.cube
                 if (File.Exists(mainDir + "\\" + installName + "\\.cube\\config.cube"))
                 {
-                    try { customNameBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(1).Replace("name: ", ""); } catch { }
-                    try { customVersionBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(2).Replace("version: ", ""); } catch { }
-                    try { customWidthBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(3).Replace("width: ", ""); } catch { }
-                    try { customHeightBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(4).Replace("height: ", ""); } catch { }
-                    try { customArgsBox.Text = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(5).Replace("arguments: ", ""); } catch { }
+                    string[] componentObj = new string[5];
+                    string[] componentTxt = { "name: ", "version: ", "width: ", "height: ", "arguments: " };
+                    for (int i = 0; i < 5; i++)
+                    {
+                        componentObj[i] = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], "");
+                    }
+                    customNameBox.Text = componentObj[0];
+                    customVersionBox.Text = componentObj[1];
+                    customWidthBox.Text = componentObj[2];
+                    customHeightBox.Text = componentObj[3];
+                    customArgsBox.Text = componentObj[4];
                 }
                 else
                 {
@@ -72,10 +81,9 @@ namespace cubeLauncher
                     customHeightBox.Text = "";
                     customArgsBox.Text = "";
                 }
-            }
 
-            // create no refresh config
-            File.WriteAllText(mainDir + "\\cfg_norfrsh", "");
+                refresh = false;
+            }
 
             // show install name if it is configured
             configNameLabel.Text = installName != "" && File.Exists(mainDir + "\\cfg_instname") ? "Config for \"" + installName + "\"" : "No installation is selected";
@@ -153,8 +161,6 @@ namespace cubeLauncher
         // close button
         private void closeButton_Click(object sender, EventArgs e)
         {
-            try { File.Delete(mainDir + "\\cfg_norfrsh"); } catch { }
-
             // save config.cube
             customName = customNameBox.Text == "" ? installName : customNameBox.Text;
             customVersion = customVersionBox.Text == "" ? "latest-release" : customVersionBox.Text;

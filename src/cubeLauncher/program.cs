@@ -32,9 +32,6 @@ namespace cubeLauncher
         string installName;
         string destDir;
 
-        // static json parser variables
-        string path;
-
         // dynamic json parser variables
         string name;
         string version;
@@ -89,7 +86,7 @@ namespace cubeLauncher
 
             // configure drop box label
             dropBoxLabel.BringToFront();
-            dropBoxLabel.Text = "";
+            shwMsg("");
             dropBoxLabel.Update();
 
             // load last client session
@@ -190,7 +187,7 @@ namespace cubeLauncher
         // install list combobox
         private void installList_DropDown(object sender, EventArgs e)
         {
-            clrDrpBxLbl();
+            shwMsg("");
         }
 
         // install list combobox (indexchanged)
@@ -214,14 +211,15 @@ namespace cubeLauncher
                     try
                     {
                         Directory.CreateDirectory(mainDir + "\\" + installList.Text);
-                        dropBoxLabel.Text = "Created \"" + installList.Text + "\" successfully";
+
+                        shwMsg("Created \"" + installList.Text + "\" successfully");
                         updInstLst();
                     }
                     catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to create \"" + installList.Text + "\"!\n\nFull Error:\n" + ex); }
                 }
-                else dropBoxLabel.Text = "\"" + installList.Text + "\" already exists";
+                else shwMsg("\"" + installList.Text + "\" already exists");
             }
-            else dropBoxLabel.Text = "Please specify a name";
+            else shwMsg("Please specify a name");
         }
 
         // delete button
@@ -229,7 +227,7 @@ namespace cubeLauncher
         {
             if (installList.Text != "")
             {
-                clrDrpBxLbl();
+                shwMsg("");
 
                 // prompt user when removing installation
                 DialogResult prompt = MessageBox.Show("Are you sure you want to remove \"" + installList.Text + "\"?\nAll data (worlds, options, etc.) will be removed for that installation.", "", MessageBoxButtons.YesNo);
@@ -241,10 +239,11 @@ namespace cubeLauncher
                         try
                         {
                             Directory.Delete(mainDir + "\\" + installList.Text, true);
-                            dropBoxLabel.Text = "Removed \"" + installList.Text + "\" successfully";
-                            dropBoxLabel.Update();
+
+                            shwMsg("Removed \"" + installList.Text + "\" successfully");
                             updInstLst();
                             try { installList.SelectedIndex = 0; } catch { }
+
                             try { if (installList.Text != "") File.WriteAllText(mainDir + "\\cfg_instname", installList.Text); else File.WriteAllText(mainDir + "\\cfg_instname", ""); } catch { }
                         }
                         catch (Exception ex)
@@ -262,8 +261,7 @@ namespace cubeLauncher
             }
             else
             {
-                dropBoxLabel.Text = "No installation is selected";
-                dropBoxLabel.Update();
+                shwMsg("No installation is selected");
             }
         }
 
@@ -295,23 +293,27 @@ namespace cubeLauncher
         private void launchButton_Click(object sender, EventArgs e)
         {
             bool progOpen = false;
-            foreach (Process progOpenCheck in Process.GetProcesses()) progOpen = progOpenCheck.ProcessName.Contains("Minecraft") ? true : false;
+            foreach (Process progOpenCheck in Process.GetProcesses()) if (progOpenCheck.ProcessName.Contains("Minecraft")) progOpen = true;
             if (progOpen == false)
             {
-                WindowState = FormWindowState.Minimized;
-
                 if (installList.Text != "")
                 {
-                    clrDrpBxLbl();
+                    shwMsg("");
 
                     // load from config.cube if it exists
                     if (File.Exists(mainDir + "\\" + installList.Text + "\\.cube\\config.cube"))
                     {
-                        try { name = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(1).Replace("name: ", ""); } catch { }
-                        try { version = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(2).Replace("version: ", ""); } catch { }
-                        try { width = int.Parse(File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(3).Replace("width: ", "")); } catch { }
-                        try { height = int.Parse(File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(4).Replace("height: ", "")); } catch { }
-                        try { args = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(5).Replace("arguments: ", ""); } catch { }
+                        string[] componentObj = new string[5];
+                        string[] componentTxt = { "name: ", "version: ", "width: ", "height: ", "arguments: " };
+                        for (int i = 0; i < 5; i++)
+                        {
+                            componentObj[i] = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], "");
+                        }
+                        name = componentObj[0];
+                        version = componentObj[1];
+                        width = int.Parse(componentObj[2]);
+                        height = int.Parse(componentObj[3]);
+                        args = componentObj[4];
                     }
                     else
                     {
@@ -322,12 +324,9 @@ namespace cubeLauncher
                         args = "-Xms4G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M";
                     }
 
-                    // configure static variables
-                    path = mainDir + "\\" + installList.Text;
-                    string path2 = Path.GetFullPath(path);
-                    path2 = path2.Replace("\\", "\\\\");
-
-                    string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path2 + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
+                    // configure launch variables
+                    string path = Path.GetFullPath(mainDir + "\\" + installList.Text).Replace("\\", "\\\\");
+                    string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
                     // write launcher profile data
                     File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
@@ -337,9 +336,12 @@ namespace cubeLauncher
                 }
                 else
                 {
-                    dropBoxLabel.Text = "No installation is selected";
-                    dropBoxLabel.Update();
+                    shwMsg("No installation is selected");
                 }
+            }
+            else
+            {
+                shwMsg("Minecraft is already running");
             }
         }
 
@@ -368,8 +370,7 @@ namespace cubeLauncher
         {
             drpBxRstColr();
 
-            string[] file = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            foreach (string path in file) installPath = path;
+            foreach (string path in (string[])e.Data.GetData(DataFormats.FileDrop, false)) installPath = path;
 
             installName = new DirectoryInfo(installPath).Name;
             destDir = mainDir + "\\" + installName;
@@ -381,21 +382,17 @@ namespace cubeLauncher
                 DialogResult prompt = MessageBox.Show("Are you sure you want to reinstall \"" + installName + "\"?\n\nAn installation with that name already exists and it will be reinstalled resulting in all data (worlds, options, etc.) being removed.\n\nOtherwise you can merge the installation which will preserve unchanged data.\n\nYes = Reinstall\nNo = Merge\nCancel = Do nothing", "", MessageBoxButtons.YesNoCancel);
                 if (prompt == DialogResult.Yes)
                 {
-                    try { Directory.Delete(mainDir + "\\" + installName, true); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to remove \"" + installList.Text + "\"!\n\nFull Error:\n" + ex); }
+                    try { Directory.Delete(mainDir + "\\" + installName, true); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to remove \"" + installName + "\"!\n\nFull Error:\n" + ex); }
 
                     instFiles();
 
-                    installList.Text = installName;
-                    dropBoxLabel.Text = "Reinstalled \"" + installName + "\" successfully";
+                    shwMsg("Reinstalled \"" + installName + "\" successfully");
                 }
                 else
                 {
                     if (prompt == DialogResult.No)
                     {
-                        instFiles();
-
-                        installList.Text = installName;
-                        dropBoxLabel.Text = "Merged \"" + installName + "\" successfully";
+                        shwMsg("Merged \"" + installName + "\" successfully");
                     }
                 }
             }
@@ -411,8 +408,7 @@ namespace cubeLauncher
             // try to execute install script
             try
             {
-                dropBoxLabel.Text = "Installing \"" + installName + "\"";
-                dropBoxLabel.Update();
+                shwMsg("Installing \"" + installName + "\"");
 
                 Parallel.ForEach(Directory.GetFileSystemEntries(installPath, "*", SearchOption.AllDirectories), (fileDir) =>
                 {
@@ -430,8 +426,7 @@ namespace cubeLauncher
             {
                 MessageBox.Show("Unknown Error: Unable to install \"" + installName + "\"!\n\nFull Error:\n" + ex);
 
-                dropBoxLabel.Text = "";
-                dropBoxLabel.Update();
+                shwMsg("");
 
                 updInstLst();
 
@@ -445,8 +440,7 @@ namespace cubeLauncher
             srtModLdr();
 
             installList.Text = installName;
-            dropBoxLabel.Text = "Installed \"" + installName + "\" successfully";
-            dropBoxLabel.Update();
+            shwMsg("Installed \"" + installName + "\" successfully");
         }
 
         // modloader installer function
@@ -467,8 +461,7 @@ namespace cubeLauncher
             installList.Text = "";
             installList.Update();
 
-            string[] files = Directory.GetDirectories(mainDir);
-            foreach (string file in files) installList.Items.Add(Path.GetFileName(file));
+            foreach (string file in Directory.GetDirectories(mainDir)) installList.Items.Add(Path.GetFileName(file));
         }
 
         // move form function
@@ -493,13 +486,6 @@ namespace cubeLauncher
             dropBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(35)))), ((int)(((byte)(20)))));
         }
 
-        // clear dropbox label text function
-        private void clrDrpBxLbl()
-        {
-            dropBoxLabel.Text = "";
-            dropBoxLabel.Update();
-        }
-
         // play sound function
         private void playSfx()
         {
@@ -507,6 +493,13 @@ namespace cubeLauncher
             Stream s = a.GetManifestResourceStream(sndPth);
             SoundPlayer p = new SoundPlayer(s);
             p.Play();
+        }
+
+        // show message function
+        private void shwMsg(string msg)
+        {
+            dropBoxLabel.Text = msg;
+            dropBoxLabel.Update();
         }
 
         // drag drop events

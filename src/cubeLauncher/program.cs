@@ -307,7 +307,7 @@ namespace cubeLauncher
                         string[] componentTxt = { "name: ", "version: ", "width: ", "height: ", "arguments: " };
                         for (int i = 0; i < 5; i++)
                         {
-                            componentObj[i] = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], "");
+                            try { componentObj[i] = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], ""); } catch { }
                         }
                         name = componentObj[0];
                         version = componentObj[1];
@@ -329,7 +329,7 @@ namespace cubeLauncher
                     string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
                     // write launcher profile data
-                    File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile);
+                    try { File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile); } catch { }
 
                     // attempt to launch the minecraft launcher
                     if (File.Exists(mainDir + "\\cfg_lchrpth")) try { Process.Start(File.ReadAllText(mainDir + "\\cfg_lchrpth")); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to start the specified launcher!\n\nFull Error:\n" + ex); } else if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe")) try { Process.Start(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"!\n\nFull Error:\n" + ex); } else MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"\n\n* In the options menu you can specify a new launcher path if your launcher is not in the standard directory.");
@@ -425,11 +425,8 @@ namespace cubeLauncher
             catch (Exception ex)
             {
                 MessageBox.Show("Unknown Error: Unable to install \"" + installName + "\"!\n\nFull Error:\n" + ex);
-
                 shwMsg("");
-
                 updInstLst();
-
                 installList.Text = "";
 
                 return;

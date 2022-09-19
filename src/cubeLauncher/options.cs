@@ -65,7 +65,7 @@ namespace cubeLauncher
                     string[] componentTxt = { "name: ", "version: ", "width: ", "height: ", "arguments: " };
                     for (int i = 0; i < 5; i++)
                     {
-                        componentObj[i] = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], "");
+                        try { componentObj[i] = File.ReadLines(mainDir + "\\" + installName + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], ""); } catch { }
                     }
                     customNameBox.Text = componentObj[0];
                     customVersionBox.Text = componentObj[1];
@@ -89,7 +89,7 @@ namespace cubeLauncher
             configNameLabel.Text = installName != "" && File.Exists(mainDir + "\\cfg_instname") ? "Config for \"" + installName + "\"" : "No installation is selected";
 
             // show launcher path if it is configured
-            launcherPathLabel.Text = File.Exists(mainDir + "\\cfg_lchrpth") ? File.ReadAllText(mainDir + "\\cfg_lchrpth") : "Using the default path";
+            try { launcherPathLabel.Text = File.Exists(mainDir + "\\cfg_lchrpth") ? File.ReadAllText(mainDir + "\\cfg_lchrpth") : "Using the default path"; } catch { }
 
             #region tooltipDictionary
 

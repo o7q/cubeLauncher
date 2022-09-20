@@ -1,18 +1,18 @@
 <img src="assets/images/readmebanner.png">
 
 # [<b>>> Download Latest</b>](https://github.com/o7q/cubeLauncher/releases/download/v1.6.4/cubeLauncher.exe)
-### Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!
+<h3>Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!</h3>
 
-<br>
+---
 
 <img src="assets/images/program.png"/>
 
-<br>
+---
 
 # Overview
 This tool works like CurseForge except it is inside of a single executable file without the need of an installer. It creates its own launcher profile within the Minecraft launcher preventing it from interfering with any previous installations.
 
-<br>
+---
 
 # Usage
 Using and creating config files manually can be accomplished by following these steps:
@@ -32,7 +32,7 @@ modloader:
 If you would like a modloader such as forge or fabric to auto install when installing a folder you can specify it under the `modloader` argument inside `config.cube`. \
 Place the installer file alongside `config.cube` and specify the name of that file after `modloader: `.
 
-<br>
+---
 
 ## <b>Components</b>
 <b>Drag & Drop a Folder Window</b> Dragging a folder here will install and then search for modloaders for the dropped folder \
@@ -49,7 +49,7 @@ Place the installer file alongside `config.cube` and specify the name of that fi
 <b>Select MC Launcher</b> Path Button Specify an alternate path for the Minecraft Launcher \
 <b>Clear MC Launcher</b> Path Directory Button Resets the Minecraft Launcher path to default
 
-<br>
+---
 
 <i>Programmed with C# and .NET Framework 4.8.</i> \
 <i>If you want to compile the code yourself I highly recommend using Visual Studio.</i>

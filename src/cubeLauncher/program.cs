@@ -143,8 +143,8 @@ namespace cubeLauncher
             // configure tooltip draw
             programToolTip.AutoPopDelay = 10000;
             programToolTip.OwnerDraw = true;
-            programToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(30)))));
-            programToolTip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(183)))), ((int)(((byte)(93)))));
+            programToolTip.BackColor = System.Drawing.Color.FromArgb(30, 45, 30);
+            programToolTip.ForeColor = System.Drawing.Color.FromArgb(123, 183, 93);
         }
 
         // draw tooltips

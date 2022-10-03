@@ -51,5 +51,5 @@ Place the installer file alongside `config.cube` and specify the name of that fi
 
 ---
 
-<i>Programmed with C# and .NET Framework 4.8.</i> \
-<i>If you want to compile the code yourself I highly recommend using Visual Studio.</i>
+<i>Programmed with C# and .NET Framework 4.8</i> \
+<i>* If you want to compile the code yourself I highly recommend using Visual Studio</i>

@@ -20,7 +20,7 @@ Using and creating config files manually can be accomplished by following these 
 2. Inside of the `.cube` folder, create a file called `config.cube`
 3. Inside of the `config.cube` file, paste the following code:
 ```
-# CUBELAUNCHER OVERRIDE CONFIG
+# CUBELAUNCHER CONFIG
 name: 
 version: 
 width: 
@@ -34,22 +34,22 @@ Place the installer file alongside `config.cube` and specify the name of that fi
 
 ---
 
-## <b>Components</b>
-<b>Drag & Drop a Folder Window</b> Dragging a folder here will install and then search for modloaders for the dropped folder \
-<b>Installation Selection Dropdown</b> Selects an installation to be launched \
-<b>Create Installation Button</b> Create a blank installation \
-<b>Delete Installation Button</b> Deletes the selected installation \
-<b>Open Installation Directory Button</b> Opens the directory for the selected installation \
-<b>Options Button</b> Opens the options window \
-<b>Launch Button</b> Launches the selected installation with the specified arguments \
-<b>Name Input</b> Minecraft launcher name \
-<b>Version Input</b> Minecraft launcher version \
-<b>Resolution Input</b> Minecraft launcher resolution \
-<b>Arguments Input</b> Minecraft launcher arguments \
-<b>Select MC Launcher</b> Path Button Specify an alternate path for the Minecraft Launcher \
-<b>Clear MC Launcher</b> Path Directory Button Resets the Minecraft Launcher path to default
+## <b>Interface</b>
+- <b>Drag & Drop a Folder Window</b> Dragging a folder here will install and then search for modloaders for the dropped folder
+- <b>Installation Selection Dropdown</b> Selects an installation to be launched
+- <b>Create Installation Button</b> Create a blank installation
+- <b>Delete Installation Button</b> Deletes the selected installation
+- <b>Open Installation Directory Button</b> Opens the directory for the selected installation
+- <b>Options Button</b> Opens the options window
+- <b>Launch Button</b> Launches the selected installation with the specified arguments
+- <b>Name Input</b> Minecraft launcher name
+- <b>Version Input</b> Minecraft launcher version
+- <b>Resolution Input</b> Minecraft launcher resolution
+- <b>Arguments Input</b> Minecraft launcher arguments
+- <b>Select MC Launcher</b> Path Button Specify an alternate path for the Minecraft Launcher
+- <b>Clear MC Launcher</b> Path Directory Button Resets the Minecraft Launcher path to default
 
 ---
 
-<i>Programmed with C# and .NET Framework 4.8</i> \
-<i>* If you want to compile the code yourself I highly recommend using Visual Studio</i>
+<b>cubeLauncher</b> \
+Programmed with C# and .NET Framework 4.8

@@ -100,45 +100,45 @@ namespace cubeLauncher
             // components
             var component = new Control[]
             {
-                panelBanner,
-                panelBannerVersion,
-                minimizeButton,
-                closeButton,
-                dropBoxPanel,
-                dropBoxInfoPicture,
-                grassBanner,
-                dropBoxLabel,
-                installList,
-                createInstallButton,
-                deleteInstallButton,
-                openPathButton,
-                optionsButton,
-                launchButton
+                panelBanner, // 0
+                panelBannerVersion, // 1
+                minimizeButton, // 2
+                closeButton, // 3
+                dropBoxPanel, // 4
+                dropBoxInfoPicture, // 5
+                grassBanner, // 6
+                dropBoxLabel, // 7
+                installList, // 8
+                createInstallButton, // 9
+                deleteInstallButton, // 10
+                openPathButton, // 11
+                optionsButton, // 12
+                launchButton // 13
             };
 
             // tooltips
             string[] tooltip =
             {
-                "cubeLauncher by o7q",
-                "Running " + ver,
-                "Minimize",
-                "Close",
-                drgDrpTT,
-                drgDrpTT,
-                drgDrpTT,
-                "Output message",
-                "Currently selected installation - Clicking the arrow will show a list of all installations",
-                "Create a blank installation - Specify the name in the textbox to the left",
-                "Remove the selected installation",
-                "Open the folder path of the selected installation",
-                "Open the options window",
-                "Launch the selected installation with the specified options"
+                "cubeLauncher by o7q", // 0
+                "Running " + ver, // 1
+                "Minimize", // 2
+                "Close", // 3
+                drgDrpTT, // 4
+                drgDrpTT, // 5
+                drgDrpTT, // 6
+                "Output message", // 7
+                "Currently selected installation - Clicking the arrow will show a list of all installations", // 8
+                "Create a blank installation - Specify the name in the textbox to the left", // 9
+                "Remove the selected installation", // 10
+                "Open the folder path of the selected installation", // 11
+                "Open the options window", // 12
+                "Launch the selected installation with the specified options" // 13
             };
 
             #endregion
 
             // configure tooltips
-            for (int i = 0; i < 14; i++) programToolTip.SetToolTip(component[i], tooltip[i]);
+            for (int i = 0; i <= 13; i++) programToolTip.SetToolTip(component[i], tooltip[i]);
 
             // configure tooltip draw
             programToolTip.AutoPopDelay = 10000;
@@ -305,7 +305,7 @@ namespace cubeLauncher
                     {
                         string[] componentObj = new string[5];
                         string[] componentTxt = { "name: ", "version: ", "width: ", "height: ", "arguments: " };
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i <= 4; i++)
                         {
                             try { componentObj[i] = File.ReadLines(mainDir + "\\" + installList.Text + "\\.cube\\config.cube").ElementAt(i + 1).Replace(componentTxt[i], ""); } catch { }
                         }
@@ -334,15 +334,9 @@ namespace cubeLauncher
                     // attempt to launch the minecraft launcher
                     if (File.Exists(mainDir + "\\cfg_lchrpth")) try { Process.Start(File.ReadAllText(mainDir + "\\cfg_lchrpth")); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to start the specified launcher!\n\nFull Error:\n" + ex); } else if (File.Exists(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe")) try { Process.Start(@"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"); } catch (Exception ex) { MessageBox.Show("Unknown Error: Unable to start \"MinecraftLauncher.exe\"!\n\nFull Error:\n" + ex); } else MessageBox.Show("Error: \"MinecraftLauncher.exe\" was not found.\nBy default it is installed to \"C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe\"\n\n* In the options menu you can specify a new launcher path if your launcher is not in the standard directory.");
                 }
-                else
-                {
-                    shwMsg("No installation is selected");
-                }
+                else shwMsg("No installation is selected");
             }
-            else
-            {
-                shwMsg("Minecraft is already running");
-            }
+            else shwMsg("Minecraft is already running");
         }
 
         // play grass sounds on doubleclick
@@ -350,15 +344,9 @@ namespace cubeLauncher
         {
             switch (new Random().Next(1, 4))
             {
-                case 1:
-                    sndPth = srtSndPth + "1.wav";
-                    break;
-                case 2:
-                    sndPth = srtSndPth + "2.wav";
-                    break;
-                case 3:
-                    sndPth = srtSndPth + "3.wav";
-                    break;
+                case 1: sndPth = srtSndPth + "1.wav"; break;
+                case 2: sndPth = srtSndPth + "2.wav"; break;
+                case 3: sndPth = srtSndPth + "3.wav"; break;
             }
             playSfx();
         }
@@ -388,18 +376,9 @@ namespace cubeLauncher
 
                     shwMsg("Reinstalled \"" + installName + "\" successfully");
                 }
-                else
-                {
-                    if (prompt == DialogResult.No)
-                    {
-                        shwMsg("Merged \"" + installName + "\" successfully");
-                    }
-                }
+                else if (prompt == DialogResult.No) shwMsg("Merged \"" + installName + "\" successfully");
             }
-            else
-            {
-                instFiles();
-            }
+            else instFiles();
         }
 
         // install files function
@@ -550,16 +529,7 @@ namespace cubeLauncher
         // panel banner sender
         private void panelBanner_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 0)
-            {
-                MessageBox.Show(Properties.Resources.infoText);
-                toggle = 1;
-            }
-            else if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 1)
-            {
-                Process.Start("https://github.com/o7q/cubeLauncher");
-                toggle = 0;
-            }
+            if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 0) { MessageBox.Show(Properties.Resources.infoText); toggle = 1; } else if (e.Button == MouseButtons.Left && e.Clicks == 2 && toggle == 1) { Process.Start("https://github.com/o7q/cubeLauncher"); toggle = 0; }
 
             mvFrm(e);
         }

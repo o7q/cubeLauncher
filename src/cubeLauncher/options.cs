@@ -102,43 +102,43 @@ namespace cubeLauncher
             // components
             var component = new Control[]
             {
-                closeButton,
-                namePicture,
-                customNameBox,
-                versionPicture,
-                customVersionBox,
-                resolutionPicture,
-                customWidthBox,
-                customHeightBox,
-                argumentsPicture,
-                customArgsBox,
-                launcherPathPicture,
-                selectPathButton,
-                clearPathButton
+                closeButton, // 0
+                namePicture, // 1
+                customNameBox, // 2
+                versionPicture, // 3
+                customVersionBox, // 4
+                resolutionPicture, // 5
+                customWidthBox, // 6
+                customHeightBox, // 7
+                argumentsPicture, // 8
+                customArgsBox, // 9
+                launcherPathPicture, // 10
+                selectPathButton, // 11
+                clearPathButton // 12
             };
 
             // tooltips
             string[] tooltip =
             {
-                "Close",
-                nTT,
-                nTT,
-                vTT,
-                vTT,
-                "Specify the resolution for the client",
-                "Specify the resolution width for the client",
-                "Specify the resolution height for the client",
-                aTT,
-                aTT,
-                pTT,
-                pTT,
-                "Reset the selected Minecraft Launcher path"
+                "Close", // 0
+                nTT, // 1
+                nTT, // 2
+                vTT, // 3
+                vTT, // 4
+                "Specify the resolution for the client", // 5
+                "Specify the resolution width for the client", // 6
+                "Specify the resolution height for the client", // 7
+                aTT, // 8
+                aTT, // 9
+                pTT, // 10
+                pTT, // 11
+                "Reset the selected Minecraft Launcher path" // 12
             };
 
             #endregion
 
             // configure tooltips
-            for (int i = 0; i < 13; i++) optionsToolTip.SetToolTip(component[i], tooltip[i]);
+            for (int i = 0; i <= 12; i++) optionsToolTip.SetToolTip(component[i], tooltip[i]);
             lchrPthTT();
 
             // configure tooltip draw
@@ -212,15 +212,9 @@ namespace cubeLauncher
         {
             switch (new Random().Next(1, 4))
             {
-                case 1:
-                    sndPth = srtSndPth + "1.wav";
-                    break;
-                case 2:
-                    sndPth = srtSndPth + "2.wav";
-                    break;
-                case 3:
-                    sndPth = srtSndPth + "3.wav";
-                    break;
+                case 1: sndPth = srtSndPth + "1.wav"; break;
+                case 2: sndPth = srtSndPth + "2.wav"; break;
+                case 3: sndPth = srtSndPth + "3.wav"; break;
             }
             playSfx();
         }

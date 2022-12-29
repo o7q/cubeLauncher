@@ -52,4 +52,4 @@ Place the installer file alongside `config.cube` and specify the name of that fi
 ---
 
 <b>cubeLauncher</b> \
-Programmed with C# and .NET Framework 4.8
+Written in C# with .NET Framework 4.8

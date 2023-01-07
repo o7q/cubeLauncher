@@ -23,7 +23,7 @@ namespace cubeLauncher
         // create global variables
 
         // program attributes
-        const string ver = "v1.6.5";
+        const string ver = "v1.6.6";
 
         // path variables
         string mainDir;
@@ -326,7 +326,7 @@ namespace cubeLauncher
 
                     // configure launch variables
                     string path = Path.GetFullPath(mainDir + "\\" + installList.Text).Replace("\\", "\\\\");
-                    string launchProfile = "{\"profiles\":{\"\":{\"gameDir\":\"" + path + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
+                    string launchProfile = "{\"profiles\":{\"0\":{\"gameDir\":\"" + path + "\",\"javaArgs\":\"" + args + "\",\"lastVersionId\":\"" + version + "\",\"name\":\"" + name + "\",\"resolution\":{\"height\":" + height + ",\"width\":" + width + "}}}}";
 
                     // write launcher profile data
                     try { File.WriteAllText(mcDir + "\\" + "launcher_profiles.json", launchProfile); } catch { }

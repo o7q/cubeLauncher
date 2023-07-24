@@ -61,10 +61,10 @@ namespace cubeLauncher
             }
 
             // show install name if it is configured
-            configNameLabel.Text = config.INSTALL_NAME != "" ? "Config for \"" + config.INSTALL_NAME + "\"" : "No installation is selected";
+            ConfigNameLabel.Text = config.INSTALL_NAME != "" ? "Config for \"" + config.INSTALL_NAME + "\"" : "No installation is selected";
 
             // show launcher path if it is configured
-            launcherPathLabel.Text = config.LAUNCHER_PATH != "" ? config.LAUNCHER_PATH : "Using the default path";
+            LauncherPathLabel.Text = config.LAUNCHER_PATH != "" ? config.LAUNCHER_PATH : "Using the default path";
 
             #region loadTooltips
             // bind tooltips
@@ -139,7 +139,7 @@ namespace cubeLauncher
             launcherDiag.Multiselect = true;
             if (launcherDiag.ShowDialog() == DialogResult.OK)
             {
-                launcherPathLabel.Text = launcherDiag.FileName;
+                LauncherPathLabel.Text = launcherDiag.FileName;
                 config.LAUNCHER_PATH = launcherDiag.FileName;
 
                 UpdateLauncherPathToolTip();
@@ -150,8 +150,8 @@ namespace cubeLauncher
         {
             config.LAUNCHER_PATH = "";
 
-            launcherPathLabel.Text = "Using the default path";
-            OptionsToolTip.SetToolTip(launcherPathLabel, "");
+            LauncherPathLabel.Text = "Using the default path";
+            OptionsToolTip.SetToolTip(LauncherPathLabel, "");
         }
 
         private void SculkPictureBox_DoubleClick(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace cubeLauncher
 
         private void UpdateLauncherPathToolTip()
         {
-            OptionsToolTip.SetToolTip(launcherPathLabel, config.LAUNCHER_PATH);
+            OptionsToolTip.SetToolTip(LauncherPathLabel, config.LAUNCHER_PATH);
         }
 
         private void TitlebarPanel_MouseDown(object sender, MouseEventArgs e)

@@ -38,9 +38,9 @@
             this.IconPictureBox = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.OptionsPictureBox = new System.Windows.Forms.PictureBox();
-            this.launcherPathLabel = new System.Windows.Forms.Label();
+            this.LauncherPathLabel = new System.Windows.Forms.Label();
             this.OptionsToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.configNameLabel = new System.Windows.Forms.Label();
+            this.ConfigNameLabel = new System.Windows.Forms.Label();
             this.ArgumentsTextBox = new System.Windows.Forms.TextBox();
             this.SculkPictureBox = new System.Windows.Forms.PictureBox();
             this.ClearLauncherPathButton = new System.Windows.Forms.Button();
@@ -152,35 +152,35 @@
             this.OptionsPictureBox.TabStop = false;
             this.OptionsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OptionsPictureBox_MouseDown);
             // 
-            // launcherPathLabel
+            // LauncherPathLabel
             // 
-            this.launcherPathLabel.AutoSize = true;
-            this.launcherPathLabel.BackColor = System.Drawing.Color.Transparent;
-            this.launcherPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.launcherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
-            this.launcherPathLabel.Location = new System.Drawing.Point(8, 223);
-            this.launcherPathLabel.MaximumSize = new System.Drawing.Size(110, 15);
-            this.launcherPathLabel.Name = "launcherPathLabel";
-            this.launcherPathLabel.Size = new System.Drawing.Size(110, 12);
-            this.launcherPathLabel.TabIndex = 0;
-            this.launcherPathLabel.Text = "_____________________";
+            this.LauncherPathLabel.AutoSize = true;
+            this.LauncherPathLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LauncherPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LauncherPathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
+            this.LauncherPathLabel.Location = new System.Drawing.Point(8, 223);
+            this.LauncherPathLabel.MaximumSize = new System.Drawing.Size(110, 15);
+            this.LauncherPathLabel.Name = "LauncherPathLabel";
+            this.LauncherPathLabel.Size = new System.Drawing.Size(110, 12);
+            this.LauncherPathLabel.TabIndex = 0;
+            this.LauncherPathLabel.Text = "_____________________";
             // 
             // OptionsToolTip
             // 
             this.OptionsToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.OptionsToolTip_Draw);
             // 
-            // configNameLabel
+            // ConfigNameLabel
             // 
-            this.configNameLabel.AutoSize = true;
-            this.configNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.configNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.configNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
-            this.configNameLabel.Location = new System.Drawing.Point(8, 174);
-            this.configNameLabel.MaximumSize = new System.Drawing.Size(110, 15);
-            this.configNameLabel.Name = "configNameLabel";
-            this.configNameLabel.Size = new System.Drawing.Size(110, 12);
-            this.configNameLabel.TabIndex = 0;
-            this.configNameLabel.Text = "_____________________";
+            this.ConfigNameLabel.AutoSize = true;
+            this.ConfigNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ConfigNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfigNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(133)))), ((int)(((byte)(103)))));
+            this.ConfigNameLabel.Location = new System.Drawing.Point(8, 174);
+            this.ConfigNameLabel.MaximumSize = new System.Drawing.Size(110, 15);
+            this.ConfigNameLabel.Name = "ConfigNameLabel";
+            this.ConfigNameLabel.Size = new System.Drawing.Size(110, 12);
+            this.ConfigNameLabel.TabIndex = 0;
+            this.ConfigNameLabel.Text = "_____________________";
             // 
             // ArgumentsTextBox
             // 
@@ -304,9 +304,9 @@
             this.ClientSize = new System.Drawing.Size(127, 240);
             this.Controls.Add(this.SculkPictureBox);
             this.Controls.Add(this.ArgumentsTextBox);
-            this.Controls.Add(this.configNameLabel);
+            this.Controls.Add(this.ConfigNameLabel);
             this.Controls.Add(this.ClearLauncherPathButton);
-            this.Controls.Add(this.launcherPathLabel);
+            this.Controls.Add(this.LauncherPathLabel);
             this.Controls.Add(this.SelectLauncherPathButton);
             this.Controls.Add(this.LauncherPathPictureBox);
             this.Controls.Add(this.xPictureBox);
@@ -356,10 +356,10 @@
         private System.Windows.Forms.PictureBox OptionsPictureBox;
         private System.Windows.Forms.PictureBox LauncherPathPictureBox;
         private System.Windows.Forms.Button SelectLauncherPathButton;
-        private System.Windows.Forms.Label launcherPathLabel;
+        private System.Windows.Forms.Label LauncherPathLabel;
         private System.Windows.Forms.Button ClearLauncherPathButton;
         private System.Windows.Forms.ToolTip OptionsToolTip;
-        private System.Windows.Forms.Label configNameLabel;
+        private System.Windows.Forms.Label ConfigNameLabel;
         private System.Windows.Forms.TextBox ArgumentsTextBox;
         private System.Windows.Forms.PictureBox SculkPictureBox;
     }

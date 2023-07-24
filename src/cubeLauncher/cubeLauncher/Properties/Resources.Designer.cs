@@ -216,6 +216,19 @@ namespace cubeLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;profiles&quot; : {
+        ///    &quot;cubeLauncher&quot; : {
+        ///      &quot;gameDir&quot; : &quot;__PATH__&quot;,
+        ///      &quot;icon&quot; : &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAAG0OVFdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADcNSURBVHhe7V0HgJXVlT5vKjOUARVFkKqIFVuMSmwRNWw0sWXtNZvENcVYYskmu2pMNDGbTbdkN2vXaFTEiAUUe0ksiIvSQUQpAjPADAxT357vlPvf/703haFZ+Gbuf88599xzzz33/vcv73//o42KqqGV+1728KnZ3sMqR5koDxnL8zD0iO2yp156lHFEN180lmpmrc7TzxNcPu60LIMymQy1tLbS3/77Rfrn7x5BWS6D8k0Xj81Wz6grEmVGIAB2OVtbu4ZaWlqpublFjJx4wWH01z [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string launchProfileBase {
+            get {
+                return ResourceManager.GetString("launchProfileBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap logo {
@@ -318,9 +331,9 @@ namespace cubeLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap v1_6_5 {
+        internal static System.Drawing.Bitmap v2_0_0 {
             get {
-                object obj = ResourceManager.GetObject("v1.6.5", resourceCulture);
+                object obj = ResourceManager.GetObject("v2.0.0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

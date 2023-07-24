@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="optionsPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="OptionsPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEgAAAASCAYAAAD4+JjWAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAjtJREFUWEfVljFrVUEQhV8ZUOITwXR5nT9AsLazESRgUqSQdCEgJIKltT/AwlJS
@@ -134,10 +134,10 @@
         RK5CYII=
 </value>
   </data>
-  <metadata name="optionsToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="OptionsToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="grass2Picture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SculkPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAH8AAAAPCAYAAADNnxDSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAABGlJREFUWEftl8tvG1UUxg0VbSo0M7ZnQmHDK4UAqfKo0gTqVx61HT+ah9skDqE8
@@ -162,7 +162,7 @@
         KnUdeDAhHqrMkiUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="selectPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SelectLauncherPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAUCAYAAADlep81AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAYVJREFUSEvtUt9LAkEQ3svCI0zPvDtNSi8QMjPEW60oYqVfCNVLdG9B0YOQgv//
@@ -175,7 +175,7 @@
         QmCC
 </value>
   </data>
-  <data name="launcherPathPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LauncherPathPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKwAAAAQCAYAAACLOZTWAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAA6VJREFUaEPtl7GOE0EQRC8kw0IIiwTnfAEZ5JwAAUIkyPkJcRIQkEEMAQQEECF+
@@ -197,7 +197,7 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="argumentsPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ArgumentsPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGgAAAASCAYAAAC3pZsGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAqFJREFUWEftlkFrFEEQhfcYUHSD4N707sW/IDlJJAT0LLmJKCSC/8CjCJ5zCvkD
@@ -214,7 +214,7 @@
         EYHGikgnHxForMh0Bf6I/xq1oXgW24oRNpvfkWhxzThlJMEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="resolutionPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ResolutionPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGYAAAAQCAYAAADkpAq+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAjxJREFUWEftVbFKA0EQTZlKDyy0s7fxF8QyCAHBUtJKQAL6B5Y21lbiV1j6aWfe
@@ -230,7 +230,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="versionPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="VersionPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEwAAAAQCAYAAAC825mnAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAelJREFUWEflVjFOw0AQdIkEAiOKdPAEWkpEFYGivAClQ0hISUtNjUQLFeIDtJQ8
@@ -244,7 +244,7 @@
         Yw/skaLKImLe+HMPU8sRMZ+Zb1kfV1+mb8bdz1xArwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="namePicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NamePictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAQCAYAAABQrvyxAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAV1JREFUSEvdU7FKQ0EQfKWgmIhFOu3yB9axDErIF0g6EQKxsvYDrC2s8gF+gKWf

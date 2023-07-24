@@ -33,7 +33,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\PackagedRelease\cubeLauncher\</OutputPath>
+    <OutputPath>Build\cubeLauncher\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,25 +64,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="options.cs">
+    <Compile Include="Includes\Data\Storage.cs" />
+    <Compile Include="Includes\Data\Structure\ConfigStructure.cs" />
+    <Compile Include="Includes\Managers\ConfigManager.cs" />
+    <Compile Include="Includes\Tools\Forms.cs" />
+    <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="options.Designer.cs">
-      <DependentUpon>options.cs</DependentUpon>
+    <Compile Include="Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
     </Compile>
-    <Compile Include="program.cs">
+    <Compile Include="Program.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="program.Designer.cs">
-      <DependentUpon>program.cs</DependentUpon>
+    <Compile Include="Program.Designer.cs">
+      <DependentUpon>Program.cs</DependentUpon>
     </Compile>
-    <Compile Include="init.cs" />
+    <Compile Include="Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="options.resx">
-      <DependentUpon>options.cs</DependentUpon>
+    <EmbeddedResource Include="Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="program.resx">
-      <DependentUpon>program.cs</DependentUpon>
+    <EmbeddedResource Include="Program.resx">
+      <DependentUpon>Program.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -110,7 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\v1.6.5.png" />
+    <None Include="Resources\v2.0.0.png" />
+    <None Include="Resources\launchProfileBase.txt" />
     <None Include="Resources\infoText.txt" />
     <None Include="Resources\dragndrop.png" />
     <None Include="Resources\127x240_gradient.png" />

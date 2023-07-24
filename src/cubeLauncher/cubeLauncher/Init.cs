@@ -3,15 +3,14 @@ using System.Windows.Forms;
 
 namespace cubeLauncher
 {
-    internal static class init
+    internal static class Init
     {
         [STAThread]
         static void Main()
         {
-            // start program.cs
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new program());
+            Application.Run(new Program());
         }
     }
 }

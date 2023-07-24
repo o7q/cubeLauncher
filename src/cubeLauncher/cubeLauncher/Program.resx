@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="minimizeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="MinimizeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAFJJREFUSEvtzbEJwDAQQ1GV2cIjBLxLpsj+tYNBRQpBDD5I8x/87mwJAAAA+Md1
         n2Mln9dJIymf12tdY6mmY+Zn++JIqnzYH37l8zppJOVzvEgPAp5HackdSk4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="closeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CloseButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAALNJREFUSEvtkDEKwkAQRafULo1EsEihTSohkNoiOYFgYZUDeP868mA/rCmyoLsE
@@ -134,10 +134,10 @@
         FxMzcG1oqu84TgHM3mUMhQc7VxrFAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="programToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="ProgramToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="createInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CreateInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAFlJREFUSEvt0EEKACAIBEC/0r0n99e6GG1QqOBFcWAvgbsQlbjaaHOHn/wlHel0
@@ -145,7 +145,7 @@
         QmCC
 </value>
   </data>
-  <data name="deleteInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="DeleteInstallButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAKZJREFUSEvtksEKhEAMQ4sXL/6K+P8398tcWhoIO3QwssIIPsglpgkM2sv47DYf
@@ -154,7 +154,7 @@
         oe7jrVKTEPwAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="launchButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LaunchButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPUAAAAjCAYAAABM1kxXAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAKKpJREFUeF59nQmWXcWSbOsBonmIRiBmd3UHghhXKodXtre5xzkJVOVasaLzxtzc
@@ -334,7 +334,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="openPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="OpenPathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAGRJREFUSEtjGAVUBaG1M/9jw1Bp6gFsloAwVJpygGGglM5/ZEw1C+luEaUYahxu
@@ -342,7 +342,7 @@
         zXEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="dropBoxPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="DropBoxPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPIAAABICAYAAADMOai3AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAJE9JREFUeF7t1ImSJQlORNFhHXaGfR0G/v8nqZvkeealjqxqmh4MzDLM1JJc7i5F
@@ -503,7 +503,7 @@
         Derf8V/8+j8Ba6amr/EC4DYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="grassBanner.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="GrassPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAPIAAAAPCAYAAADeZJJjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAB49JREFUaEPtmEtsVFUYxwcoyKO0M+1MhynvFko7M9DHtNB2Sjt98VAeJjyElvej
@@ -541,7 +541,7 @@
         ZSyKHb0HWU+90GJH70F+imJHL2NR7PicMvb5/gLdChTRQaOE5wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="dropBoxInfoPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="DropBoxInfoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAACDQAAAF3CAYAAABQAInYAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAuwdJREFUeF7s/QuwrWl614epu093n75fzsy0Zqane6a7z61HMyNppBlJo5nWTHcP

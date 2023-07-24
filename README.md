@@ -1,7 +1,7 @@
 <img src="assets/images/readmebanner.png">
 
-# [<b>>> Download Latest</b>](https://github.com/o7q/cubeLauncher/releases/download/v1.6.5/cubeLauncher.exe)
-<h3>Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!</h3>
+# [<b>>> Download Latest</b>](https://github.com/o7q/cubeLauncher/releases/download/v2.0.0.0/cubeLauncher.exe)
+### Welcome! cubeLauncher is a simple, lightweight installation manager for Minecraft. I originally made this tool for me and my friends but now you can use it too!
 
 ---
 
@@ -28,28 +28,27 @@ height:
 arguments: 
 modloader: 
 ```
-
-If you would like a modloader such as forge or fabric to auto install when installing a folder you can specify it under the `modloader` argument inside `config.cube`. \
+* If you would like a modloader such as forge or fabric to auto install when installing a folder you can specify it under the `modloader` argument inside `config.cube`. \
 Place the installer file alongside `config.cube` and specify the name of that file after `modloader: `.
 
 ---
 
-## <b>Interface</b>
-- <b>Drag & Drop a Folder Window</b> Dragging a folder here will install and then search for modloaders for the dropped folder
-- <b>Installation Selection Dropdown</b> Selects an installation to be launched
-- <b>Create Installation Button</b> Create a blank installation
-- <b>Delete Installation Button</b> Deletes the selected installation
-- <b>Open Installation Directory Button</b> Opens the directory for the selected installation
-- <b>Options Button</b> Opens the options window
-- <b>Launch Button</b> Launches the selected installation with the specified arguments
-- <b>Name Input</b> Minecraft launcher name
-- <b>Version Input</b> Minecraft launcher version
-- <b>Resolution Input</b> Minecraft launcher resolution
-- <b>Arguments Input</b> Minecraft launcher arguments
-- <b>Select MC Launcher</b> Path Button Specify an alternate path for the Minecraft Launcher
-- <b>Clear MC Launcher</b> Path Directory Button Resets the Minecraft Launcher path to default
+## **Interface**
+- **Drag & Drop a Folder Window** Dragging a folder here will install and then search for modloaders for the dropped folder
+- **Installation Selection Dropdown** Selects an installation to be launched
+- **Create Installation Button** Create a blank installation
+- **Delete Installation Button** Deletes the selected installation
+- **Open Installation Directory Button** Opens the directory for the selected installation
+- **Options Button** Opens the options window
+- **Launch Button** Launches the selected installation with the specified arguments
+- **Name Input** Minecraft launcher name
+- **Version Input** Minecraft launcher version
+- **Resolution Input** Minecraft launcher resolution
+- **Arguments Input** Minecraft launcher arguments
+- **Select MC Launcher** Path Button Specify an alternate path for the Minecraft Launcher
+- **Clear MC Launcher** Path Directory Button Resets the Minecraft Launcher path to default
 
 ---
 
-<b>cubeLauncher</b> \
+**cubeLauncher** \
 Written in C# with .NET Framework 4.8
